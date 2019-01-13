@@ -5,8 +5,8 @@
 ** Description: A matrix calculator for 2x2 and 3x3 matrices 
 *********************************************************************/
 #include <iostream>
-#include "readMatrix.hpp"
-// #include "determinant.cpp"
+#include "readMatrix.cpp"
+#include "determinant.cpp"
 
 using std::cout;
 using std::cin;
@@ -18,21 +18,22 @@ int main()
     cout << "The size your matrix can be 2x2 or 3x3. Enter 2 or 3 to choose." << endl;
     cin >> matrixSize;
 
-    // TODO: dynamically allocate 2D array
+    // dynamically allocate 2D array
     int** matrix = new int*[matrixSize]; // rows
     for(int i = 0; i < matrixSize; ++i)
     {
         matrix[i] = new int[matrixSize]; // columns
     }
         
-    // TODO: call readMatrix to get nums from user
+    // get values from user
     readMatrix(matrix, matrixSize);
 
     // TODO: calculate determiant with func
     //determiant(matrix, matrixSize);
+
     // TODO: display determinant to the user
     
-    // TODO: display matirx use block format
+    // display matirx use block format
 	for(int row = 0; row < matrixSize; row++)
 	{
 		for(int col = 0; col < matrixSize; col++)
@@ -42,7 +43,7 @@ int main()
 		cout << endl;
 	}
 
-    // TODO: free matrix memory
+    // free matrix memory
     for (int i = 0; i < matrixSize; ++i)
     {
         delete[] matrix[i];
