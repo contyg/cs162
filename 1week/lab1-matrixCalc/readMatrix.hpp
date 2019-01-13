@@ -4,21 +4,10 @@
 ** Date: 01/13/2019
 ** Description: A matrix calculator for 2x2 and 3x3 matrices 
 *********************************************************************/
-#include <iostream>
-#include "readMatrix.hpp"
 
-using std::cout;
-using std::cin;
-using std::endl;
+#ifndef READMATRIX_H
+#define READMATRIX_H
 
-void readMatrix(int **matrix, int matrixSize)
-{
-    for(int row = 0; row < matrixSize; row++)
-	{
-		for(int col = 0; col < matrixSize; col++)
-		{
-			cout << "Enter an interger for position [" << row << "][" << col << "]:" << endl;
-            cin >> matrix[row][col];
-		}
-	}
-}
+void readMatrix(int **matrix, int matrixSize);
+
+#endif

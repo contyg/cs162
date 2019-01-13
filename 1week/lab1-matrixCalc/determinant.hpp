@@ -8,6 +8,6 @@
 #ifndef DETERMINANT_H
 #define DETERMINANT_H
 
-int determinant(int *matrix, int matrixSize){};
+int determinant(int **matrix, int matrixSize);
 
 #endif

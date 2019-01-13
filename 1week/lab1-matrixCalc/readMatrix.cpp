@@ -5,9 +5,21 @@
 ** Description: A matrix calculator for 2x2 and 3x3 matrices 
 *********************************************************************/
 
-#ifndef READMATRIX_H
-#define READMATRIX_H
+#include <iostream>
+#include "readMatrix.hpp"
 
-void readMatrix(int **matrix, int matrixSize){};
+using std::cout;
+using std::cin;
+using std::endl;
 
-#endif
+void readMatrix(int **matrix, int matrixSize)
+{
+    for(int row = 0; row < matrixSize; row++)
+	{
+		for(int col = 0; col < matrixSize; col++)
+		{
+			cout << "Enter an interger for position [" << row << "][" << col << "]:" << endl;
+            cin >> matrix[row][col];
+		}
+	}
+}
