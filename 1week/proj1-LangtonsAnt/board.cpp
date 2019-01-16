@@ -63,7 +63,7 @@ void Board::play(int turns)
     int i = 0;
     while(i < turns)
     {
-        cout << "play 1: " << i << endl;
+        cout << "play 1: " << i << endl; // REMOVE:
         // TODO: black/white logic
         print();
         i++;

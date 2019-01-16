@@ -12,6 +12,7 @@ class Board
     public:
         Board(int row, int col);
         ~Board();
+        // TODO: default constructor for random
         void setRowColl(int r, int c);
         void play(int turns);
         void print();
