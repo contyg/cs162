@@ -21,7 +21,7 @@ class Ant
         ~Ant();
         void setPosition(int x, int y);
         void setRowColl(int r, int c);
-        void makeBoard(int row, int col);
+        void makeBoard();
         void play(int turns);
         void move(int x, int y, char move);
         void print();
