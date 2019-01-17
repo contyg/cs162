@@ -16,11 +16,13 @@ using std::endl;
 // place ant based on user input
 Ant::Ant(int x, int y)
 {
-    setRowColl(100, 100);
-    makeBoard();
+    xCoord = x;
+    yCoord = y;
+    row = 70;
+    col = 70;
     orientation = 0;
-    setPosition(x, y);
-    move(xCoord, yCoord, '*');
+    whiteTile = true;
+    makeBoard();
 }
 
 Ant::~Ant() 
@@ -35,27 +37,8 @@ Ant::~Ant()
     delete[] board;
 }
 
-void Ant::setPosition(int x, int y)
-{
-    cout << "\033[1;34m set position \033[0m\n";
-
-    xCoord = x;
-    yCoord = y;
-    
-    whiteTile = true;
-}
-
-void Ant::setRowColl(int r, int c)
-{
-    cout << "\033[1;34m setRowColl \033[0m\n";
-    row = r;
-    col = c;
-}
-
 void Ant::makeBoard()
-{
-    cout << "\033[1;34m make board \033[0m\n"; // REMOVE:
-    
+{    
     // dynamically allocate 2D array
     board = new char*[col]; // rows
 
@@ -70,13 +53,8 @@ void Ant::makeBoard()
 		for(int j = 0; j < row; j++)
 			board[i][j] = '-';
 	}
-}
 
-void Ant::move(int x, int y, char move)
-{
-    
-    board[y][x] = move;
-    cout << "\033[1;34m move ant \033[0m\n";
+    board[yCoord][xCoord] = '*';
 }
 
 void Ant::print()
