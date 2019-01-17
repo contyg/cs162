@@ -1,7 +1,7 @@
 #ifndef ANT_H
 #define ANT_H
 
-enum direction {UP, DOWN, LEFT, RIGHT};
+enum direction {UP, RIGHT, DOWN, LEFT};
 
 class Ant
 {
@@ -12,8 +12,8 @@ class Ant
         int xCoord;
         int yCoord;
         char **board;
-        direction orientation;
-
+        int orientation;
+        bool whiteTile;
 
     public:
         // TODO: default constructor for random

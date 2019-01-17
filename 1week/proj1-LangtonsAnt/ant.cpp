@@ -16,11 +16,11 @@ using std::endl;
 // place ant based on user input
 Ant::Ant(int x, int y)
 {
-    setRowColl(70, 70);
-    makeBoard(70, 70);
-
+    setRowColl(10, 10);
+    makeBoard( 10, 10);
+    orientation = 0;
     setPosition(x, y);
-    move(x, y, '*');
+    move(xCoord, yCoord, '*');
 }
 
 Ant::~Ant() 
@@ -35,11 +35,14 @@ Ant::~Ant()
     delete[] board;
 }
 
-void Ant::setPosition(int r, int c)
+void Ant::setPosition(int x, int y)
 {
-    row = r;
-    col = c;
-    orientation = UP;
+    cout << "\033[1;34m set position \033[0m\n";
+
+    xCoord = x;
+    yCoord = y;
+    
+    whiteTile = true;
 }
 
 void Ant::setRowColl(int r, int c)
@@ -54,17 +57,17 @@ void Ant::makeBoard(int row, int col)
     cout << "\033[1;34m make board \033[0m\n"; // REMOVE:
     
     // dynamically allocate 2D array
-    board = new char*[row]; // rows
+    board = new char*[col]; // rows
 
-    for(int n = 0; n < row; ++n)
+    for(int n = 0; n < col; ++n)
     {
-        board[n] = new char[col]; // columns
+        board[n] = new char[row]; // columns
     }
 
     // populate board with 'white' spaces
-    for(int i = 0; i < row; i++)
+    for(int i = 0; i < col; i++)
 	{
-		for(int j = 0; j < col; j++)
+		for(int j = 0; j < row; j++)
 			board[i][j] = '-';
 	}
 }
@@ -72,7 +75,7 @@ void Ant::makeBoard(int row, int col)
 void Ant::move(int x, int y, char move)
 {
     
-    board[x][y] = move;
+    board[y][x] = move;
     cout << "\033[1;34m move ant \033[0m\n";
 }
 
@@ -94,25 +97,57 @@ void Ant::print()
 
 void Ant::play(int turns)
 {
+    print();
+
+    cout << "\033[1;36m play none \033[0m\n"; // REMOVE:
     int i = 0;
     while(i < turns)
     {
         cout << "\033[1;36m play #" << i << " \033[0m\n"; // REMOVE:
-        //TODO: black white logic
-        //TODO: ant at edge
+        cout << "\033[1;36m " << "xCoord: " << xCoord << ", yCoord: " << yCoord << "\033[0m\n";
+
+        // change spaces black (#) / white (' ')
+        if (whiteTile == true)
+        {
+            board[yCoord][xCoord] = '#';
+        } else {
+            board[yCoord][xCoord] = '-';
+        }
+        
+        //TODO: orientation at edge
         switch (orientation)
         {
             case UP:
-                break;
-            case DOWN:
+                xCoord += 1;
+                orientation++;
                 break;
             case RIGHT:
+                yCoord += 1;
+                orientation++;
+                break;
+            case DOWN:
+                xCoord -= 1;
+                orientation++;
                 break;
             case LEFT:
+                yCoord -= 1;
+                orientation = UP;
                 break;
             default:
                 break;
         }
+        
+        if (board[yCoord][xCoord] == '#')
+        {
+            whiteTile = false;
+        } 
+        else 
+        {
+            whiteTile = true;
+        }
+
+        cout << "\033[1;36m " << "xCoord: " << xCoord << ", yCoord: " << yCoord << "\033[0m\n";
+        board[yCoord][xCoord] = '*';
         print();
         i++;
     }
