@@ -1,6 +1,7 @@
 
 #ifndef BOARD_H
 #define BOARD_H
+// #include "ant.hpp"
 
 class Board
 {
@@ -10,11 +11,12 @@ class Board
         int col;
 
     public:
-        Board(int row, int col);
+        // TODO: default constructor (random)
+        Board(int row = 10, int col = 10);
         ~Board();
-        // TODO: default constructor for random
         void setRowColl(int r, int c);
         void play(int turns);
+        void move(int row, int col, char move);
         void print();
 };
 

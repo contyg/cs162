@@ -4,18 +4,19 @@
 ** Date: 01/20/2019
 ** Description: 
 *********************************************************************/
-#include "board.hpp"
 #include <iostream>
+#include "ant.hpp"
 
 using std::cout;
 using std::cin;
 using std::endl;
 
 int main() 
-{	
-    Board board(10, 10);
-    cout << "bruh" << endl;
-    board.play(3);
+{	    
+    cout << "\033[1;36m GAME START\033[0m\n";
+    Ant ant(21, 21);
+    ant.play(3);
+    cout << "\033[1;36m GAME OVER\033[0m\n";
     return 0;
 }
 
