@@ -40,11 +40,11 @@ Ant::~Ant()
 void Ant::makeBoard()
 {    
     // dynamically allocate 2D array
-    board = new char*[col]; // rows
+    board = new char*[col]; // columns
 
     for(int n = 0; n < col; ++n)
     {
-        board[n] = new char[row]; // columns
+        board[n] = new char[row]; // rows
     }
 
     // populate board with 'white' spaces
@@ -54,6 +54,7 @@ void Ant::makeBoard()
 			board[i][j] = '-';
 	}
 
+    // set ant
     board[yCoord][xCoord] = '*';
 }
 
@@ -90,7 +91,8 @@ void Ant::play(int turns)
             board[yCoord][xCoord] = '-';
         }
         
-        cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n";
+        // REMOVE:
+        cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n"; 
 
         // change orientation
         //TODO: orientation at edge
@@ -140,6 +142,7 @@ void Ant::play(int turns)
             whiteTile = true;
         }
 
+        // REMOVE:
         cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n";
         cout << "\033[1;31mbold white tile: "<< whiteTile <<"\033[0m\n";
         cout << "\033[1;36m " << "xCoord: " << xCoord << ", yCoord: " << yCoord << "\033[0m\n";
