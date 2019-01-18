@@ -14,8 +14,8 @@ using std::endl;
 int main() 
 {	    
     cout << "\033[1;36m GAME START\033[0m\n";
-    Ant ant(25, 25);
-    ant.play(12000);
+    Ant ant(50, 35);
+    ant.play(11000);
     cout << "\033[1;36m GAME OVER\033[0m\n";
     return 0;
 }

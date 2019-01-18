@@ -16,10 +16,10 @@ using std::endl;
 // place ant based on user input
 Ant::Ant(int x, int y)
 {
-    xCoord = x;
-    yCoord = y;
-    row = 70;
-    col = 70;
+    antCol = x;
+    antRow = y;
+    row = 100;
+    col = 100;
     orientation = 0;
     whiteTile = true;
     makeBoard();
@@ -27,35 +27,36 @@ Ant::Ant(int x, int y)
 
 Ant::~Ant() 
 {
-    cout << "\033[1;34m delete board \033[0m\n"; // REMOVE:
     
     // free matrix memory
-    for (int i = 0; i < row; ++i)
+    for (int i = 0; i < col; ++i)
     {
         delete[] board[i];
     }
     delete[] board;
+
+    cout << "\033[1;34m delete board \033[0m\n"; // REMOVE:
+
 }
 
 void Ant::makeBoard()
 {    
     // dynamically allocate 2D array
-    board = new char*[col]; // columns
-
-    for(int n = 0; n < col; ++n)
+    board = new char*[row]; 
+    for(int n = 0; n < row; ++n)
     {
-        board[n] = new char[row]; // rows
+        board[n] = new char[col]; 
     }
 
     // populate board with 'white' spaces
-    for(int i = 0; i < col; i++)
+    for(int i = 0; i < row; i++)
 	{
-		for(int j = 0; j < row; j++)
+		for(int j = 0; j < col; j++)
 			board[i][j] = '-';
 	}
 
     // set ant
-    board[yCoord][xCoord] = '*';
+    board[antRow][antCol] = '*';
 }
 
 void Ant::print()
@@ -84,11 +85,11 @@ void Ant::play(int turns)
         // change spaces black (#) / white (' ')
         if (whiteTile)
         {
-            board[yCoord][xCoord] = '#';
+            board[antRow][antCol] = '#';
         }
         else 
         {
-            board[yCoord][xCoord] = '-';
+            board[antRow][antCol] = '-';
         }
         
         // REMOVE:
@@ -96,44 +97,44 @@ void Ant::play(int turns)
 
         // change orientation
         //TODO: orientation at edge
-        if (whiteTile && orientation != UP)
+        if (whiteTile && orientation != LEFT)
         {
-            orientation--;
+            orientation++;
         } 
-        else if (whiteTile && orientation == UP) 
-        {
-            orientation = LEFT;
-        } 
-        else if (!whiteTile && orientation == LEFT)
+        else if (whiteTile && orientation == LEFT) 
         {
             orientation = UP;
+        } 
+        else if (!whiteTile && orientation != UP)
+        {
+            orientation--;
         }
         else 
         {
-            orientation++;
+            orientation = LEFT;
         }
 
         // move based on orientation
         switch (orientation)
         {
             case UP:
-                yCoord += 1;
+                antRow -= 1;
                 break;
             case RIGHT:
-                xCoord += 1;
+                antCol += 1;
                 break;
             case DOWN:
-                yCoord -= 1;
+                antRow += 1;
                 break;
             case LEFT:
-                xCoord -= 1;
+                antCol -= 1;
                 break;
             default:
                 break;
         }
         
         // change whiteTile based on next space
-        if (board[yCoord][xCoord] == '#')
+        if (board[antRow][antCol] == '#')
         {
             whiteTile = false;
         } 
@@ -142,12 +143,13 @@ void Ant::play(int turns)
             whiteTile = true;
         }
 
+        // if (antCol >= row)
         // REMOVE:
         cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n";
         cout << "\033[1;31mbold white tile: "<< whiteTile <<"\033[0m\n";
-        cout << "\033[1;36m " << "xCoord: " << xCoord << ", yCoord: " << yCoord << "\033[0m\n";
+        cout << "\033[1;36m " << "antCol: " << antCol << ", antRow: " << antRow << "\033[0m\n";
 
-        board[yCoord][xCoord] = '*';
+        board[antRow][antCol] = '*';
         
         print();
         i++;

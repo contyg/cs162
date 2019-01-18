@@ -8,8 +8,8 @@ class Ant
     private:
         int row;
         int col;
-        int xCoord;
-        int yCoord;
+        int antCol;
+        int antRow;
         char **board;
         int orientation;
         bool whiteTile;
