@@ -18,8 +18,8 @@ Ant::Ant(int x, int y)
 {
     antCol = x;
     antRow = y;
-    row = 100;
-    col = 100;
+    row = 10;
+    col = 10;
     orientation = 0;
     whiteTile = true;
     makeBoard();
@@ -72,86 +72,106 @@ void Ant::print()
 	}
 }
 
-void Ant::play(int turns)
+void Ant::play(int turns) 
 {
-    print();
-
-    cout << "\033[1;36m play none \033[0m\n"; // REMOVE:
-    int i = 0;
-    while(i < turns)
+    if(turns <= 0)
     {
-        cout << "\033[1;36m play #" << i << " \033[0m\n"; // REMOVE:
-        
-        // change spaces black (#) / white (' ')
-        if (whiteTile)
-        {
-            board[antRow][antCol] = '#';
-        }
-        else 
-        {
-            board[antRow][antCol] = '-';
-        }
-        
-        // REMOVE:
-        cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n"; 
-
-        // change orientation
-        //TODO: orientation at edge
-        if (whiteTile && orientation != LEFT)
-        {
-            orientation++;
-        } 
-        else if (whiteTile && orientation == LEFT) 
-        {
-            orientation = UP;
-        } 
-        else if (!whiteTile && orientation != UP)
-        {
-            orientation--;
-        }
-        else 
-        {
-            orientation = LEFT;
-        }
-
-        // move based on orientation
-        switch (orientation)
-        {
-            case UP:
-                antRow -= 1;
-                break;
-            case RIGHT:
-                antCol += 1;
-                break;
-            case DOWN:
-                antRow += 1;
-                break;
-            case LEFT:
-                antCol -= 1;
-                break;
-            default:
-                break;
-        }
-        
-        // change whiteTile based on next space
-        if (board[antRow][antCol] == '#')
-        {
-            whiteTile = false;
-        } 
-        else 
-        {
-            whiteTile = true;
-        }
-
-        // if (antCol >= row)
-        // REMOVE:
-        cout << "\033[1;31mbold orientation: "<< orientation <<"\033[0m\n";
-        cout << "\033[1;31mbold white tile: "<< whiteTile <<"\033[0m\n";
-        cout << "\033[1;36m " << "antCol: " << antCol << ", antRow: " << antRow << "\033[0m\n";
-
-        board[antRow][antCol] = '*';
-        
-        print();
-        i++;
+        return;
     }
+
+    cout << "\033[1;36m play #" << turns << " \033[0m\n"; // REMOVE:
+    
+    // change spaces black (#) / white (' ')
+    if (whiteTile)
+    {
+        board[antRow][antCol] = '#';
+    }
+    else 
+    {
+        board[antRow][antCol] = '-';
+    }
+
+    // REMOVE:
+    cout << "\033[1;31mbold 1orientation: "<< orientation <<"\033[0m\n"; 
+
+    // change orientation
+    if (whiteTile && orientation != LEFT)
+    {
+        orientation++;
+    } 
+    else if (whiteTile && orientation == LEFT) 
+    {
+        orientation = UP;
+    } 
+    else if (!whiteTile && orientation != UP)
+    {
+        orientation--;
+    }
+    else 
+    {
+        orientation = LEFT;
+    }
+
+    // move based on orientation
+    switch (orientation)
+    {
+        case UP:
+            if ((antRow-1) < 0) {
+                play(turns);
+                return;
+            }
+            else {
+                antRow -= 1;
+            }
+            break;
+        case RIGHT:
+            if ((antCol+1) >= col) { 
+                play(turns);
+                return;
+            }
+            else {
+                antCol += 1;
+            }
+            break;
+        case DOWN:
+            if ((antRow+1) >= row) { 
+                play(turns);
+                return;
+            }
+            else {
+                antRow += 1;
+            }
+            break;
+        case LEFT:
+            if ((antCol-1) < 0) { 
+                play(turns);
+                return;
+            }
+            else {
+                antCol -= 1;
+            }
+            break;
+        default:
+            break;
+    }
+    
+    // change whiteTile based on next space
+    if (board[antRow][antCol] == '#')
+    {
+        whiteTile = false;
+    } 
+    else 
+    {
+        whiteTile = true;
+    }
+
+    // REMOVE:
+    cout << "\033[1;31mbold 2orientation: "<< orientation <<"\033[0m\n";
+    cout << "\033[1;31mbold white tile: "<< whiteTile <<"\033[0m\n";
+    cout << "\033[1;36m " << "antCol: " << antCol << ", antRow: " << antRow << "\033[0m\n";
+
+    board[antRow][antCol] = '*';
+    
+    print();
+    play(--turns);
 }
