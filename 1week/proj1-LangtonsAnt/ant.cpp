@@ -6,11 +6,6 @@ using std::cin;
 using std::endl;
 
 // TODO: place ant randomly
-// Ant::randomAntStart()
-// {
-//     //position ant randomly on board
-//     setPosition(0, 0);
-// }
 
 // place ant based on user input
 Ant::Ant(int r, int c)
@@ -50,7 +45,9 @@ void Ant::makeBoard()
     for(int i = 0; i < row; i++)
 	{
 		for(int j = 0; j < col; j++)
-			board[i][j] = '-';
+        {
+            board[i][j] = '-';
+        }
 	}
 
     // set ant
@@ -66,9 +63,12 @@ void Ant::print()
 	{
 		for(int j = 0; j < col; j++)
         {
-            if (board[i][j] != '*') {
+            if (board[i][j] != '*') 
+            {
                 cout << board[i][j];
-            } else {
+            } 
+            else 
+            {
                 cout << "\033[1;31m"<< board[i][j] <<"\033[0m"; 
             }
         }
@@ -118,26 +118,31 @@ void Ant::play(int turns)
     switch (orientation)
     {
         case UP:
-            if ((antRow-1) < 0) {
+            if ((antRow-1) < 0) 
+            {
                 play(turns);
                 return;
             }
-            else {
+            else 
+            {
                 antRow -= 1;
             }
             // antRow -= 1;
             break;
         case RIGHT:
-            if ((antCol+1) >= col) { 
+            if ((antCol+1) >= col) 
+            { 
                 play(turns);
                 return;
             }
-            else {
+            else 
+            {
                 antCol += 1;
             }
             break;
         case DOWN:
-            if ((antRow+1) >= row) { 
+            if ((antRow+1) >= row) 
+            { 
                 play(turns);
                 return;
             }
@@ -146,11 +151,13 @@ void Ant::play(int turns)
             }
             break;
         case LEFT:
-            if ((antCol-1) < 0) { 
+            if ((antCol-1) < 0) 
+            { 
                 play(turns);
                 return;
             }
-            else {
+            else 
+            {
                 antCol -= 1;
             }
             break;
