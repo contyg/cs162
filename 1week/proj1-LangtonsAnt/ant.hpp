@@ -16,11 +16,12 @@ class Ant
 
     public:
         // TODO: default constructor for random
-        Ant(int x, int y);
+        Ant(int r, int c);
         ~Ant();
         void makeBoard();
         void play(int turns);
         void print();
+        // void randomAntStart();
 };
 
 #endif

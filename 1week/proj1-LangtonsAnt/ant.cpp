@@ -5,19 +5,18 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// place ant randomly
-// Ant::Ant()
+// TODO: place ant randomly
+// Ant::randomAntStart()
 // {
-//     //TODO: position ant randomly on board
+//     //position ant randomly on board
 //     setPosition(0, 0);
-//     board.move(0, 0, '*');
 // }
 
 // place ant based on user input
-Ant::Ant(int x, int y)
+Ant::Ant(int r, int c)
 {
-    antCol = x;
-    antRow = y;
+    antRow = r;
+    antCol = c;
     row = 10;
     col = 10;
     orientation = 0;
@@ -27,7 +26,6 @@ Ant::Ant(int x, int y)
 
 Ant::~Ant() 
 {
-    
     // free matrix memory
     for (int i = 0; i < col; ++i)
     {
@@ -57,15 +55,22 @@ void Ant::makeBoard()
 
     // set ant
     board[antRow][antCol] = '*';
+    print();
 }
 
 void Ant::print()
 {
+    // TODO: add board outline
+    // TODO: do space instead of -
     for(int i = 0; i < row; i++)
 	{
 		for(int j = 0; j < col; j++)
         {
-            cout << board[i][j];
+            if (board[i][j] != '*') {
+                cout << board[i][j];
+            } else {
+                cout << "\033[1;31m"<< board[i][j] <<"\033[0m"; 
+            }
         }
         
         cout << endl;
@@ -90,9 +95,6 @@ void Ant::play(int turns)
     {
         board[antRow][antCol] = '-';
     }
-
-    // REMOVE:
-    cout << "\033[1;31mbold 1orientation: "<< orientation <<"\033[0m\n"; 
 
     // change orientation
     if (whiteTile && orientation != LEFT)
@@ -123,6 +125,7 @@ void Ant::play(int turns)
             else {
                 antRow -= 1;
             }
+            // antRow -= 1;
             break;
         case RIGHT:
             if ((antCol+1) >= col) { 
@@ -164,11 +167,6 @@ void Ant::play(int turns)
     {
         whiteTile = true;
     }
-
-    // REMOVE:
-    cout << "\033[1;31mbold 2orientation: "<< orientation <<"\033[0m\n";
-    cout << "\033[1;31mbold white tile: "<< whiteTile <<"\033[0m\n";
-    cout << "\033[1;36m " << "antCol: " << antCol << ", antRow: " << antRow << "\033[0m\n";
 
     board[antRow][antCol] = '*';
     
