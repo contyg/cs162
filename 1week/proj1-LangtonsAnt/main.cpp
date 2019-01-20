@@ -12,9 +12,10 @@ using std::cin;
 using std::endl;
 
 int main() 
-{	    
+{	  
+    Menu menu;   
     cout << "\033[1;36m GAME START\033[0m\n";
-    menu();
+    menu.getInfo();
     cout << "\033[1;36m GAME OVER\033[0m\n";
     return 0;
 }

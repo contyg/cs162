@@ -4,9 +4,18 @@
 using std::string;
 
 
-void menu();
-bool prompt(string str, int &input, int i, int optionalMax = 0);
-void isAboveZero(int input, int min);
-void isBelowMax(int input, int max);
+class Menu
+{
+    private:
+        int inputs[6];
+        string prompts[6];
+
+    public:
+        void getInfo();
+        bool prompt(int i);
+        bool intCheck();
+        bool minCheck(int input, int min);
+        bool maxCheck(int input, int max);
+};
 
 #endif

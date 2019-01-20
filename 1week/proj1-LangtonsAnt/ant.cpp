@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ant.hpp"
+#include "menu.hpp"
 
 using std::cout;
 using std::cin;
@@ -8,10 +9,10 @@ using std::endl;
 // TODO: place ant randomly
 
 // place ant based on user input
-Ant::Ant(int r, int c)
+Ant::Ant(int * inputs)
 {
-    antRow = r;
-    antCol = c;
+    antRow = 50;
+    antCol = 50;
     row = 10;
     col = 10;
     orientation = 0;
