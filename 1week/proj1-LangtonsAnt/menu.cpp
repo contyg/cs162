@@ -75,7 +75,7 @@ bool Menu::prompt(int i)
             }
             break;
         case 4: // steps
-            if (!minCheck(inputs[i], 1) || !maxCheck(inputs[i], 20000))
+            if (!minCheck(inputs[i], 1) || !maxCheck(inputs[i], 33000))
             {
                 return false;
             }
@@ -98,7 +98,7 @@ void Menu::getInfo()
     prompts[1] = "How many columns do you want on your board? \n Min: 70, Max: 100 (total rows - 1)";
     prompts[2] = "What row would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total rows - 1)";
     prompts[3] = "What column would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total columns - 1)";
-    prompts[4] = "How many steps do you want to take? \n Min: 1, Max: 20000";
+    prompts[4] = "How many steps do you want to take? \n Min: 1, Max: 33000";
     prompts[5] = "Do you want to play again? \n No: 0, Yes: 1";
 
     int i = 0;

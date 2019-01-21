@@ -80,6 +80,7 @@ void Ant::play(int turns)
     {
         return;
     }
+    cout << "\033[1;31m TURNS: "<< turns <<"\033[0m\n";
     
     // change spaces black (#) / white (' ')
     if (whiteTile)
@@ -113,36 +114,41 @@ void Ant::play(int turns)
     switch (orientation)
     {
         case UP:
-            antRow--;
-            if (antRow < 0) 
+            if ((antRow-1) < 0) 
             {
-                antRow = (row-1);
+                play(turns);
+                return;
             }
+            antRow--;
             break;
         case RIGHT:
-            antCol++;
-            if (antCol >= (col-1)) 
+            if ((antCol+1) >= col) 
             { 
-                antCol = 0;
+                play(turns);
+                return;
             }
+            antCol++;
             break;
         case DOWN:
-            antRow++;
-            if (antRow >= (row-1)) 
+            if ((antRow+1) >= row) 
             { 
-                antRow = 0;
+                play(turns);
+                return;
             }
+            antRow++;
             break;
         case LEFT:
-            antCol--;
-            if (antCol < 0) 
+            if ((antCol-1) < 0) 
             { 
-                antCol = (col-1);
+                play(turns);
+                return;
             }
+            antCol--;
             break;
         default:
             break;
     }
+    
     // change whiteTile based on next space
     if (board[antRow][antCol] == '#')
     {

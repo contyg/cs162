@@ -20,6 +20,7 @@ class Ant
         void makeBoard();
         void play(int turns);
         void print();
+        // bool orientation();
 };
 
 #endif
