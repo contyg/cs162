@@ -80,7 +80,6 @@ void Ant::play(int turns)
     {
         return;
     }
-    cout << "\033[1;31m TURNS: "<< turns <<"\033[0m\n";
     
     // change spaces black (#) / white (' ')
     if (whiteTile)

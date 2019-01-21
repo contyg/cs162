@@ -8,7 +8,6 @@ using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
-using std::getline;
 
 bool Menu::minCheck(int input, int min)
 {
@@ -31,9 +30,9 @@ bool Menu::maxCheck(int input, int max)
     return true;
 }
 
-bool Menu::intCheck(int i)
+bool Menu::intCheck(double testInput)
 {
-    if (cin.fail()) 
+    if (cin.fail() || testInput-floor(testInput)) 
     {
         cout << "\033[1;31m ERROR: Please enter an integer value \033[0m\n";
         cin.clear();
@@ -46,12 +45,17 @@ bool Menu::intCheck(int i)
 // NOTE: 0-row, 1-col, 2-antRow, 3-antCol, 4-steps, 5-replay
 bool Menu::prompt(int i)
 {
+    double testInput;
+    
     cout << "\033[1;31m " << prompts[i] << "\033[0m\n";
-    cin >> inputs[i];
-    if (!intCheck(i))
+    cin >> testInput;
+
+    if (!intCheck(testInput))
     {
         return false;
     }
+
+    inputs[i] = (int)testInput;
     
     switch (i)
     {
@@ -95,7 +99,7 @@ bool Menu::prompt(int i)
 void Menu::getInfo()
 {
     prompts[0] = "How many rows do you want on your board? \n Min: 70, Max: 100";
-    prompts[1] = "How many columns do you want on your board? \n Min: 70, Max: 100 (total rows - 1)";
+    prompts[1] = "How many columns do you want on your board? \n Min: 70, Max: 100";
     prompts[2] = "What row would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total rows - 1)";
     prompts[3] = "What column would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total columns - 1)";
     prompts[4] = "How many steps do you want to take? \n Min: 1, Max: 33000";

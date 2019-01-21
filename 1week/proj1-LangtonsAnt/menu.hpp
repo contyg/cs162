@@ -13,7 +13,7 @@ class Menu
     public:
         void getInfo();
         bool prompt(int i);
-        bool intCheck(int i);
+        bool intCheck(double testInput);
         bool minCheck(int input, int min);
         bool maxCheck(int input, int max);
 };
