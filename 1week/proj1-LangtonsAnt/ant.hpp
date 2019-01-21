@@ -15,13 +15,11 @@ class Ant
         bool whiteTile;
 
     public:
-        // TODO: default constructor for random
         Ant(int *inputs);
         ~Ant();
         void makeBoard();
         void play(int turns);
         void print();
-        // void randomAntStart();
 };
 
 #endif

@@ -6,15 +6,14 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// TODO: place ant randomly
-
 // place ant based on user input
 Ant::Ant(int * inputs)
 {
-    antRow = 50;
-    antCol = 50;
-    row = 10;
-    col = 10;
+    
+    row = inputs[0];
+    col = inputs[1];
+    antRow = inputs[2];
+    antCol = inputs[3];
     orientation = 0;
     whiteTile = true;
     makeBoard();
@@ -28,9 +27,6 @@ Ant::~Ant()
         delete[] board[i];
     }
     delete[] board;
-
-    cout << "\033[1;34m delete board \033[0m\n"; // REMOVE:
-
 }
 
 void Ant::makeBoard()
@@ -47,7 +43,7 @@ void Ant::makeBoard()
 	{
 		for(int j = 0; j < col; j++)
         {
-            board[i][j] = '-';
+            board[i][j] = ' ';
         }
 	}
 
@@ -58,10 +54,10 @@ void Ant::makeBoard()
 
 void Ant::print()
 {
-    // TODO: add board outline
     // TODO: do space instead of -
     for(int i = 0; i < row; i++)
 	{
+
 		for(int j = 0; j < col; j++)
         {
             if (board[i][j] != '*') 
@@ -84,8 +80,6 @@ void Ant::play(int turns)
     {
         return;
     }
-
-    cout << "\033[1;36m play #" << turns << " \033[0m\n"; // REMOVE:
     
     // change spaces black (#) / white (' ')
     if (whiteTile)
@@ -94,7 +88,7 @@ void Ant::play(int turns)
     }
     else 
     {
-        board[antRow][antCol] = '-';
+        board[antRow][antCol] = ' ';
     }
 
     // change orientation
@@ -119,53 +113,36 @@ void Ant::play(int turns)
     switch (orientation)
     {
         case UP:
-            if ((antRow-1) < 0) 
+            antRow--;
+            if (antRow < 0) 
             {
-                play(turns);
-                return;
+                antRow = (row-1);
             }
-            else 
-            {
-                antRow -= 1;
-            }
-            // antRow -= 1;
             break;
         case RIGHT:
-            if ((antCol+1) >= col) 
+            antCol++;
+            if (antCol >= (col-1)) 
             { 
-                play(turns);
-                return;
-            }
-            else 
-            {
-                antCol += 1;
+                antCol = 0;
             }
             break;
         case DOWN:
-            if ((antRow+1) >= row) 
+            antRow++;
+            if (antRow >= (row-1)) 
             { 
-                play(turns);
-                return;
-            }
-            else {
-                antRow += 1;
+                antRow = 0;
             }
             break;
         case LEFT:
-            if ((antCol-1) < 0) 
+            antCol--;
+            if (antCol < 0) 
             { 
-                play(turns);
-                return;
-            }
-            else 
-            {
-                antCol -= 1;
+                antCol = (col-1);
             }
             break;
         default:
             break;
     }
-    
     // change whiteTile based on next space
     if (board[antRow][antCol] == '#')
     {
@@ -174,10 +151,10 @@ void Ant::play(int turns)
     else 
     {
         whiteTile = true;
-    }
+    } 
 
     board[antRow][antCol] = '*';
-    
+
     print();
     play(--turns);
 }

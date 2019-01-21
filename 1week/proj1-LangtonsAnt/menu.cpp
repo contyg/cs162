@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 #include "menu.hpp"
 #include "ant.hpp"
 
@@ -7,6 +8,7 @@ using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::getline;
 
 bool Menu::minCheck(int input, int min)
 {
@@ -18,7 +20,6 @@ bool Menu::minCheck(int input, int min)
     return true;
 }
 
-// TODO: is below X
 bool Menu::maxCheck(int input, int max)
 {
     if (input > max)
@@ -30,7 +31,7 @@ bool Menu::maxCheck(int input, int max)
     return true;
 }
 
-bool Menu::intCheck()
+bool Menu::intCheck(int i)
 {
     if (cin.fail()) 
     {
@@ -39,52 +40,47 @@ bool Menu::intCheck()
         cin.ignore(10000, '\n');
         return false;
     }
-
     return true;
 }
 
-// 0-row, 1-col, 2-antRow, 3-antCol, 4-steps, 5-replay
+// NOTE: 0-row, 1-col, 2-antRow, 3-antCol, 4-steps, 5-replay
 bool Menu::prompt(int i)
 {
     cout << "\033[1;31m " << prompts[i] << "\033[0m\n";
     cin >> inputs[i];
-    if (!intCheck())
+    if (!intCheck(i))
     {
         return false;
-    } 
+    }
     
-    cout << inputs[i];
-
     switch (i)
     {
         case 0: // row
         case 1: // col
             if (!minCheck(inputs[i], 70) || !maxCheck(inputs[i], 100))
             {
-
                 return false;
             }
             break;
         case 2: // antRow
-            if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[0]))
+            if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[0]-1))
             {
                 return false;
             }
             break;
         case 3: // antCol
-            if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[1]))
+            if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[1]-1))
             {
                 return false;
             }
             break;
         case 4: // steps
-            if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], 20000))
+            if (!minCheck(inputs[i], 1) || !maxCheck(inputs[i], 20000))
             {
                 return false;
             }
             break;
         case 5: // replay
-            // TODO: fix this -1/2 shit
             if (!minCheck(inputs[i], -1) || !maxCheck(inputs[i], 2))
             {
                 prompt(5);
@@ -98,22 +94,16 @@ bool Menu::prompt(int i)
 
 void Menu::getInfo()
 {
-    prompts[0] = "How many rows do you want on your board? Min: 70, Max: 100";
-    prompts[1] = "How many columns do you want on your board? Min: 70, Max: 100";
-    prompts[2] = "What row would you like the ant to start in?";
-    prompts[3] = "What column would you like the ant to start in?";
-    prompts[4] = "How many steps do you want to take?";
-    prompts[5] = "Do you want to play again?";
-
-    // TODO: steps
-    // TODO: play again
-    // TODO: validate play again input
-    // TODO: random ant starting position  
+    prompts[0] = "How many rows do you want on your board? \n Min: 70, Max: 100";
+    prompts[1] = "How many columns do you want on your board? \n Min: 70, Max: 100 (total rows - 1)";
+    prompts[2] = "What row would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total rows - 1)";
+    prompts[3] = "What column would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total columns - 1)";
+    prompts[4] = "How many steps do you want to take? \n Min: 1, Max: 20000";
+    prompts[5] = "Do you want to play again? \n No: 0, Yes: 1";
 
     int i = 0;
     while (i < 5)
     {
-        cout << "i: " << i;
         if(prompt(i))
         {
             i++; 
@@ -128,6 +118,8 @@ void Menu::getInfo()
     if(inputs[5])
     {
         getInfo();
+    } else {
+        cout << "\033[1;36m Good game friend! \033[0m\n";
     }
 
     return;

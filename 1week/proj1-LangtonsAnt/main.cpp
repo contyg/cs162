@@ -2,21 +2,19 @@
 ** Program name: Langton's Ant
 ** Author: Genevieve Conty
 ** Date: 01/20/2019
-** Description: 
+** Description: TODO: 
+TODO: put this on all the files
+TODO: add on 
 *********************************************************************/
 #include <iostream>
 #include "menu.hpp"
 
 using std::cout;
-using std::cin;
-using std::endl;
 
 int main() 
 {	  
     Menu menu;   
-    cout << "\033[1;36m GAME START\033[0m\n";
     menu.getInfo();
-    cout << "\033[1;36m GAME OVER\033[0m\n";
     return 0;
 }
 
