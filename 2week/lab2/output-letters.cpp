@@ -2,6 +2,8 @@
 ** Program: Count Letters
 ** Description: Definition for the output_letters function. Outputs
 **              frequency of each letter to user-given output file.
+** Inputs: Reference to an output file, pointer to int array (letter 
+**          frequencies)
 *********************************************************************/
 
 #include <iostream>
@@ -21,7 +23,13 @@ void output_letters(ofstream& outputFile, int* letterCount)
     cout << "What is your output file name?" << endl;
     cin >> outFileName;
 
+    // Check if output file is valid
     outputFile.open(outFileName);
+    if(!outputFile)
+    {
+        cout << "\033[1;31m ERROR: cannot access that output file \033[0m\n";
+        exit(0);
+    }
 
     for (int i = 0; i < 26; i++) 
     {

@@ -10,9 +10,7 @@
 #include <fstream>
 #include <string>
 #include "count-letters.hpp"
-#include "output-letters.hpp"
 using std::ifstream;
-using std::ofstream;
 using std::string;
 using std::cout;
 using std::cin;
@@ -27,17 +25,19 @@ int main()
     string inFileName;
     ifstream inputFile;
     
-
     // ask name of input file
     cout << "What is your input file name?" << endl;
-    cin >> inFileName; 
+    cin >> inFileName;
 
     // Check if input file is valid
     inputFile.open(inFileName);
+    if(!inputFile)
+    {
+        cout << "\033[1;31m ERROR: cannot access that input file \033[0m\n";
+        exit(0);
+    }
+
     count_letters(inputFile, letterCount);
-    
-    ofstream outputFile;
-    output_letters(outputFile, letterCount);
 
     return 0;
 }
