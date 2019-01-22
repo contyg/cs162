@@ -19,7 +19,8 @@ using std::endl;
 
 int main() 
 {	  
-    int* countArr = new int[26];
+    int countArr[26] = {0}; 
+    int* letterCount = countArr;
 
     string inFileName;
     ifstream inputFile;
@@ -37,7 +38,7 @@ int main()
         cout << "\033[1;31m ERROR: cannot access that file \033[0m\n";
         return -1;
     }
-    count_letters(inputFile, countArr);
+    count_letters(inputFile, letterCount);
     
     // ask name of output file
     cout << "What is your output file name?" << endl;
@@ -51,8 +52,7 @@ int main()
         return -1;
     }
 
-    output_letters(outputFile, countArr);
+    output_letters(outputFile, letterCount);
 
-    
     return 0;
 }

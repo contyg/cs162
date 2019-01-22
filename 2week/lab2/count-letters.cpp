@@ -11,7 +11,19 @@ using std::cin;
 using std::endl;
 
 
-void count_letters(ifstream& inputFile, int* countArr)
+void count_letters(ifstream& inputFile, int* letterCount)
 {
-    
+    char letter;
+    while (inputFile >> letter) 
+    {
+        for (int i = 0; i < 26; i++) 
+        {
+            if (letter == (i+65) || letter == (i+97))
+            {   
+                letterCount[i]++;
+                break;
+            }
+        }
+    }
+    inputFile.close();
 }
