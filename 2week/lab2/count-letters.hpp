@@ -1,6 +1,7 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Count Letters 
+** Description: Declaration for the count_letters function. Function 
+**              counts frequency of each letter. 
 *********************************************************************/
 
 #ifndef COUNT_FUNCTION_H

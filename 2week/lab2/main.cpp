@@ -1,8 +1,10 @@
 /********************************************************************* 
-** Program name: TODO:
+** Program name: Count Letters
 ** Author: Genevieve Conty
 ** Date: 01/20/2019
-** Description: TODO: 
+** Description: Open a user-given input file, count the frequency of
+**              each letter. Output the frequencies in a a user-given 
+**              output file.
 *********************************************************************/
 #include <iostream>
 #include <fstream>
@@ -24,8 +26,7 @@ int main()
 
     string inFileName;
     ifstream inputFile;
-    string outFileName;
-    ofstream outputFile;
+    
 
     // ask name of input file
     cout << "What is your input file name?" << endl;
@@ -33,25 +34,9 @@ int main()
 
     // Check if input file is valid
     inputFile.open(inFileName);
-    if(!inputFile)
-    {
-        cout << "\033[1;31m ERROR: cannot access that file \033[0m\n";
-        return -1;
-    }
     count_letters(inputFile, letterCount);
     
-    // ask name of output file
-    cout << "What is your output file name?" << endl;
-    cin >> outFileName;
-    
-    // Check if output file is valid
-    outputFile.open(outFileName);
-    if(!outputFile)
-    {
-        cout << "\033[1;31m ERROR: cannot access that file \033[0m\n";
-        return -1;
-    }
-
+    ofstream outputFile;
     output_letters(outputFile, letterCount);
 
     return 0;

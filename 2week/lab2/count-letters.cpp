@@ -1,6 +1,7 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Count Letters 
+** Description: Definition for the count_letters function. Function 
+**              counts frequency of each letter.
 *********************************************************************/
 
 #include <iostream>
@@ -18,7 +19,11 @@ void count_letters(ifstream& inputFile, int* letterCount)
     {
         for (int i = 0; i < 26; i++) 
         {
-            if (letter == (i+65) || letter == (i+97))
+            if (letter == 10) {
+                letterCount = {0};
+                break;
+            }
+            else if (letter == (i+65) || letter == (i+97))
             {   
                 letterCount[i]++;
                 break;
