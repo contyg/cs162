@@ -25,11 +25,6 @@ void output_letters(ofstream& outputFile, int* letterCount)
 
     // Check if output file is valid
     outputFile.open(outFileName);
-    if(!outputFile)
-    {
-        cout << "\033[1;31m ERROR: cannot access that output file \033[0m\n";
-        exit(0);
-    }
 
     for (int i = 0; i < 26; i++) 
     {
