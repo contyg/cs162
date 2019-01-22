@@ -3,8 +3,8 @@
 ** Description: TODO: 
 *********************************************************************/ 
 
-#ifndef OUTPUTLETTERS_H
-#define OUTPUTLETTERS_H
+#ifndef OUTPUT_LETTERS_H
+#define OUTPUT_LETTERS_H
 #include <fstream>
 using std::ofstream;
 
