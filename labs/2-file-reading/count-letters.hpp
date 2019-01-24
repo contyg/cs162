@@ -1,7 +1,8 @@
 /********************************************************************* 
 ** Program: Count Letters 
 ** Description: Declaration for the count_letters function. Function 
-**              counts frequency of each letter. 
+**              counts frequency of each letter by paragraph. Calls
+**              output_letters function. 
 ** Inputs: Reference to an intput file, pointer to int array (letter 
 **          frequencies)
 *********************************************************************/

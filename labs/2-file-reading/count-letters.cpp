@@ -1,7 +1,8 @@
 /********************************************************************* 
 ** Program: Count Letters 
 ** Description: Definition for the count_letters function. Function 
-**              counts frequency of each letter.
+**              counts frequency of each letter by paragraph. Calls
+**              output_letters function. 
 ** Inputs: Reference to an intput file, pointer to int array (letter 
 **          frequencies)
 *********************************************************************/
@@ -43,7 +44,8 @@ void count_letters(ifstream& inputFile, int* letterCount)
         output_letters(outputFile, letterCount);
 
         // clear array
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 26; i++) 
+        {
             letterCount[i] = 0;
         }
     }

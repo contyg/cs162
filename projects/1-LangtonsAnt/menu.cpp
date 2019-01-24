@@ -1,3 +1,8 @@
+/********************************************************************* 
+** Program: TODO: 
+** Description: TODO: 
+*********************************************************************/
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -30,6 +35,7 @@ bool Menu::maxCheck(int input, int max)
     return true;
 }
 
+// checks for chars and doubles
 bool Menu::intCheck(double testInput)
 {
     if (cin.fail() || testInput-floor(testInput)) 
@@ -66,25 +72,31 @@ bool Menu::prompt(int i)
                 return false;
             }
             break;
-        case 2: // antRow
+        case 2:
+            if (!minCheck(inputs[i], -1) || !maxCheck(inputs[i], 2))
+            {
+                prompt(2);
+            }
+            break;
+        case 3: // antRow
             if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[0]-1))
             {
                 return false;
             }
             break;
-        case 3: // antCol
+        case 4: // antCol
             if (!minCheck(inputs[i], 0) || !maxCheck(inputs[i], inputs[1]-1))
             {
                 return false;
             }
             break;
-        case 4: // steps
+        case 5: // steps
             if (!minCheck(inputs[i], 1) || !maxCheck(inputs[i], 33000))
             {
                 return false;
             }
             break;
-        case 5: // replay
+        case 6: // replay
             if (!minCheck(inputs[i], -1) || !maxCheck(inputs[i], 2))
             {
                 prompt(5);
@@ -100,18 +112,25 @@ void Menu::getInfo()
 {
     prompts[0] = "How many rows do you want on your board? \n Min: 70, Max: 100";
     prompts[1] = "How many columns do you want on your board? \n Min: 70, Max: 100";
-    prompts[2] = "What row would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total rows - 1)";
-    prompts[3] = "What column would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total columns - 1)";
-    prompts[4] = "How many steps do you want to take? \n Min: 1, Max: 33000";
-    prompts[5] = "Do you want to play again? \n No: 0, Yes: 1";
+    prompts[2] = "Would you like to 0: Pick where your ant starts or 1: Get a random start point?";
+    prompts[3] = "What row would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total rows - 1)";
+    prompts[4] = "What column would you like the ant to start in? \n Remember, index starts at 0! So Min: 0, Max: 100 (total columns - 1)";
+    prompts[5] = "How many steps do you want to take? \n Min: 1, Max: 33000";
+    prompts[6] = "Do you want to play again? \n No: 0, Yes: 1";
 
     int i = 0;
-    while (i < 5)
+    while (i < 6)
     {
         if(prompt(i))
         {
             i++; 
         }
+        // if (inputs[2])
+        // {
+        //     inputs[3] = (rand()%inputs[0]);
+        //     inputs[4] = (rand()%inputs[1]);
+        //     i += 2;
+        // }
     }
 
     Ant ant(inputs);

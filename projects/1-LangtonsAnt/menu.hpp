@@ -1,3 +1,8 @@
+/********************************************************************* 
+** Program: TODO: 
+** Description: TODO: 
+*********************************************************************/
+
 #ifndef MENU_H
 #define MENU_H
 #include <string>
@@ -8,7 +13,7 @@ class Menu
 {
     private:
         int inputs[6];
-        string prompts[6];
+        string prompts[7];
 
     public:
         void getInfo();
