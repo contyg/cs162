@@ -20,7 +20,6 @@ Die::Die()
 
 void Die::roll()
 {
-    cout<< "DIE roll" << endl;
     currentRoll = rand() % sides + 1;
 
     if (currentRoll > sides) {

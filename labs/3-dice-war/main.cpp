@@ -12,6 +12,6 @@ int main()
     // so...the war begins...
     Game game;
 
-    game.play();
+    game.menu();
     return 0;
 }
