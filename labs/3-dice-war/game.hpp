@@ -14,7 +14,7 @@
 class Game
 {
     private:
-        Die player1;
+        Die player;
         LoadedDie cheater;
         int rounds;
 

@@ -12,11 +12,15 @@ class LoadedDie
     private:
         int sides;
         int score;
+        int currentRoll;
 
     public:
         LoadedDie();
         void roll();
         int getScore();
+        void setSides(int n);
+        void addPoint();
+        int getLastRoll();
 };
 
 #endif

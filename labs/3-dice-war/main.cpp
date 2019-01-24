@@ -4,13 +4,8 @@
 ** Date: 0//2019
 ** Description:
 *********************************************************************/
-#include <iostream>
-#include "game.hpp"
-using std::string;
-using std::cout;
-using std::cin;
-using std::endl;
 
+#include "game.hpp"
 
 int main()
 {
