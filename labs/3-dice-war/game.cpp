@@ -18,7 +18,6 @@ Game::Game()
 
 void Game::play()
 {
-    cout << "GAME Play" << endl;
     player.setSides(6);
     cheater.setSides(6);
 
@@ -39,25 +38,24 @@ void Game::play()
             cheater.addPoint();
         }
 
-        cout << "\033[1;32mPlayer 1\033[0m"
+        cout << "\033[32mPlayer 1\033[0m"
         << "\n  Score: " << player.getScore()
-        << "\n  Die Side: " << playerLastRoll
+        << "\n  Regular Die Side & Value: " << playerLastRoll
         << "\n\033[32mPlayer 2\033[0m" 
         << "\n  Score: " << cheater.getScore() 
-        << "\n  Die Side: " << cheaterLastRoll
+        << "\n  Loaded Die Side & Value: " << cheaterLastRoll
         << "\n-------------------" << endl;
 
         rounds--;
     }
 
-    // TODO: pretty stuff
     if (player.getScore() > cheater.getScore()) 
     {
-        cout << "Player # beat the odds and won the war!" << endl;
+        cout << "\033[31mPlayer 1 beat the odds and won the war!\033[0m" << endl;
     } 
     else 
     {
-        cout << "Predicatably...player # won the war." << endl;
+        cout << "\033[31mPredicatably...player 2 won the war.\033[0m" << endl;
     }
 
     // menu();
@@ -65,12 +63,22 @@ void Game::play()
 
 void Game::menu()
 {
-    cout << "\033[31m MENU\033[0m\n";
+    cout << "\033[31m MENU\033[0m\n"
+    << "-------------------" << endl;
+    cout << "\033[31mDo you want to play or exit the game?\033[0m\n";
+    cout << "\033[31m   Please enter an integer to choose. Play: 1, Exit: 0\033[0m\n";
+
+    cout << "\033[31mHow many rounds do you want to play?\033[0m\n";
+    cout << "\033[31mWould Player 1 like the loaded die or the regular die? Loaded: 0, Regular: 1\033[0m\n";
+    cout << "\033[31m   Please enter an integer to choose. Loaded: 0, Regular: 1\033[0m\n";
+    cout << "\033[31mHow many sides does Player 1 want for their die?\033[0m\n";
+    cout << "\033[31mHow many sides does Player 2 want for their die?\033[0m\n";
+
+    cout << "\033[31mGood Game! Wanna play again?\033[0m\n";
+    cout << "\033[31m   Please enter an integer to choose. Play Again: 1, Exit: 0\033[0m\n";
+    cout << "\033[32mSee you later!\033[0m" << endl;
 
     rounds = 6;
     play();
 
-    // TODO: set rounds
-    // TODO: pretty stuff
-    // TODO: bigger letters?
 }
