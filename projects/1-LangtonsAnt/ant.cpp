@@ -59,7 +59,6 @@ void Ant::makeBoard()
 
 void Ant::print()
 {
-    // TODO: do space instead of -
     for(int i = 0; i < row; i++)
 	{
 
