@@ -46,3 +46,8 @@ void Die::setSides(int n)
 {  
     sides = n;
 }
+
+int Die::getSides()
+{
+    return sides;
+}

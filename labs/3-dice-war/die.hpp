@@ -9,7 +9,7 @@
 
 class Die
 {
-    private:
+    protected:
         int sides;
         int score;
         int currentRoll;
@@ -19,6 +19,7 @@ class Die
         void roll();
         int getScore();
         void setSides(int n);
+        int getSides();
         void addPoint();
         int getLastRoll();
 };

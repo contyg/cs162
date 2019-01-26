@@ -4,7 +4,11 @@
 ** Inputs: TODO: 
 *********************************************************************/
 #include "game.hpp"
+#include "validate.hpp"
 #include <iostream>
+#include <string>
+
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -40,10 +44,14 @@ void Game::play()
 
         cout << "\033[32mPlayer 1\033[0m"
         << "\n  Score: " << player.getScore()
-        << "\n  Regular Die Side & Value: " << playerLastRoll
+        << "\n  Die Type: Regular"
+        << "\n  Die Sides: " << player.getSides()
+        << "\n  Die Value: " << playerLastRoll
         << "\n\033[32mPlayer 2\033[0m" 
         << "\n  Score: " << cheater.getScore() 
-        << "\n  Loaded Die Side & Value: " << cheaterLastRoll
+        << "\n  Die Type: Loaded" 
+        << "\n  Die Sides: " << cheater.getSides()
+        << "\n  Die Value: " << cheaterLastRoll
         << "\n-------------------" << endl;
 
         rounds--;
@@ -63,22 +71,81 @@ void Game::play()
 
 void Game::menu()
 {
+    string prompts[6];
+    prompts[0] = "Do you want to play or exit the game?\n   Please enter an integer to choose. Play: 1, Exit: 0";
+    prompts[1] = "How many rounds do you want to play?"; 
+    prompts[2] = "Would Player 1 like the loaded die or the regular die? \n   Please enter an integer to choose. Loaded: 0, Regular: 1";
+    prompts[3] = "How many sides does Player 1 want for their die?";
+    prompts[4] = "How many sides does Player 2 want for their die?";
+    prompts[5] = "Good Game! Wanna play again? \nPlease enter an integer to choose. Play Again: 1, Exit: 0";
+
+    int inputs[6] = {0};
+
     cout << "\033[31m MENU\033[0m\n"
     << "-------------------" << endl;
-    cout << "\033[31mDo you want to play or exit the game?\033[0m\n";
-    cout << "\033[31m   Please enter an integer to choose. Play: 1, Exit: 0\033[0m\n";
 
-    cout << "\033[31mHow many rounds do you want to play?\033[0m\n";
-    cout << "\033[31mWould Player 1 like the loaded die or the regular die? Loaded: 0, Regular: 1\033[0m\n";
-    cout << "\033[31m   Please enter an integer to choose. Loaded: 0, Regular: 1\033[0m\n";
-    cout << "\033[31mHow many sides does Player 1 want for their die?\033[0m\n";
-    cout << "\033[31mHow many sides does Player 2 want for their die?\033[0m\n";
+    int i = 0;
+    while (i < 5)
+    {
+        bool valid = false;
+        double testInput;
+       
+        cout << "\033[31m" << prompts[i] << "\033[0m\n";
+        cin >> testInput;
 
-    cout << "\033[31mGood Game! Wanna play again?\033[0m\n";
-    cout << "\033[31m   Please enter an integer to choose. Play Again: 1, Exit: 0\033[0m\n";
+        if (isInteger(testInput))
+        {
+            valid = true;
+            inputs[i] = (int)testInput;
+        }
+
+        switch (i)
+        {
+            case 0: // play or exit
+                if (valid)
+                {
+                    i++;
+                }
+                break;
+            case 1: // rounds
+                if (valid)
+                {
+                    rounds = inputs[i];
+                    i++;
+                } 
+                break;
+            case 2: // player 1 die choice
+                if (valid)
+                {
+                    i++;
+                } 
+                break;
+            case 3: // player 1 sides
+                if (valid)
+                {
+                    i++;
+                }
+                break;
+            case 4: // player 2 sides
+                if (valid)
+                {
+                    i++;
+                }
+                break;
+            case 5: // play agian
+                if (valid)
+                {
+                    i++;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    play();
+
     cout << "\033[32mSee you later!\033[0m" << endl;
 
-    rounds = 6;
-    play();
 
 }
