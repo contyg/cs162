@@ -14,12 +14,17 @@
 class Game
 {
     private:
-        Die player;
-        LoadedDie cheater;
         int rounds;
+        int inputs[7];
+        int oneScore;
+        int *oneTurns;
+        int twoScore;
+        int *twoTurns;
+
 
     public:
         Game();
+        void setPlayersAndRolls();
         void play();
         void menu();
 };

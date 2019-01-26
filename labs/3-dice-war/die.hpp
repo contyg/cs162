@@ -11,17 +11,14 @@ class Die
 {
     protected:
         int sides;
-        int score;
         int currentRoll;
 
     public:
-        Die();
-        void roll();
-        int getScore();
-        void setSides(int n);
+        Die(int n, int rounds);
+        int roll();
         int getSides();
-        void addPoint();
-        int getLastRoll();
+        int getCurrentRoll();
+        void setSides(int n);
 };
 
 #endif

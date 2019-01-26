@@ -11,8 +11,8 @@
 class LoadedDie: public Die
 {
     public:
-        LoadedDie();
-        void roll();
+        LoadedDie(int n, int rounds);
+        int roll();
 };
 
 #endif

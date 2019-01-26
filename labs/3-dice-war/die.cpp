@@ -11,43 +11,34 @@ using std::endl;    //REMOVE:
 #include <cmath> 
 #include "die.hpp"
 
-Die::Die()
+Die::Die(int n, int rounds)
 {
-    sides = 1;
-    score = 0;
+    sides = n;
     currentRoll = 0;
 }
 
-void Die::roll()
-{
+int Die::roll()
+{ 
     currentRoll = rand() % sides + 1;
 
     if (currentRoll > sides) {
         currentRoll = sides;
     }
-}
 
-int Die::getScore()
-{
-    return score;
-}
-
-int Die::getLastRoll() 
-{
     return currentRoll;
 }
 
-void Die::addPoint()
+int Die::getCurrentRoll() 
 {
-    score++;
-}
-
-void Die::setSides(int n) 
-{  
-    sides = n;
+    return currentRoll;
 }
 
 int Die::getSides()
 {
     return sides;
+}
+
+void Die::setSides(int n) 
+{  
+    sides = n;
 }

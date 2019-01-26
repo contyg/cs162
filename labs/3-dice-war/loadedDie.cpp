@@ -11,9 +11,9 @@ using std::endl;    //REMOVE:
 
 #include "loadedDie.hpp"
 
-LoadedDie::LoadedDie() : Die(){}
+LoadedDie::LoadedDie(int n, int rounds) : Die(n, rounds){}
 
-void LoadedDie::roll()
+int LoadedDie::roll()
 {
     int rigFactor = rand()%4;
     currentRoll = rand() % sides + 1; 
@@ -26,4 +26,6 @@ void LoadedDie::roll()
     if (currentRoll > sides) {
         currentRoll = sides;
     }
+
+    return currentRoll;
 }

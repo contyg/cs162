@@ -16,79 +16,131 @@ using std::endl;
 Game::Game()
 {
     rounds = 0;
-    Die player;
-    LoadedDie cheater;
+    oneScore = 0;
+    twoScore = 0;
+}
+
+void Game::setPlayersAndRolls()
+{
+    // prep results arrays
+    oneTurns = new int[rounds];
+    twoTurns = new int[rounds];
+
+    // Player 1: sides - inputs[2], rounds - inputs[1] 
+    if (inputs[4]) {
+        LoadedDie one(inputs[2], inputs[1]);
+        
+        int n = rounds;
+        while (n > 0) {
+            oneTurns[n] = one.roll();
+            n--;
+        }
+    } else {
+        Die one(inputs[2], inputs[1]);
+
+        int n = rounds;
+        while (n > 0) {
+            oneTurns[n] = one.roll();
+            n--;
+        }
+    } 
+    
+    // Player 2: sides - inputs[3], rounds - inputs[1]
+    if (inputs[5]) {
+        LoadedDie two(inputs[3], inputs[1]);
+
+        int n = rounds;
+        while (n > 0) {
+            twoTurns[n] = two.roll();
+            n--;
+        }
+    } else {
+        Die two(inputs[3], inputs[1]);
+
+        int n = rounds;
+        while (n > 0) {
+            twoTurns[n] = two.roll();
+            n--;
+        }
+    } 
 }
 
 void Game::play()
 {
-    player.setSides(6);
-    cheater.setSides(6);
+    string p1Type; 
+    string p2Type; 
 
+    if (inputs[4]) {
+        p2Type = "Loaded";
+    } else {
+        p2Type = "Regular";
+    }
+
+    if (inputs[5]) {
+        p2Type = "Loaded";
+    } else {
+        p2Type = "Regular";
+    }
+    
     while (rounds > 0)
     {
-        player.roll();
-        cheater.roll();
-
-        int playerLastRoll = player.getLastRoll();
-        int cheaterLastRoll = cheater.getLastRoll();
-
-        if (playerLastRoll > cheaterLastRoll) 
+        if (oneTurns[rounds] > twoTurns[rounds]) 
         {
-            player.addPoint();
+            oneScore++;
         } 
-        else if (cheaterLastRoll > playerLastRoll)
+        else if (twoTurns[rounds] > oneTurns[rounds])
         {
-            cheater.addPoint();
+            twoScore++;
         }
 
         cout << "\033[32mPlayer 1\033[0m"
-        << "\n  Score: " << player.getScore()
-        << "\n  Die Type: Regular"
-        << "\n  Die Sides: " << player.getSides()
-        << "\n  Die Value: " << playerLastRoll
+        << "\n  Score: " << oneScore
+        << "\n  Die Type: " << p1Type
+        << "\n  Die Sides: " << inputs[2]
+        << "\n  Die Value: " << oneTurns[rounds]
         << "\n\033[32mPlayer 2\033[0m" 
-        << "\n  Score: " << cheater.getScore() 
-        << "\n  Die Type: Loaded" 
-        << "\n  Die Sides: " << cheater.getSides()
-        << "\n  Die Value: " << cheaterLastRoll
+        << "\n  Score: " << twoScore
+        << "\n  Die Type: " << p2Type
+        << "\n  Die Sides: " << inputs[3]
+        << "\n  Die Value: " << twoTurns[rounds]
         << "\n-------------------" << endl;
 
         rounds--;
     }
 
-    if (player.getScore() > cheater.getScore()) 
+    if (oneScore > twoScore) 
     {
-        cout << "\033[31mPlayer 1 beat the odds and won the war!\033[0m" << endl;
+        cout << "\033[31mPlayer 1 won the war!\033[0m" << endl;
     } 
     else 
     {
-        cout << "\033[31mPredicatably...player 2 won the war.\033[0m" << endl;
+        cout << "\033[31mPlayer 2 won the war!\033[0m" << endl;
     }
-
-    // menu();
 }
 
 void Game::menu()
 {
-    string prompts[6];
+    string prompts[7];
     prompts[0] = "Do you want to play or exit the game?\n   Please enter an integer to choose. Play: 1, Exit: 0";
     prompts[1] = "How many rounds do you want to play?"; 
-    prompts[2] = "Would Player 1 like the loaded die or the regular die? \n   Please enter an integer to choose. Loaded: 0, Regular: 1";
-    prompts[3] = "How many sides does Player 1 want for their die?";
-    prompts[4] = "How many sides does Player 2 want for their die?";
-    prompts[5] = "Good Game! Wanna play again? \nPlease enter an integer to choose. Play Again: 1, Exit: 0";
+    prompts[2] = "How many sides does Player 1 want for their die?";
+    prompts[3] = "How many sides does Player 2 want for their die?";
+    prompts[4] = "Would Player 1 like the loaded die or the regular die? \n   Please enter an integer to choose. Loaded: 1, Regular: 0";
+    prompts[5] = "Would Player 2 like the loaded die or the regular die? \n   Please enter an integer to choose. Loaded: 1, Regular: 0";
+    prompts[6] = "Good Game! Wanna play again? \nPlease enter an integer to choose. Play Again: 1, Exit: 0";
 
-    int inputs[6] = {0};
+    // inputs[7] = {0}; 
 
-    cout << "\033[31m MENU\033[0m\n"
-    << "-------------------" << endl;
+    cout << "\033[31m MENU\033[0m\n" // REMOVE: 
+    << "-------------------" << endl; // REMOVE: 
 
     int i = 0;
     while (i < 5)
     {
         bool valid = false;
         double testInput;
+
+        // NOTE: 0 = false, 1 = true
        
         cout << "\033[31m" << prompts[i] << "\033[0m\n";
         cin >> testInput;
@@ -102,39 +154,39 @@ void Game::menu()
         switch (i)
         {
             case 0: // play or exit
-                if (valid)
+                if (valid && isBetween(inputs[i], 0, 1) && inputs[i])
                 {
                     i++;
-                }
+                } else if (valid && isBetween(inputs[i], 0, 1) && !inputs[i]) {
+                    exit(0);
+                }   
                 break;
             case 1: // rounds
-                if (valid)
+            case 2: // player 1 sides
+            case 3: // player 2 sides
+                if (valid && isAbove(inputs[i], 0))
                 {
                     rounds = inputs[i];
                     i++;
                 } 
                 break;
-            case 2: // player 1 die choice
-                if (valid)
-                {
-                    i++;
-                } 
-                break;
-            case 3: // player 1 sides
-                if (valid)
+            case 4: // player 1 die choice
+                if (valid && isBetween(inputs[i], 0, 1))
                 {
                     i++;
                 }
                 break;
-            case 4: // player 2 sides
-                if (valid)
+            case 5: // player 2 die choice
+                if (valid && isBetween(inputs[i], 0, 1))
                 {
                     i++;
+                    play();
                 }
                 break;
-            case 5: // play agian
-                if (valid)
+            case 6: // play again
+                if (valid && isBetween(inputs[i], 0, 1))
                 {
+                    menu();
                     i++;
                 }
                 break;
@@ -142,10 +194,7 @@ void Game::menu()
                 break;
         }
     }
-
-    play();
-
-    cout << "\033[32mSee you later!\033[0m" << endl;
-
-
+    
+    cout << "\033[1;36m Good game friends! \033[0m\n";
+    return;
 }
