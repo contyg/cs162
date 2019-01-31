@@ -1,7 +1,8 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Langton's Ant
+** Description: Declaration for Ant class.
 *********************************************************************/
+
 #ifndef ANT_H
 #define ANT_H
 

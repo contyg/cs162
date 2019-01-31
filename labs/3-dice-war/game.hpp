@@ -1,13 +1,12 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO:  
-** Inputs: TODO: 
+** Program: Dice War
+** Description: Declaration file for game class. Keeps score for 
+**              players, rolls dice, prints stats and includes menu 
 *********************************************************************/
 
 #ifndef GAME_H
 #define GAME_H
 
-// #include "validate.hpp"
 #include "die.hpp"
 #include "loadedDie.hpp"
 
@@ -24,6 +23,7 @@ class Game
 
     public:
         Game();
+        ~Game();
         void setPlayersAndRolls();
         void play();
         void menu();

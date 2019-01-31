@@ -1,6 +1,7 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Langton's Ant
+** Description: Definition for Menu class. Prompts user for input and
+**              validates input.
 *********************************************************************/
 
 #include <iostream>

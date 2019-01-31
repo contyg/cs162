@@ -1,7 +1,8 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO:  
-** Inputs: TODO: 
+** Program: Dice War 
+** Description: Declaration file for LoadedDie class. Inherits most
+**              behavior from die class. Has roll that is rigged 75%
+**              of the time. 
 *********************************************************************/
 
 #ifndef LOADED_DIE_H

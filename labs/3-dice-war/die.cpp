@@ -1,13 +1,10 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO:  
-** Inputs: TODO: 
+** Program: Dice War
+** Description: Declaration for die class. Keeps track of number of 
+**              sides and current roll value. Roll function gives 
+**              random value. 
 *********************************************************************/
-#include <iostream> //REMOVE:
-using std::cout;    //REMOVE:
-using std::cin;     //REMOVE:
-using std::endl;    //REMOVE:
-
+#include <iostream>
 #include <cmath> 
 #include "die.hpp"
 

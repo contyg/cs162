@@ -1,6 +1,6 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Langton's Ant 
+** Description: Declaration for Menu class. 
 *********************************************************************/
 
 #ifndef MENU_H

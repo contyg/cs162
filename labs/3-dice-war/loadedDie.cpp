@@ -1,14 +1,11 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO:  
-** Inputs: TODO: 
+** Program: Dice War 
+** Description: Definition file for LoadedDie class. Inherits most
+**              behavior from die class. Has roll that is rigged 75%
+**              of the time. 
 *********************************************************************/
 
-#include <iostream> //REMOVE:
-using std::cout;    //REMOVE:
-using std::cin;     //REMOVE:
-using std::endl;    //REMOVE:
-
+#include <iostream>
 #include "loadedDie.hpp"
 
 LoadedDie::LoadedDie(int n, int rounds) : Die(n, rounds){}

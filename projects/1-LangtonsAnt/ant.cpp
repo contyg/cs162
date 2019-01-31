@@ -1,6 +1,7 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO: 
+** Program: Langton's Ant
+** Description: Definition for Ant Class. Keeps track of Ant movement
+**              and position.  
 *********************************************************************/
 
 #include <iostream>

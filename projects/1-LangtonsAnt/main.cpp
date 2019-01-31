@@ -2,9 +2,7 @@
 ** Program name: Langton's Ant
 ** Author: Genevieve Conty
 ** Date: 01/20/2019
-** Description: TODO: 
-TODO: put this on all the files
-TODO: add on 
+** Description: A visualization of the Langton's Ant algorithum 
 *********************************************************************/
 #include <iostream>
 #include "menu.hpp"

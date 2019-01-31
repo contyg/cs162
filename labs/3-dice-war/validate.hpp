@@ -1,7 +1,7 @@
 /********************************************************************* 
-** Program: TODO: 
-** Description: TODO:  
-** Inputs: TODO: 
+** Program: Dice War 
+** Description: Declaration for input validiation functions. Includes
+**              integer check, isAbove check, and is between check. 
 *********************************************************************/
 
 #ifndef VALIDATE_H
