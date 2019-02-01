@@ -1,5 +1,9 @@
-//TODO: description 
+/********************************************************************* 
+** Program: Dice War 
+** Description: Definition file Tiger class. Inherits behavior from 
+**              Animal class. 
+*********************************************************************/
 
-#include "Tiger.hpp"
+#include "tiger.hpp"
 
-Tiger::Tiger(): Animal(10000, 1, 50,2000) {}
+Tiger::Tiger(): Animal(10000, 1, 50, 2000) {}

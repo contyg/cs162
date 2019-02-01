@@ -1,6 +1,10 @@
-//TODO: description 
+/********************************************************************* 
+** Program: Dice War 
+** Description: Definition file Animal class. Inherits keeps track of
+**              age, payoff, foodCost and number of babies.
+*********************************************************************/
 
-#include "Animal.hpp"
+#include "animal.hpp"
 
 // constructor
 Animal::Animal(int c, int b, int bfc, int p)

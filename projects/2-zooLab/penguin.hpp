@@ -1,9 +1,13 @@
-//TODO: description 
+/********************************************************************* 
+** Program: Dice War 
+** Description: Declaration file Penguin class. Inherits behavior from 
+**              Animal class. 
+*********************************************************************/
 
 #ifndef PENGUIN_H
 #define PENGUIN_H
 
-#include "Animal.hpp"
+#include "animal.hpp"
 
 
 class Penguin: public Animal {

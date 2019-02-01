@@ -1,12 +1,17 @@
-//TODO: description
+/********************************************************************* 
+** Program: Dice War 
+** Description: Definition file Zoo class. Contains daily zoo game 
+**              functions, including random events, profit calculations
+**              and cost calculations.
+*********************************************************************/
 
 #ifndef ZOO_H
 #define ZOO_H
 
-#include "Animal.hpp"
-#include "Tiger.hpp"
-#include "Turtle.hpp"
-#include "Penguin.hpp"
+#include "animal.hpp"
+#include "tiger.hpp"
+#include "turtle.hpp"
+#include "penguin.hpp"
 
 class Zoo {
 
@@ -44,6 +49,7 @@ class Zoo {
         void newBaby(); 
         void animalDies(); 
         void day();
+        void newAnimal();
 
         // menu functions
         void startMenu();

@@ -1,4 +1,8 @@
-//TODO: description 
+/********************************************************************* 
+** Program: Dice War 
+** Description: Declaration file Animal class. Inherits keeps track of
+**              age, payoff, foodCost and number of babies.
+*********************************************************************/
 
 #ifndef ANIMAL_H
 #define ANIMAL_H
