@@ -14,3 +14,19 @@ Building::Building(string n, int s, string a)
     address = a; 
 }
 
+// getters
+string Building::getName()
+{
+    return name;
+}
+
+int Building::getSize()
+{
+    return size;
+}
+
+string Building::getAddress()
+{
+    return address;
+}
+

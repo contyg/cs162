@@ -10,7 +10,7 @@ Instructor::Instructor(double r, string n, int a): Person(n, a)
     rating = r;
 } 
 
-void do_work()
+void Instructor::do_work()
 {
     
 }

@@ -9,7 +9,7 @@ Student::Student(double gradeAvg, string n, int a): Person(n, a)
     gpa = gradeAvg;
 } 
 
-void do_work()
+void Student::do_work()
 {
     
 }

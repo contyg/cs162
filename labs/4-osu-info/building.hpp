@@ -18,6 +18,11 @@ private:
 	
 public:
 	Building(string name, int size, string address);
+
+	// getters
+	string getName();
+	int getSize();
+	string getAddress();
 };
 
 
