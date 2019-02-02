@@ -2,4 +2,4 @@ default: main.cpp animal.cpp penguin.cpp tiger.cpp turtle.cpp zoo.cpp validation
 	g++ main.cpp animal.cpp penguin.cpp tiger.cpp turtle.cpp zoo.cpp validation.cpp -o zoo
 
 zip:
-	zip -D zooLab *.hpp *.cpp makefile
+	zip -D Project2_Conty_Genevieve.zip *.hpp *.cpp makefile
