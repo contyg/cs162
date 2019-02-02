@@ -8,18 +8,24 @@
 #include "student.hpp"
 #include "instructor.hpp"
 
+#include <vector>
 #include <string>
+using std::vector;
 using std::string;
 
 class University
 {
     private:
         string name;
-        Building *buildings;
-        Person *people;
+        vector<Building*> buildings;
+        vector<Person*> people;
         
     public:
         University();
+
+        void startMenu();
+        void workMenu();
+
         void printBuildings();
         void printPeople();
 };

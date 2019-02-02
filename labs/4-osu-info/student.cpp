@@ -4,7 +4,7 @@
 *********************************************************************/
 #include "student.hpp"
 
-Student::Student(double gAvg, string n, int a): Person(n, a)
+Student::Student(double gradeAvg, string n, int a): Person(n, a)
 {
-    gpa = gAvg;
+    gpa = gradeAvg;
 } 

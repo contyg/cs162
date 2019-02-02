@@ -20,6 +20,6 @@ class Person
 		virtual ~Person(){};
 
 		virtual void do_work() = 0;
-}
+};
 
 #endif

@@ -16,12 +16,11 @@ class Student: public Person {
     private:
         double gpa;
 
-
     public:
-        Student(double gAvg, string n, int a);
-        virtual ~Student(){};
+        Student(double gradeAvg, string n, int a);
+        // virtual ~Student(){};
 
-        void do_work();
+        // void do_work();
 };
 
 #endif

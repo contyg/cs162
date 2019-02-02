@@ -5,9 +5,11 @@
 ** Description: TODO:  
 *********************************************************************/
 
-#include "person.hpp"
+#include "university.hpp"
 
 int main()
 {
+    University oregonState;
+    oregonState.startMenu();
     return 0;
 }

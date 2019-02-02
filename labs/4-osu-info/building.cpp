@@ -3,7 +3,7 @@
 ** Description: TODO: 
 *********************************************************************/
 
-#include "Building.hpp"
+#include "building.hpp"
 #include <string>
 using std::string;
 
