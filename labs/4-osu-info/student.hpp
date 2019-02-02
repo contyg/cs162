@@ -18,9 +18,8 @@ class Student: public Person {
 
     public:
         Student(double gradeAvg, string n, int a);
-        // virtual ~Student(){};
 
-        // void do_work();
+        void do_work();
 };
 
 #endif

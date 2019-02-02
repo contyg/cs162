@@ -3,6 +3,9 @@
 ** Description: TODO: 
 *********************************************************************/
 #include "university.hpp"
+#include "student.hpp"
+#include "instructor.hpp"
+
 #include "validate.hpp"
 #include <iostream>
 using std::cout;
@@ -11,14 +14,23 @@ using std::endl;
 
 University::University() {
 	name = "Oregon State University";
+
+    // mqke buildings
+    buildings.push_back(new Building("Kelley Engineering Center", 152166, "110 SW Park Terrace"));
+    buildings.push_back(new Building("Aero Engineering Lab", 3637, "852 SW 30th Street"));
+
+    // make a student & instructor
+    people.push_back(new Student(4.0, "Hermione Granger", 21)); 
+    people.push_back(new Instructor(2.0, "Serverus Snape", 55));
 }
 
 void University::startMenu()
 {
-    bool keepPlaying = true;
-    
     cout << "\033[35mWelcome to the OSU Information System.\033[0m" << endl;
+    
+    bool keepPlaying = true;
 
+    // game play
     while (keepPlaying)
     {
         int validInput;
@@ -78,5 +90,5 @@ void University::printPeople()
 void University::workMenu()
 {
     // TODO: choose who does work
-    cout << "\033[33mN WORK MENU\033[0m" << endl;
+    cout << "\033[33m WORK MENU\033[0m" << endl;
 }
