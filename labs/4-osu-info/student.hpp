@@ -19,6 +19,11 @@ class Student: public Person {
     public:
         Student(double gradeAvg, string n, int a);
 
+        //getters
+        string getName();
+        int getAge();
+        string getAverage();
+
         void do_work();
 };
 

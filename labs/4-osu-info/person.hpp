@@ -19,6 +19,10 @@ class Person
 		Person(string name, int age);
 		virtual ~Person(){};
 
+		virtual string getName() = 0;
+        virtual int getAge() = 0;
+        virtual string getAverage() = 0;
+
 		virtual void do_work() = 0;
 };
 

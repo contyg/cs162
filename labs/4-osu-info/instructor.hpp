@@ -19,6 +19,11 @@ class Instructor: public Person {
     public:
         Instructor(double r, string n, int a);
 
+        //getters
+        string getName();
+        int getAge();
+        string getAverage();
+
         void do_work();
 };
 

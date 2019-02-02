@@ -76,31 +76,27 @@ void University::startMenu()
 
 void University::printBuildings()
 {
-    //TODO: name, address, size
-    cout << "\033[33mOSU buildings on the record: \033[0m" << endl;
+    cout << "\n\033[36mOSU buildings on the record: \033[0m\n" << endl;
     for(int i = 0; i < buildings.size(); i++)
     {
         cout << "\033[33mBuilding " << i << ":\033[0m"
         << "\n  Name: " << buildings[i]->getName()
         << "\n  Size: " << buildings[i]->getSize()
-        << "\n  Address: 1" << buildings[i]->getAddress() << endl;
+        << "\n  Address: 1" << buildings[i]->getAddress() << "\n" << endl;
     }
 }
 
 void University::printPeople()
 {
-    //TODO: name, age, GPA/Rating
-    //TODO: diff message for prof/student
-    cout << "\033[33mOSU instructors and students on the record: \033[0m" << endl;
+    cout << "\n\033[36mOSU instructors and students on the record: \033[0m\n" << endl;
 
     for(int i = 0; i < people.size(); i++)
     {
         cout << "\033[33mPerson " << i << ":\033[0m"
-        // << "\n  Name: " << buildings[i]->getName()
-        // << "\n  Size: " << buildings[i]->getSize()
-
-        // << "\n  Address" << buildings[i]->getAddress() << endl;
-    }
+        << "\n  Name: " << people[i]->getName()
+        << "\n  Age: " << people[i]->getAge()
+        << "\n  " << people[i]->getAverage() << "\n" << endl;
+    } 
 }
 
 void University::workMenu()
