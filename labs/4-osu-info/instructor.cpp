@@ -5,6 +5,9 @@
 
 #include "instructor.hpp"
 #include <sstream>
+#include <iostream>
+using std::cout;
+using std::endl;
 using::std::ostringstream;
 
 Instructor::Instructor(double r, string n, int a): Person(n, a)
@@ -20,7 +23,7 @@ string Instructor::getName()
 
 int Instructor::getAge()
 {
-    return age;
+    return age; 
 }
 
 string Instructor::getAverage()
@@ -33,5 +36,10 @@ string Instructor::getAverage()
 
 void Instructor::do_work()
 {
-    
+    int hours = rand()%41;
+
+    ostringstream message;
+    message << name << " graded papers for " << hours << " hours.";
+
+    cout << "\n\033[33m" << message.str() <<  "\033[0m\n" << endl;
 }

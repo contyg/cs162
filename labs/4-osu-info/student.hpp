@@ -21,7 +21,7 @@ class Student: public Person {
 
         //getters
         string getName();
-        int getAge();
+        int getAge();  
         string getAverage();
 
         void do_work();

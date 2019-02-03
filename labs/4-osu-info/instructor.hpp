@@ -20,7 +20,7 @@ class Instructor: public Person {
         Instructor(double r, string n, int a);
 
         //getters
-        string getName();
+        string getName(); 
         int getAge();
         string getAverage();
 

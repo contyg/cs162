@@ -27,5 +27,5 @@ class University
         void workMenu();
 
         void printBuildings();
-        void printPeople();
+        void printPeople(bool onlyNames);
 };

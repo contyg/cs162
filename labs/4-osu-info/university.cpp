@@ -20,13 +20,13 @@ University::University() {
     buildings.push_back(new Building("Aero Engineering Lab", 3637, "852 SW 30th Street"));
 
     // make a student & instructor
-    people.push_back(new Student(4.0, "Hermione Granger", 21)); 
-    people.push_back(new Instructor(2.0, "Serverus Snape", 55));
+    people.push_back(new Student(3.9, "Hermione Granger", 21)); 
+    people.push_back(new Instructor(2.1, "Serverus Snape", 55));
 }
 
 void University::startMenu()
 {
-    cout << "\033[35mWelcome to the OSU Information System.\033[0m" << endl;
+    cout << "\033[35mWelcome to the OSU Information System.\033[0m\n" << endl;
     
     bool keepPlaying = true;
 
@@ -46,12 +46,14 @@ void University::startMenu()
 
         cin >> testInput;
 
+        // validation
         if (isInteger(testInput))
         {
             valid = true;
             validInput = (int)testInput;
         }
 
+        // execute desired action
         if (isBetween(validInput, 0, 3))
         {
             switch(validInput)
@@ -60,13 +62,13 @@ void University::startMenu()
                     printBuildings();
                     break;
                 case 1:
-                    printPeople();
+                    printPeople(false);
                     break;
                 case 2:
                     workMenu();
                     break;
                 default: 
-                    cout << "\033[35mOk, byyyyee!\033[0m" << endl;
+                    cout << "\n\033[35mSee you later!\033[0m" << endl;
                     keepPlaying = false;
                     break;
             }
@@ -81,26 +83,65 @@ void University::printBuildings()
     {
         cout << "\033[33mBuilding " << i << ":\033[0m"
         << "\n  Name: " << buildings[i]->getName()
-        << "\n  Size: " << buildings[i]->getSize()
+        << "\n  Size: " << buildings[i]->getSize() << " sq ft"
         << "\n  Address: 1" << buildings[i]->getAddress() << "\n" << endl;
     }
 }
 
-void University::printPeople()
+void University::printPeople(bool onlyNames)
 {
-    cout << "\n\033[36mOSU instructors and students on the record: \033[0m\n" << endl;
-
-    for(int i = 0; i < people.size(); i++)
+    if (onlyNames) // print only names
     {
-        cout << "\033[33mPerson " << i << ":\033[0m"
-        << "\n  Name: " << people[i]->getName()
-        << "\n  Age: " << people[i]->getAge()
-        << "\n  " << people[i]->getAverage() << "\n" << endl;
-    } 
+        cout << "\n" << endl;
+        for(int i = 0; i < people.size(); i++)
+        {
+            cout << "\033[33mPerson " << i << ": \033[0m"
+            << people[i]->getName() << endl;
+        }
+    }
+    else // print all info
+    {
+        cout << "\n\033[36mOSU instructors and students on the record: \033[0m\n" << endl;
+
+        for(int i = 0; i < people.size(); i++)
+        {
+            cout << "\033[33mPerson " << i << ":\033[0m"
+            << "\n  Name: " << people[i]->getName()
+            << "\n  Age: " << people[i]->getAge()
+            << "\n  " << people[i]->getAverage() << "\n" << endl;
+        }
+    }
+     
 }
 
 void University::workMenu()
 {
-    // TODO: choose who does work
-    cout << "\033[33m WORK MENU\033[0m" << endl;
+    // print just names
+    printPeople(true);
+
+    bool noWorkDone = true;
+
+    // ask user who should do work
+    while(noWorkDone)
+    {
+        int validInput;
+        double testInput;
+
+        cout << "\n\033[32mWho would you like to do work?\033[0m"
+        << "\n    Please enter their number." << endl;
+
+        cin >> testInput;
+
+        if (isInteger(testInput))
+        {
+            validInput = (int)testInput;
+        } 
+
+        if (isBetween(validInput, 0, (people.size()-1)))
+        {
+            people[validInput]->do_work();
+            noWorkDone = false;
+        }
+    }
+    
 }

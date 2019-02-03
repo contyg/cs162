@@ -4,6 +4,9 @@
 *********************************************************************/
 #include "student.hpp"
 #include <sstream>
+#include <iostream>
+using std::cout;
+using std::endl;
 using::std::ostringstream;
 
 Student::Student(double gradeAvg, string n, int a): Person(n, a)
@@ -19,7 +22,7 @@ string Student::getName()
 
 int Student::getAge()
 {
-    return age;
+    return age; 
 }
 
 string Student::getAverage()
@@ -32,5 +35,9 @@ string Student::getAverage()
 
 void Student::do_work()
 {
-    
+    int hours = rand()%41;
+
+    ostringstream message;
+    message << name << " did " << hours << " hours of homework." << endl;
+    cout << "\n\033[33m" << message.str() <<  "\033[0m" << endl;
 }
