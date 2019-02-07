@@ -13,6 +13,7 @@ using std::cin;
 // checks for chars and floats
 bool isInteger(double testInput)
 {
+    cout << "testInput: " << testInput << "\n";
     if (cin.fail() || testInput-floor(testInput)) 
     {
         cout << "\033[1;31m ERROR: Please enter an integer value \033[0m\n";

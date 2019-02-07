@@ -69,11 +69,13 @@ void strReverseMenu()
 
 void sumIntMenu()
 {
+    double testInput;
+    
     cout << "\033[32mHow many numbers are in your array?\033[0m" << endl;
-    float testSize;
-    cin >> testSize;
-
-    bool sizeValid = isInteger(testSize);
+    cin >> testInput;
+    cout << "test size menu: " << testInput << endl;
+    bool sizeValid = isInteger(testInput);
+    int size;
 
     // re-trigger function menu if input is invalid
     if (!sizeValid)
@@ -81,14 +83,14 @@ void sumIntMenu()
         sumIntMenu(); 
     }
 
-    int size = (int)testSize;
+    size = (int)testInput;
     int array[size];
 
     // collect all ints to be added
     int i = 0;
-    while(i < testSize)
+    while(i < testInput)
     {
-        float testInt;
+        double testInt;
         
         cout << "\033[32mWhat number do you want at position "<< i <<" ?\033[0m" << endl;
 

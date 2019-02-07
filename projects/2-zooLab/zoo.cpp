@@ -13,16 +13,17 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
 
 // ----- START constructor & destructor -------------------
-Zoo::Zoo() {
-    // start with no daily bonus and $50k in the bank
-
-	bank = 10000; 
+Zoo::Zoo() 
+{
+    // start with no daily bonus and $25k in the bank
+	bank = 25000; 
     dailyBonus = 0;
 
     // start with no animals
@@ -41,16 +42,14 @@ Zoo::Zoo() {
 	turtles = new Turtle[turtleArraySize];
 }
 
-Zoo::~Zoo() {
-    // delete dynamic arrays and point to null
+Zoo::~Zoo() 
+{
+    // delete dynamic arrays
     delete tigers;
-    tigers = nullptr;
-    
+
     delete penguins;
-	penguins = nullptr;
 
 	delete turtles;
-	turtles = nullptr;
 }
 
 // ----- START buy and create new animals ----------------
@@ -338,6 +337,8 @@ void Zoo::newAnimal()
         int validInput;
         bool valid = false;
 
+        bool is_between = false;
+
         cout << "\033[31m" << prompts[i] << "\033[0m\n";
         cin >> testInput;
 
@@ -350,6 +351,7 @@ void Zoo::newAnimal()
         switch (i)
         {
             case 0:
+                is_between = isBetween(validInput, 0, 1);
                 if (valid && validInput)
                 {
                     i++;
@@ -360,6 +362,7 @@ void Zoo::newAnimal()
                 }
                 break;
             case 1:
+                is_between = isBetween(validInput, 0, 2);
                 if (valid)
                 {
                     if (validInput == 0) 
@@ -417,7 +420,6 @@ void Zoo::startMenu()
         double testInput;
         int validInput;
         bool is_between = false;
-        bool is_above = false;
        
         cout << "\033[31m" << prompts[i] << "\033[0m\n";
         cin >> testInput;

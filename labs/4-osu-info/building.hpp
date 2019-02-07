@@ -9,7 +9,8 @@
 #include <string>
 using std::string;
 
-class Building {
+class Building 
+{
 
 private:
 	string name;

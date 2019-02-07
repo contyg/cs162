@@ -2,6 +2,8 @@
 ** Program: OSU Information System  
 ** Description: TODO: 
 *********************************************************************/
+#ifndef UNIVERSITY_H
+#define UNIVERSITY_H
 
 #include "building.hpp"
 #include "person.hpp"
@@ -22,6 +24,7 @@ class University
         
     public:
         University();
+        ~University(); 
 
         void startMenu();
         void workMenu();
@@ -29,3 +32,5 @@ class University
         void printBuildings();
         void printPeople(bool onlyNames);
 };
+
+#endif

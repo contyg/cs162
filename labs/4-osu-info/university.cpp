@@ -12,7 +12,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-University::University() {
+University::University() 
+{
 	name = "Oregon State University";
 
     // mqke buildings
@@ -22,6 +23,21 @@ University::University() {
     // make a student & instructor
     people.push_back(new Student(3.9, "Hermione Granger", 21)); 
     people.push_back(new Instructor(2.1, "Serverus Snape", 55));
+}
+
+University::~University()
+{
+    for(int i = 0; i < buildings.size(); i++)
+    {
+        delete buildings[i];
+		buildings[i] = nullptr;
+    }
+
+    for(int i = 0; i < people.size(); i++)
+    {
+        delete people[i];
+		people[i] = nullptr;
+    }
 }
 
 void University::startMenu()

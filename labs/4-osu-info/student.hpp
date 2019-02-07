@@ -11,7 +11,8 @@
 #include <string>
 using std::string;
 
-class Student: public Person {
+class Student: public Person 
+{
 
     private:
         double gpa;
