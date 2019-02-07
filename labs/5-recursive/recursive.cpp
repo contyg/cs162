@@ -31,7 +31,7 @@ int sumInt(int size, int* intArray)
         size--;
         return intArray[size] + sumInt(size, intArray);
     }   
-    
+
     return 0;
 }
 
@@ -41,6 +41,6 @@ int triangularNum(int num)
     {
 		return num + triangularNum(num - 1);
     }
-    cout << "\033[33mTriangular Number: \033[0m" << num << endl;
+    
     return num;
 }

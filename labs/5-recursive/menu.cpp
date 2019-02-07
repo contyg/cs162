@@ -71,7 +71,7 @@ void sumIntMenu()
 {
     double testInput;
     
-    cout << "\033[32mHow many numbers are in your array?\033[0m" << endl;
+    cout << "\n\033[32mHow many numbers are in your array?\033[0m" << endl;
     cin >> testInput;
 
     bool sizeValid = isInteger(testInput);
@@ -92,7 +92,7 @@ void sumIntMenu()
     {
         double testInt;
         
-        cout << "\n\033[32mWhat number do you want at position "<< i <<" ?\033[0m" << endl;
+        cout << "\033[32mWhat number do you want at position "<< i <<" ?\033[0m" << endl;
 
         cin >> testInt;
 
@@ -116,7 +116,7 @@ void triangularNumMenu()
 {
     double testInput;
 
-    cout << "\033[33mWhat integer would you like to find the triangular number of?\033[0m" << endl;
+    cout << "\n\033[33mWhat integer would you like to find the triangular number of?\033[0m" << endl;
     cin >> testInput;
     
     bool valid = isInteger(testInput);
@@ -129,7 +129,8 @@ void triangularNumMenu()
     } 
 
     input = (int)testInput;
-    triangularNum(input); // call desired function
+    // call desired function
+    cout << "\033[33mTriangular Number: \033[0m" << triangularNum(input) << "\n" << endl;
     mainMenu(); // loop back to main menu
 }
 
