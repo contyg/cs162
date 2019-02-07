@@ -13,6 +13,7 @@ using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::getline;
 
 void mainMenu()
 {
@@ -55,10 +56,11 @@ void mainMenu()
 
 void strReverseMenu()
 {
+    
     string input; 
     cout << "\033[36mWhat string would you like to reverse?\033[0m" << endl;
 
-    // TODO: validate??
+    cin.ignore(); // flush new line character
     getline(cin, input);
 
     stringReverse(input); // call desired function
