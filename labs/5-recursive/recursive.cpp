@@ -13,6 +13,7 @@ void stringReverse(string str)
 {
     cout << str[str.length()-1];
     str.pop_back();
+
     if (str.length() > 0)
     {
         stringReverse(str);
@@ -31,9 +32,7 @@ int sumInt(int size, int* intArray)
         return intArray[size] + sumInt(size, intArray);
     }   
     
-    int sum = intArray[size];
-    cout << "\033[32mSum: \033[0m" << sum << endl;
-    return sum;
+    return 0;
 }
 
 int triangularNum(int num)

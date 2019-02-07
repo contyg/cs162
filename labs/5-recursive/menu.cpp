@@ -92,7 +92,7 @@ void sumIntMenu()
     {
         double testInt;
         
-        cout << "\033[32mWhat number do you want at position "<< i <<" ?\033[0m" << endl;
+        cout << "\n\033[32mWhat number do you want at position "<< i <<" ?\033[0m" << endl;
 
         cin >> testInt;
 
@@ -106,7 +106,9 @@ void sumIntMenu()
         }
     }
 
-    sumInt(size, array); // call desired function
+    // call desired function
+    cout << "\033[32mSum: \033[0m" << sumInt(size, array) << "\n" << endl;
+     
     mainMenu(); // loop back to main menu
 }
 
