@@ -58,7 +58,7 @@ void strReverseMenu()
 {
     
     string input; 
-    cout << "\033[36mWhat string would you like to reverse?\033[0m" << endl;
+    cout << "\n\033[36mWhat string would you like to reverse?\033[0m" << endl;
 
     cin.ignore(); // flush new line character
     getline(cin, input);
@@ -73,7 +73,7 @@ void sumIntMenu()
     
     cout << "\033[32mHow many numbers are in your array?\033[0m" << endl;
     cin >> testInput;
-    cout << "test size menu: " << testInput << endl;
+
     bool sizeValid = isInteger(testInput);
     int size;
 

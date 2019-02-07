@@ -11,15 +11,37 @@ using std::endl;
 
 void stringReverse(string str)
 {
-    cout << "\033[36mthe string: \033[0m" << str << endl;
+    cout << str[str.length()-1];
+    str.pop_back();
+    if (str.length() > 0)
+    {
+        stringReverse(str);
+    }
+    else 
+    {
+        cout << "\n" << endl;  
+    }
 }
 
-void sumInt(int size, int* intArray)
+int sumInt(int size, int* intArray)
 {
-    cout << "\033[32msum int size: \033[0m" << size << endl;
+    if (size > 0) 
+    {
+        size--;
+        return intArray[size] + sumInt(size, intArray);
+    }   
+    
+    int sum = intArray[size];
+    cout << "\033[32mSum: \033[0m" << sum << endl;
+    return sum;
 }
 
-void triangularNum(int num)
+int triangularNum(int num)
 {
-     cout << "\033[33mtriangular Num: \033[0m" << num << endl;
+    if (num > 0) 
+    {
+		return num + triangularNum(num - 1);
+    }
+    cout << "\033[33mTriangular Number: \033[0m" << num << endl;
+    return num;
 }

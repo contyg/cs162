@@ -9,7 +9,7 @@
 using std::string;
 
 void stringReverse(string str);
-void sumInt(int size, int* intArray);
-void triangularNum(int num);
+int sumInt(int size, int* intArray);
+int triangularNum(int num);
 
 #endif
