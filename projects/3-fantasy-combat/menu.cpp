@@ -96,42 +96,57 @@ void Menu::makePlayer(int input, Character *player)
     }
 }
 
-// TODO: 
 void Menu::playGame()
 {
-
-    while(/*both players strength > 0*/)
+    int attackRoll;
+    while(p1->getStrength() > 0 && p2->getStrength() > 0)
     {
         rounds++;
         cout << "\033[0;32mRound: " << rounds << "\033[0m\n" << endl;
 
         // Stats
         cout << "\033[1;32mAttacker:\033[0m Player 1\n"
-        << "    Type:"
+        << "    Type: " << p1->getType() << "\n"
         << "\033[1;32mDefender:\033 Player 2\n"
-        << "    Type:"
-        << "    Armor:"
-        << "    Strength:" << endl;
+        << "    Type: " << p2->getType() << "\n"
+        << "    Armor: " << p2->getArmor() << "\n"
+        << "    Strength: " << p2->getStrength() << endl;
 
         //Attack 1
-        cout << "Attack Roll (Player 1): \n"
-        << "Defense Roll (Player 2): \n"
-        << "Total Damage: \n"
-        << "Player 2 Remaining Strength: \n" << endl;
+        attackRoll = p1->attack();
+        cout << "Attack Roll (Player 1): " << attackRoll << "\n"
+        << "Defense Roll (Player 2): " << p2->defense(attackRoll) << "\n"
+        << "Total Damage: " << p2->getCurrentDamage() << "\n"
+        << "Player 2 Remaining Strength: " << p2->getStrength() << "\n" << endl;
 
         // Stats
         cout << "\033[1;32mAttacker:\033[0m Player 2\n"
-        << "    Type:"
+        << "    Type: " << p2->getType() << "\n"
         << "\033[1;32mDefender:\033 Player 1\n"
-        << "    Type:"
-        << "    Armor:"
-        << "    Strength:" << endl;
+        << "    Type: " << p1->getType() << "\n"
+        << "    Armor: " << p1->getArmor() << "\n"
+        << "    Strength: " << p1->getStrength() << endl;
 
         //Attack 2
-        cout << "Attack Roll (Player 2): \n"
-        << "Defense Roll (Player 1): \n"
-        << "Total Damage: \n"
-        << "Player 1 Remaining Strength: \n" << endl;
+        attackRoll = p2->attack();
+        cout << "Attack Roll (Player 2): " << attackRoll << "\n"
+        << "Defense Roll (Player 1): " << p1->defense(attackRoll) << "\n"
+        << "Total Damage: " << p1->getCurrentDamage() << "\n"
+        << "Player 1 Remaining Strength: " << p1->getStrength() << "\n" << endl;
+    }
+
+    // see who won
+    if(p1->getStrength() >  p2->getStrength())
+    {
+        cout << "Player 1 won the battle!" << endl;
+    }
+    else if(p2->getStrength() > p1->getStrength())
+    {
+        cout << "Player 2 won the battle!" << endl;
+    }
+    else
+    {
+        cout << "Looks like a draw friends" << endl;
     }
 
     playAgain();

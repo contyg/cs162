@@ -19,7 +19,6 @@ public:
 
     void choosePlayer();
     void makePlayer(int input, Character *player);
-	void displayStats();
 	void playGame();
 	void playAgain();
 }; 
