@@ -17,7 +17,7 @@ using std::endl;
 Menu::Menu()
 {
     exitGame = false;
-    rounds = 1;
+    rounds = 0;
     p1 = nullptr;
     p2 = nullptr;
 }
@@ -38,12 +38,12 @@ void Menu::choosePlayer()
     {
         double testInput;
     
-        cout << "Player "<< 1 <<": Which character do you want to be? \n" 
+        cout << "\033[0;36mPlayer "<< 1 <<": Which character do you want to be? \n" 
         << "    1: Barbarian \n"
         << "    2: BlueMen \n"
         << "    3: Harry Potter \n"
         << "    4: Medusa \n"
-        << "    5: Vampire" << endl;
+        << "    5: Vampire\033[0m" << endl;
         
         cin >> testInput;
 
@@ -91,23 +91,50 @@ void Menu::makePlayer(int input, Character *player)
         case 5: // vampire
             player = new Vampire;
             break;
-        default: //TODO: move to choosePlayer, inBetween check
-            cout << "\033[1;31mERROR: Please choose a valid player.\033[0m" << endl;
-            choosePlayer();
+        default:
             break;
     }
 }
 
 // TODO: 
-void Menu::displayStats()
-{
-
-}
-// TODO: 
 void Menu::playGame()
 {
 
-    //playAgain();
+    while(/*both players strength > 0*/)
+    {
+        rounds++;
+        cout << "\033[0;32mRound: " << rounds << "\033[0m\n" << endl;
+
+        // Stats
+        cout << "\033[1;32mAttacker:\033[0m Player 1\n"
+        << "    Type:"
+        << "\033[1;32mDefender:\033 Player 2\n"
+        << "    Type:"
+        << "    Armor:"
+        << "    Strength:" << endl;
+
+        //Attack 1
+        cout << "Attack Roll (Player 1): \n"
+        << "Defense Roll (Player 2): \n"
+        << "Total Damage: \n"
+        << "Player 2 Remaining Strength: \n" << endl;
+
+        // Stats
+        cout << "\033[1;32mAttacker:\033[0m Player 2\n"
+        << "    Type:"
+        << "\033[1;32mDefender:\033 Player 1\n"
+        << "    Type:"
+        << "    Armor:"
+        << "    Strength:" << endl;
+
+        //Attack 2
+        cout << "Attack Roll (Player 2): \n"
+        << "Defense Roll (Player 1): \n"
+        << "Total Damage: \n"
+        << "Player 1 Remaining Strength: \n" << endl;
+    }
+
+    playAgain();
 }
 
 void Menu::playAgain()
