@@ -22,6 +22,7 @@ void Vampire::defense(int attackRoll)
 
     int damage = attackRoll - armor - currentRoll;
     
+    // engage vampire charm
     int charmFactor = rand()%2;
 
     if (charmFactor)
@@ -29,7 +30,7 @@ void Vampire::defense(int attackRoll)
         cout << "\033[0;35mVampire charm defense!! Attack is void!!\033[0m" << endl;
     }
 
-    // prevent negative damage points
+    // prevent negative damage points & implement charm defense
     if (damage < 0 || charmFactor)
     {
         currentDamage = 0;

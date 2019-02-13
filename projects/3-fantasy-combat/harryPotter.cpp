@@ -24,6 +24,7 @@ void HarryPotter::defense(int attackRoll)
 
     int damage = attackRoll - armor - currentRoll;
     
+    // prevent negative damage points
     if (damage < 0)
     {
         currentDamage = 0;
@@ -33,11 +34,14 @@ void HarryPotter::defense(int attackRoll)
         currentDamage = damage;
     }
     
+    // adjust strength
     strength -= currentDamage;
 
+    // revive after 1st death
     if (strength < 1 && lives)
     {
         lives--;
+        strength = 20;
         cout << "By the power of Hogwarts, Harry Potter lives again!" << endl;
     }
 }
