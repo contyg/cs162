@@ -9,10 +9,9 @@ using std::endl;
 // int armor, int strength, string type
 HarryPotter::HarryPotter() : Character(2, 6, 2, 6, 0, 10, "Harry Potter") 
 {
-	lives = 2;
+	lives = 1;
 }
 
-//TODO: 
 void HarryPotter::defense(int attackRoll) 
 {
     cout << "\033[0;35mHP DEFENSE\033[0m" << endl;
@@ -20,10 +19,7 @@ void HarryPotter::defense(int attackRoll)
     currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        int roll = rand()%defenseSides+1;
-        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
-
-        currentRoll += roll;
+        currentRoll += rand()%defenseSides+1;
     }
 
     int damage = attackRoll - armor - currentRoll;
@@ -38,4 +34,10 @@ void HarryPotter::defense(int attackRoll)
     }
     
     strength -= currentDamage;
+
+    if (strength < 1 && lives)
+    {
+        lives--;
+        cout << "By the power of Hogwarts, Harry Potter lives again!" << endl;
+    }
 }
