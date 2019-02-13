@@ -21,7 +21,7 @@ Character::Character(int attackDie, int attackSides, int defenseDie, int defense
 }
 
 // default attack
-int Character::attack()
+void Character::attack()
 {
     cout << "\033[0;31mDEFAULT ATTACK\033[0m" << endl;
     currentRoll = 0;
@@ -30,26 +30,34 @@ int Character::attack()
     {
         currentRoll += rand()%attackSides+1;
     }
-
-    return currentRoll;
 }
 
 // default defense
-int Character::defense(int attackRoll)
+void Character::defense(int attackRoll)
 {
     cout << "\033[0;32mDEFAULT DEFENSE\033[0m" << endl;
 
-    int defense = armor;
-
+    currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        defense += rand()%defenseSides+1;
+        int roll = rand()%defenseSides+1;
+        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
+
+        currentRoll += roll;
     }
 
-    currentDamage = attackRoll - defense;
+    int damage = attackRoll - armor - currentRoll;
+    
+    if (damage < 0)
+    {
+        currentDamage = 0;
+    }
+    else 
+    {
+        currentDamage = damage;
+    }
+    
     strength -= currentDamage;
-
-    return currentDamage;
 }
 
 // getters

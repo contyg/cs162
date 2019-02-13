@@ -9,7 +9,7 @@ class BlueMen: public Character
 public: 
 	BlueMen();
 
-    int defense(int attackRoll);
+    void defense(int attackRoll);
 };
 
 #endif

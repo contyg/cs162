@@ -9,7 +9,7 @@ class Medusa: public Character
 public: 
 	Medusa();
 
-    int attack();
+    void attack();
 };
 
 #endif

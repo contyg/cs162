@@ -13,19 +13,29 @@ HarryPotter::HarryPotter() : Character(2, 6, 2, 6, 0, 10, "Harry Potter")
 }
 
 //TODO: 
-int HarryPotter::defense(int attackRoll)
+void HarryPotter::defense(int attackRoll) 
 {
     cout << "\033[0;35mHP DEFENSE\033[0m" << endl;
 
-    int defense = armor;
-
+    currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        defense += rand()%defenseSides+1;
+        int roll = rand()%defenseSides+1;
+        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
+
+        currentRoll += roll;
     }
 
-    currentDamage = attackRoll - defense;
+    int damage = attackRoll - armor - currentRoll;
+    
+    if (damage < 0)
+    {
+        currentDamage = 0;
+    }
+    else 
+    {
+        currentDamage = damage;
+    }
+    
     strength -= currentDamage;
-
-    return currentDamage;
 }

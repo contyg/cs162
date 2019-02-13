@@ -11,18 +11,29 @@ using std::endl;
 Vampire::Vampire() : Character(1, 12, 1, 6, 1, 18, "Vampire") {}
 
 //TODO: 
-int Vampire::defense(int attackRoll)
-{
-    cout << "\033[0;32mVAMPIRE DEFENSE\033[0m" << endl; 
-    int defense = armor;
+void Vampire::defense(int attackRoll)
+{ 
+    cout << "\033[0;35mHP DEFENSE\033[0m" << endl;
 
+    currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        defense += rand()%defenseSides+1;
+        int roll = rand()%defenseSides+1;
+        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
+
+        currentRoll += roll;
     }
 
-    currentDamage = attackRoll - defense;
+    int damage = attackRoll - armor - currentRoll;
+    
+    if (damage < 0)
+    {
+        currentDamage = 0;
+    }
+    else 
+    {
+        currentDamage = damage;
+    }
+    
     strength -= currentDamage;
-
-    return currentDamage;
 }

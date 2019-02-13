@@ -12,7 +12,7 @@ private:
 public: 
 	HarryPotter();
 
-    int defense(int attackRoll);
+    void defense(int attackRoll);
 };
 
 #endif

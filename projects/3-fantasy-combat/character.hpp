@@ -22,8 +22,8 @@ protected:
 
 public: 
     Character(int attackDie, int attackSides, int defenseDie, int defenseSides, int armor, int strength, string type);
-    virtual int attack();
-    virtual int defense(int attackRoll);
+    virtual void attack();
+    virtual void defense(int attackRoll);
 
     int getArmor();
     int getStrength();

@@ -10,7 +10,7 @@ using std::endl;
 Medusa::Medusa() : Character(2, 6, 1, 6, 3, 8, "Medusa") {}
 
 //TODO: 
-int Medusa::attack()
+void Medusa::attack()
 {
     cout << "\033[0;33mMEDUSA ATTACK\033[0m" << endl; 
     currentRoll = 0;
@@ -19,6 +19,4 @@ int Medusa::attack()
     {
         currentRoll += rand()%attackSides+1;
     }
-
-    return currentRoll;
 }

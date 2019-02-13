@@ -10,18 +10,30 @@ using std::endl;
 BlueMen::BlueMen(): Character(2, 10, 3, 6, 3, 12, "Blue Men") {}
 
 //TODO:
-int BlueMen::defense(int attackRoll)
+void BlueMen::defense(int attackRoll)
 {
-    cout << "\033[0;36mHP DEFENSE\033[0m" << endl;
+    cout << "\033[0;36mBLUE DEFENSE\033[0m" << endl;
 
-    int defense = armor;
-
+    currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        defense += rand()%defenseSides+1;
+        int roll = rand()%defenseSides+1;
+        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
+
+        currentRoll += roll;
     }
 
-    currentDamage = attackRoll - defense;
+    int damage = attackRoll - armor - currentRoll;
+    
+    if (damage < 0)
+    {
+        currentDamage = 0;
+    }
+    else 
+    {
+        currentDamage = damage;
+    }
+    
     strength -= currentDamage;
 
     return currentDamage;

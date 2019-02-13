@@ -149,8 +149,9 @@ void Menu::playGame()
 
         //Attack 1
         attackRoll = p1->attack();
+        p2->defense(attackRoll);
         cout << "Attack Roll (Player 1): " << attackRoll << "\n"
-        << "Defense Roll (Player 2): " << p2->defense(attackRoll) << "\n"
+        << "Defense Roll (Player 2): " << p2->getCurrentRoll() << "\n"
         << "Total Damage: " << p2->getCurrentDamage() << "\n"
         << "Player 2 Remaining Strength: " << p2->getStrength() << "\n" << endl;
 
@@ -164,8 +165,9 @@ void Menu::playGame()
 
         //Attack 2
         attackRoll = p2->attack();
+        p1->defense(attackRoll);
         cout << "Attack Roll (Player 2): " << attackRoll << "\n"
-        << "Defense Roll (Player 1): " << p1->defense(attackRoll) << "\n"
+        << "Defense Roll (Player 1): " << p1->getCurrentRoll() << "\n"
         << "Total Damage: " << p1->getCurrentDamage() << "\n"
         << "Player 1 Remaining Strength: " << p1->getStrength() << "\n" << endl;
     }

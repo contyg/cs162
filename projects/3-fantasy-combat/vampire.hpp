@@ -10,7 +10,7 @@ class Vampire: public Character
 public: 
 	Vampire();
 
-    int defense(int attackRoll);
+    void defense(int attackRoll);
 };
 
 #endif
