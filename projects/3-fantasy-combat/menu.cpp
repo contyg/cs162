@@ -61,36 +61,71 @@ void Menu::choosePlayer()
         
         if(i == 1)
         {
-            makePlayer(i, p1);
+            makePlayer(input, 1);
         }
         else
         {
-            makePlayer(i, p2);
+            makePlayer(input, 2);
         }
 
         i++;
-    }   
+    } 
+    
+    playGame();  
 }
 
-void Menu::makePlayer(int input, Character *player)
+void Menu::makePlayer(int input, int playerNum)
 {
+    cout << "make player " << input << endl;
     switch(input)
     {
         case 1: // barbarian
-            player = new Barbarian;
+            if(playerNum == 1)
+            {
+                p1 = new Barbarian;
+                break;
+            }
+            
+            p2 = new Barbarian;
             break;
+
         case 2: // blue men
-            player = new BlueMen;
+            if(playerNum == 1)
+            {
+                p1 = new BlueMen;
+                break;
+            }
+            
+            p2 = new BlueMen;
             break;
+
         case 3: // harry potter
-            player = new HarryPotter;
+            if(playerNum == 1)
+            {
+                p1 = new HarryPotter;
+                break;
+            }
+            p2 = new HarryPotter;
             break;
+
         case 4: // medusa
-            player = new Medusa;
+            if(playerNum == 1)
+            {
+                p1 = new Medusa;
+                break;
+            }
+            p2 = new Medusa;
             break;
+
         case 5: // vampire
-            player = new Vampire;
+            if(playerNum == 1)
+            {
+                p1 = new Vampire;
+                break;
+            }
+            p2 = new Vampire;
             break;
+
         default:
             break;
     }
@@ -107,7 +142,7 @@ void Menu::playGame()
         // Stats
         cout << "\033[1;32mAttacker:\033[0m Player 1\n"
         << "    Type: " << p1->getType() << "\n"
-        << "\033[1;32mDefender:\033 Player 2\n"
+        << "\033[1;32mDefender: \033[0m Player 2\n"
         << "    Type: " << p2->getType() << "\n"
         << "    Armor: " << p2->getArmor() << "\n"
         << "    Strength: " << p2->getStrength() << endl;
@@ -122,7 +157,7 @@ void Menu::playGame()
         // Stats
         cout << "\033[1;32mAttacker:\033[0m Player 2\n"
         << "    Type: " << p2->getType() << "\n"
-        << "\033[1;32mDefender:\033 Player 1\n"
+        << "\033[1;32mDefender:\033[0m Player 1\n"
         << "    Type: " << p1->getType() << "\n"
         << "    Armor: " << p1->getArmor() << "\n"
         << "    Strength: " << p1->getStrength() << endl;
@@ -170,7 +205,15 @@ void Menu::playAgain()
 
     if(input)
     {
-        playGame();
+        rounds = 0;
+        
+        delete p1;
+        p1 = nullptr;
+
+        delete p2;
+        p2 = nullptr;
+        
+        choosePlayer();
     }
     
     exit(0);

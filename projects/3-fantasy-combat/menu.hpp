@@ -18,7 +18,7 @@ public:
     ~Menu();
 
     void choosePlayer();
-    void makePlayer(int input, Character *player);
+    void makePlayer(int input, int playerNum);
 	void playGame();
 	void playAgain();
 }; 
