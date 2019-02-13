@@ -22,10 +22,54 @@ Menu::Menu()
     p2 = nullptr;
 }
 
-// TODO: 
+Menu::~Menu()
+{
+    delete p1;
+    p1 = nullptr;
+
+    delete p2;
+    p2 = nullptr;
+}
+
 void Menu::choosePlayer()
 {
+    int i = 1;
+    while (i < 3)
+    {
+        double testInput;
+    
+        cout << "Player "<< 1 <<": Which character do you want to be? \n" 
+        << "    1: Barbarian \n"
+        << "    2: BlueMen \n"
+        << "    3: Harry Potter \n"
+        << "    4: Medusa \n"
+        << "    5: Vampire" << endl;
+        
+        cin >> testInput;
 
+        if(!isInteger(testInput))
+        {
+            choosePlayer();
+        }
+
+        int input = (int)testInput;
+
+        if (!isBetween(input, 1, 5)) 
+        {
+            choosePlayer();
+        }
+        
+        if(i == 1)
+        {
+            makePlayer(i, p1);
+        }
+        else
+        {
+            makePlayer(i, p2);
+        }
+
+        i++;
+    }   
 }
 
 void Menu::makePlayer(int input, Character *player)
@@ -47,7 +91,7 @@ void Menu::makePlayer(int input, Character *player)
         case 5: // vampire
             player = new Vampire;
             break;
-        default:
+        default: //TODO: move to choosePlayer, inBetween check
             cout << "\033[1;31mERROR: Please choose a valid player.\033[0m" << endl;
             choosePlayer();
             break;
@@ -63,6 +107,7 @@ void Menu::displayStats()
 void Menu::playGame()
 {
 
+    //playAgain();
 }
 
 void Menu::playAgain()
