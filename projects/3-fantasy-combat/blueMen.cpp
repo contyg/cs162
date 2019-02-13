@@ -9,18 +9,28 @@ using std::endl;
 // int armor, int strength, string type
 BlueMen::BlueMen(): Character(2, 10, 3, 6, 3, 12, "Blue Men") {}
 
-//TODO:
 void BlueMen::defense(int attackRoll)
 {
     cout << "\033[0;36mBLUE DEFENSE\033[0m" << endl;
 
+    // reset currentRoll
     currentRoll = 0;
-    for (int i = 0; i < defenseDie; i++)
-    {
-        int roll = rand()%defenseSides+1;
-        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
+    
+    // adjust defense die number based on strength
+    int useableDieCount = defenseDie;
 
-        currentRoll += roll;
+    if (strength < 9 && strength > 4)
+    {
+        useableDieCount = 2;
+    } 
+    else if (strength < 5)
+    {
+        useableDieCount = 1;
+    }
+
+    for (int i = 0; i < useableDieCount; i++)
+    {
+        currentRoll += rand()%defenseSides+1;
     }
 
     int damage = attackRoll - armor - currentRoll;
@@ -35,6 +45,4 @@ void BlueMen::defense(int attackRoll)
     }
     
     strength -= currentDamage;
-
-    return currentDamage;
 }

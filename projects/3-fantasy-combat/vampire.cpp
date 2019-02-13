@@ -10,23 +10,27 @@ using std::endl;
 // int armor, int strength, string type
 Vampire::Vampire() : Character(1, 12, 1, 6, 1, 18, "Vampire") {}
 
-//TODO: 
 void Vampire::defense(int attackRoll)
 { 
-    cout << "\033[0;35mHP DEFENSE\033[0m" << endl;
+    cout << "\033[0;35mVAMPIRE DEFENSE\033[0m" << endl;
 
     currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        int roll = rand()%defenseSides+1;
-        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
-
-        currentRoll += roll;
+        currentRoll += rand()%defenseSides+1;
     }
 
     int damage = attackRoll - armor - currentRoll;
     
-    if (damage < 0)
+    int charmFactor = rand()%2;
+
+    if (charmFactor)
+    {
+        cout << "\033[0;35mVampire charm defense!! Attack is void!!\033[0m" << endl;
+    }
+
+    // prevent negative damage points
+    if (damage < 0 || charmFactor)
     {
         currentDamage = 0;
     }
@@ -35,5 +39,6 @@ void Vampire::defense(int attackRoll)
         currentDamage = damage;
     }
     
+    // adjust strength
     strength -= currentDamage;
 }

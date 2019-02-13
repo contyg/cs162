@@ -35,19 +35,17 @@ void Character::attack()
 // default defense
 void Character::defense(int attackRoll)
 {
-    cout << "\033[0;32mDEFAULT DEFENSE\033[0m" << endl;
+    cout << "\033[0;36mDEFAULT DEFENSE\033[0m" << endl;
 
     currentRoll = 0;
     for (int i = 0; i < defenseDie; i++)
     {
-        int roll = rand()%defenseSides+1;
-        cout << "\033[0;32mDEFAULT DEFENSE\033[0m: " << roll << endl;
-
-        currentRoll += roll;
+        currentRoll += rand()%defenseSides+1;
     }
 
     int damage = attackRoll - armor - currentRoll;
     
+    // prevent negative damage points
     if (damage < 0)
     {
         currentDamage = 0;
@@ -57,6 +55,7 @@ void Character::defense(int attackRoll)
         currentDamage = damage;
     }
     
+    // adjust strength
     strength -= currentDamage;
 }
 
