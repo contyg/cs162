@@ -148,7 +148,8 @@ void Menu::playGame()
         << "    Strength: " << p2->getStrength() << endl;
 
         //Attack 1
-        attackRoll = p1->attack();
+        p1->attack();
+        attackRoll = p1->getCurrentRoll();
         p2->defense(attackRoll);
         cout << "Attack Roll (Player 1): " << attackRoll << "\n"
         << "Defense Roll (Player 2): " << p2->getCurrentRoll() << "\n"
@@ -164,7 +165,8 @@ void Menu::playGame()
         << "    Strength: " << p1->getStrength() << endl;
 
         //Attack 2
-        attackRoll = p2->attack();
+        p2->attack();
+        attackRoll = p2->getCurrentRoll();
         p1->defense(attackRoll);
         cout << "Attack Roll (Player 2): " << attackRoll << "\n"
         << "Defense Roll (Player 1): " << p1->getCurrentRoll() << "\n"
@@ -204,6 +206,8 @@ void Menu::playAgain()
     }
 
     int input = (int)testInput;
+
+    // TODO: in between check
 
     if(input)
     {
