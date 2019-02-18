@@ -32,8 +32,8 @@ public:
     ~DoublyLinkedList();
 
     // the 6 functions
-    void addHead(int newHead);
-    void addTail(int newTail);
+    void addHead();
+    void addTail();
     void deleteFirstNode();
     void deleteLastNode();
     void printReverseList();

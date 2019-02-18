@@ -3,10 +3,12 @@
 ** Description: Definition of linked list functions  
 *********************************************************************/
 
+#include "validate.hpp"
 #include "DoublyLinkedList.hpp" 
 #include <iostream>
 
 using std::cout;
+using std::cin;
 using std::endl;
 
 DoublyLinkedList::DoublyLinkedList()
@@ -26,8 +28,21 @@ DoublyLinkedList::~DoublyLinkedList()
     }
 }
 
-void DoublyLinkedList::addHead(int newHead)
+void DoublyLinkedList::addHead()
 {
+    double testInput;
+
+    cout << "\033[0;36m Please enter an integer \033[0m\n";
+
+    cin >> testInput;
+
+    if (!isInteger(testInput))
+    {
+        addHead();
+    }
+
+    int newHead = (int)testInput;
+
     if (head == nullptr) 
     {
 		head = new DLListNode(newHead);
@@ -40,8 +55,21 @@ void DoublyLinkedList::addHead(int newHead)
 	}
 }
 
-void DoublyLinkedList::addTail(int newTail)
+void DoublyLinkedList::addTail()
 {
+    double testInput;
+
+    cout << "\033[0;36m Please enter an integer \033[0m\n";
+
+    cin >> testInput;
+
+    if (!isInteger(testInput))
+    {
+        addTail();
+    }
+
+    int newTail = (int)testInput;
+
     if (tail == nullptr) 
     {
 		tail = new DLListNode(newTail);
@@ -58,7 +86,7 @@ void DoublyLinkedList::deleteFirstNode()
 {
     if (head == nullptr) 
     {
-		cout << "There aren't any elements to delete." << endl;
+		cout << "\033[0;31There aren't any elements to delete.\033[0m" << endl;
 	} 
     else if (head->next == nullptr) 
     {
@@ -79,7 +107,7 @@ void DoublyLinkedList::deleteLastNode()
 {
     if (tail == nullptr) 
     {
-		cout << "There aren't any elements to delete." << endl;
+		cout << "\033[0;31There aren't any elements to delete.\033[0m" << endl;
 	} 
     else if (tail->prev == nullptr) 
     {
@@ -98,7 +126,7 @@ void DoublyLinkedList::deleteLastNode()
 
 void DoublyLinkedList::printReverseList()
 {
-    cout << "\033[0;31mReversed List:\033[0m" << endl;
+    cout << "\033[1;33mReversed List:\033[0m" << endl;
     if (tail == nullptr) 
     {
 		cout << "There aren't any elements to print." << endl;
@@ -118,7 +146,7 @@ void DoublyLinkedList::printReverseList()
 
 void DoublyLinkedList::printList()
 {
-    cout << "\033[0;33mList:\033[0m" << endl;
+    cout << "\033[1;33mList:\033[0m" << endl;
     if (tail == nullptr) 
     {
 		cout << "There aren't any elements to print." << endl;
@@ -129,7 +157,7 @@ void DoublyLinkedList::printList()
 		while (node != nullptr) 
         {
 			cout << node->val << " ";
-			node = node->prev;
+			node = node->next;
 		}
 
 		cout << "\n" << endl;

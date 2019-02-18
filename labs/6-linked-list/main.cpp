@@ -3,11 +3,10 @@
 ** Description: Main file that calls linked list functions
 *********************************************************************/
 
-#include "validate.hpp"
-#include "functions.hpp"
+#include "menu.hpp"
 
 int main()
 {
-    
+    menu();
     return 0;
 }
