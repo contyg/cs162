@@ -5,6 +5,7 @@
 
 #ifndef DOUBLYLINKEDLIST_H
 #define DOUBLYLINKEDLIST_H
+#include <iostream>
 
 class DoublyLinkedList 
 { 
@@ -17,13 +18,10 @@ private:
 		
 		DLListNode(int v, DLListNode* p = nullptr, DLListNode* n = nullptr) 
         {
-	
 			val = v;
 			prev = p;
 			next = n;
-
 		}
-		
 	};
 
     DLListNode* head;
