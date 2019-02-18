@@ -153,7 +153,7 @@ void DoublyLinkedList::printList()
 	}
     else 
     {
-		DLListNode* node = tail;
+		DLListNode* node = head;
 		while (node != nullptr) 
         {
 			cout << node->val << " ";

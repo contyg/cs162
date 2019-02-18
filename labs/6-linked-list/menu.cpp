@@ -11,13 +11,13 @@ void menu()
     DoublyLinkedList list;
     bool keepPlaying = true;
     
-    cout << "\033[1;36m Let's link some lists! \033[0m\n";
+    cout << "\033[1;36mLet's link some lists! \033[0m\n";
 
     while (keepPlaying)
     {
         double testInput;
 
-        cout << "\033[0;36mChoose an option: "
+        cout << "\033[0;36mChoose an option: \n"
         << "    1: Add a new node to the head \n"
         << "    2: Add a new node to the tail \n"
         << "    3: Delete from head \n"
@@ -60,7 +60,6 @@ void menu()
                 break;
             case 5:
                 list.printReverseList();
-                list.printList();
                 break;
             default:
                 keepPlaying = false;
