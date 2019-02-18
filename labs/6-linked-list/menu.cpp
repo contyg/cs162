@@ -1,3 +1,9 @@
+/********************************************************************* 
+** Program name: Doubly-linked List Lab  
+** Description: Definition of menu function. Routes user to corrent 
+**              function and action.
+*********************************************************************/
+
 #include "validate.hpp"
 #include "DoublyLinkedList.hpp"
 #include <iostream>
