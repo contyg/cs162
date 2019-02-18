@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat
+** Description: Declaration of Menu Class   
+*********************************************************************/
 
 #ifndef MENU_H
 #define MENU_H

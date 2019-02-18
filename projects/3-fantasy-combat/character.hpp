@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat
+** Description: Declaration of Character Class   
+*********************************************************************/
 
 #ifndef CHARACTER_H
 #define CHARACTER_H

@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat
+** Description: Declaration of Harry Potter Class   
+*********************************************************************/
+
 #ifndef HARRY_POTTER_H
 #define HARRY_POTTER_H
 #include "character.hpp"

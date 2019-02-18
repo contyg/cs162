@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Harry Potter Class 
+*********************************************************************/
+
 #include "harryPotter.hpp"
 #include <iostream>
 

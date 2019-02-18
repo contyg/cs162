@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Validate functions 
+*********************************************************************/
 
 #include "validate.hpp"
 #include <iostream>

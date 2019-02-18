@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Barbarian Class 
+*********************************************************************/
 
 #include "barbarian.hpp"
 

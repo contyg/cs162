@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Blue Men Class 
+*********************************************************************/
+
 #include "blueMen.hpp"
 #include <iostream>
 

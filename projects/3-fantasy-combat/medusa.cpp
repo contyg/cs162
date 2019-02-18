@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Medusa Class 
+*********************************************************************/
 #include "medusa.hpp"
 #include <iostream>
 

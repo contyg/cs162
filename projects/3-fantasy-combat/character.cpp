@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Character Class 
+*********************************************************************/
+
 
 #include "character.hpp"
 #include <iostream>

@@ -1,4 +1,7 @@
-//TODO: description
+/********************************************************************* 
+** Program name: Fantasy Combat
+** Description: Declaration of Vampire Class   
+*********************************************************************/
 
 #ifndef VAMPIRE_H
 #define VAMPIRE_H
