@@ -30,6 +30,7 @@ DoublyLinkedList::~DoublyLinkedList()
 
 void DoublyLinkedList::addHead()
 {
+    // menu and validation
     double testInput;
 
     cout << "\033[0;36m Please enter an integer \033[0m\n";
@@ -43,7 +44,7 @@ void DoublyLinkedList::addHead()
 
     int newHead = (int)testInput;
 
-    if (head == nullptr) 
+    if (head == nullptr) // check if list is empty
     {
 		head = new DLListNode(newHead);
 		tail = head;
@@ -57,6 +58,7 @@ void DoublyLinkedList::addHead()
 
 void DoublyLinkedList::addTail()
 {
+    // menu and validation
     double testInput;
 
     cout << "\033[0;36m Please enter an integer \033[0m\n";
@@ -70,7 +72,7 @@ void DoublyLinkedList::addTail()
 
     int newTail = (int)testInput;
 
-    if (tail == nullptr) 
+    if (tail == nullptr) // check if list is empty
     {
 		tail = new DLListNode(newTail);
 		head = tail;
@@ -84,11 +86,11 @@ void DoublyLinkedList::addTail()
 
 void DoublyLinkedList::deleteFirstNode()
 {
-    if (head == nullptr) 
+    if (head == nullptr)  // check if list is empty
     {
-		cout << "\033[0;31There aren't any elements to delete.\033[0m" << endl;
+		cout << "There aren't any elements to delete.\n" << endl;
 	} 
-    else if (head->next == nullptr) 
+    else if (head->next == nullptr) // check if list has 1 element
     {
 		delete head;
 		head = nullptr;
@@ -105,9 +107,9 @@ void DoublyLinkedList::deleteFirstNode()
 
 void DoublyLinkedList::deleteLastNode()
 {
-    if (tail == nullptr) 
+    if (tail == nullptr) // check if list is empty
     {
-		cout << "\033[0;31There aren't any elements to delete.\033[0m" << endl;
+		cout << "There aren't any elements to delete.\n" << endl;
 	} 
     else if (tail->prev == nullptr) 
     {
@@ -127,9 +129,9 @@ void DoublyLinkedList::deleteLastNode()
 void DoublyLinkedList::printReverseList()
 {
     cout << "\033[1;33mReversed List:\033[0m" << endl;
-    if (tail == nullptr) 
+    if (tail == nullptr) // check if list is empty
     {
-		cout << "There aren't any elements to print." << endl;
+		cout << "There aren't any elements to print. \n" << endl;
 	}
     else 
     {
@@ -147,9 +149,9 @@ void DoublyLinkedList::printReverseList()
 void DoublyLinkedList::printList()
 {
     cout << "\033[1;33mList:\033[0m" << endl;
-    if (tail == nullptr) 
+    if (tail == nullptr) // check if list is empty
     {
-		cout << "There aren't any elements to print." << endl;
+		cout << "There aren't any elements to print. \n" << endl;
 	}
     else 
     {
@@ -162,4 +164,32 @@ void DoublyLinkedList::printList()
 
 		cout << "\n" << endl;
 	}
+}
+
+void DoublyLinkedList::printHeadValue()
+{
+    cout << "\033[1;33mHead Value:\033[0m" << endl;
+
+    if (head == nullptr)
+    {
+        cout << "There aren't any elements to print. \n" << endl;
+    }
+    else
+    {
+        cout << head->val << endl;
+    }
+}
+
+void DoublyLinkedList::printTailValue()
+{
+    cout << "\033[1;33mTail Value:\033[0m" << endl;
+
+    if (tail == nullptr)
+    {
+        cout << "There aren't any elements to print. \n" << endl;
+    }
+    else
+    {
+        cout << tail->val << endl;
+    }
 }

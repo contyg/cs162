@@ -38,8 +38,10 @@ public:
     void deleteLastNode();
     void printReverseList();
     void printList();
-
-    // TODO: extra credit functions 
+    
+    // extra credit functions 
+    void printHeadValue();
+    void printTailValue();
 };
 
 

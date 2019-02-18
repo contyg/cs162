@@ -11,7 +11,8 @@ void menu()
     DoublyLinkedList list;
     bool keepPlaying = true;
     
-    cout << "\033[1;36mLet's link some lists! \033[0m\n";
+    cout << "\033[1;36mLET'S LINK SOME LISTS!! \033[0m" << endl;
+    cout << "(EC task 1 completed) \n" << endl; 
 
     while (keepPlaying)
     {
@@ -23,7 +24,9 @@ void menu()
         << "    3: Delete from head \n"
         << "    4: Delete from tail \n"
         << "    5: Traverse the list reversely \n"
-        << "    6: Exit \n\033[0m" << endl;
+        << "    6: Print head value \n"
+        << "    7: Print tail value \n"
+        << "    8: Exit \n\033[0m" << endl;
 
 
         cin >> testInput;
@@ -35,9 +38,9 @@ void menu()
 
         int input = (int)testInput;
 
-        if (!isBetween(input, 0, 7))
+        if (!isBetween(input, 0, 9))
         {
-            menu();
+            menu(); // re-trigger menu if input invalid
         }
 
         switch (input)
@@ -61,8 +64,15 @@ void menu()
             case 5:
                 list.printReverseList();
                 break;
+            case 6: 
+                list.printHeadValue();
+                break;
+            case 7:
+                list.printTailValue();
+                break;
             default:
                 keepPlaying = false;
+                cout << "\033[1;36mBYEEE! \033[0m\n";
                 break;
         }
     } 
