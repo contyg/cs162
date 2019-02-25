@@ -9,6 +9,7 @@ using std::endl;
 Queue::Queue()
 {
     head = nullptr;
+    tail = nullptr;
 }
 
 Queue::~Queue()
@@ -40,62 +41,53 @@ void Queue::addBack(int val)
 {
     if (isEmpty())
     {
-		head = new QueueNode(val);
+        head = new QueueNode(val);
         head->next = head;
+        head->prev = head;
+        tail = head;
 	} 		
     else 
     {
-		head->prev = head;
-		head->next = new QueueNode(val, head, head->prev);
+        QueueNode *temp = tail;
+        tail->next = new QueueNode(val, nullptr, temp);
+		tail = tail->next;
 	}
 }
 
 void Queue::removeFront()
 {
-    QueueNode *temp = nullptr;
-    if (isEmpty())
+    if(head->next == nullptr && head->prev == nullptr) //only 1 value
     {
-		cout << "There aren't any elements to delete.\n" << endl;
-	} 
+        delete head;
+        head = nullptr;
+    }
     else
     {
+        QueueNode *temp = nullptr;
+
         temp = head;
         head = head->next;
         delete temp;
     }
-    
 }
 
 int Queue::getFront()
 {
-    if (isEmpty())
-    {
-		cout << "There isn't a front because the queue is empty.\n" << endl;
-        return head->val;
-	} 
-    else
-    {
-        return head->val;
-    }  
+    return head->val;
 }
 
 void Queue::printQueue()
 {
     cout << "\033[1;33mList:\033[0m" << endl;
-    if (head == nullptr) // check if empty
-    {
-		cout << "There aren't any elements to print. \n" << endl;
-	}
-    else 
-    {
-		QueueNode* node = head;
-		while (node != nullptr) 
-        {
-			cout << node->val << " ";
-			node = node->next;
-		}
+    
+    cout << head->val << " ";
 
-		cout << "\n" << endl;
-	}
+    QueueNode* node = head;
+    while (node != nullptr) 
+    {
+        cout << node->val << " ";
+        node = node->next;
+    }
+
+    cout << "\n" << endl;
 }
-

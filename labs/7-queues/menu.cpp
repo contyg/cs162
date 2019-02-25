@@ -53,14 +53,14 @@ void menu()
 
         if (!isInteger(testInput))
         {
-            menu(); // re-trigger menu if input invalid
+            break; // re-trigger menu if input invalid
         }
 
         int input = (int)testInput;
 
         if (!isBetween(input, 0, 6))
         {
-            menu(); // re-trigger menu if input invalid
+            break; // re-trigger menu if input invalid
         }
 
         switch (input)
@@ -72,13 +72,34 @@ void menu()
                 break;
             }
             case 2:
-                cout << queue.getFront() << endl;
+                if (queue.isEmpty())
+                {
+                    cout << "There isn't a front because the queue is empty.\n" << endl;
+                }
+                else
+                {
+                    cout << queue.getFront() << endl;
+                }
                 break;
             case 3:
-                queue.removeFront();
+                if (queue.isEmpty())
+                {
+                    cout << "There aren't any elements to delete.\n" << endl;
+                }
+                else
+                {
+                    queue.removeFront();
+                }
                 break;
             case 4:
-                queue.printQueue();
+                if (queue.isEmpty())
+                {
+                    cout << "There aren't any elements to print. \n" << endl;
+                }
+                else
+                {
+                    queue.printQueue();
+                }
                 break;
             default:
                 keepPlaying = false;
