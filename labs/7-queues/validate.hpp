@@ -1,12 +1,12 @@
 /********************************************************************* 
 ** Program name: Doubly-linked List Lab  
-** Description: Declaration of menu function  
+** Description: Declaration of validate functions 
 *********************************************************************/
 
-#ifndef MENU_H
-#define MENU_H
+#ifndef VALIDATE_H
+#define VALIDATE_H
 
-int addBackMenu();
-void menu();
+bool isInteger(double testInput);
+bool isBetween(int input, int min, int max);
 
 #endif
