@@ -13,13 +13,19 @@ Queue::Queue()
 
 Queue::~Queue()
 {
+    // break circularity for easy deletion
+    head->prev->next = nullptr;
+
+    // set trash variable
     QueueNode *trash = head;
 
+    // go through each node and delete
     while (trash != nullptr)
     {
+        // set head to next element
         head = head->next;
-        trash->next = nullptr;
         delete trash;
+        //set trash to next head
         trash = head;
     }
 }
@@ -67,10 +73,18 @@ void Queue::removeFront()
     }
     else
     {
+        //head->next points to 2nd element, 2nd element is new head
+        // so point 2nd element's prev to last element of queue
+        head->next->prev = head->prev;
+
+        // head->prev points to last element, 
+        // so make it point to current 2nd element aka new head
+        head->prev->next = head->next;
+        
+        //delete former head value
         QueueNode *temp = nullptr;
         temp = head;
-        // move head to next value in list
-        head = head->next;
+        head = head->next; // move head to 2nd element
         delete temp;
     }
 }
@@ -85,11 +99,11 @@ void Queue::printQueue()
     cout << "\033[1;33mList:\033[0m" << endl;
     
     QueueNode* node = head;
-    while (node != nullptr) 
+    while (node->next != head) 
     {
         cout << node->val << " ";
         node = node->next;
     }
-
+    cout << node->val << " ";
     cout << "\n" << endl;
 }
