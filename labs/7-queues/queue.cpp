@@ -42,8 +42,6 @@ void Queue::addBack(int val)
     if (isEmpty())
     {
         head = new QueueNode(val);
-        head->next = head;
-        head->prev = head;
         tail = head;
 	} 		
     else 
@@ -64,7 +62,6 @@ void Queue::removeFront()
     else
     {
         QueueNode *temp = nullptr;
-
         temp = head;
         head = head->next;
         delete temp;
@@ -80,8 +77,6 @@ void Queue::printQueue()
 {
     cout << "\033[1;33mList:\033[0m" << endl;
     
-    cout << head->val << " ";
-
     QueueNode* node = head;
     while (node != nullptr) 
     {
