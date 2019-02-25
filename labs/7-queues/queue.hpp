@@ -19,7 +19,6 @@ private:
         }
     };
     QueueNode *head;
-    QueueNode *tail;
 
 public:
 

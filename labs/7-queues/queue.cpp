@@ -9,7 +9,6 @@ using std::endl;
 Queue::Queue()
 {
     head = nullptr;
-    tail = nullptr;
 }
 
 Queue::~Queue()
@@ -42,19 +41,26 @@ void Queue::addBack(int val)
     if (isEmpty())
     {
         head = new QueueNode(val);
-        tail = head;
+        //single node points to self in both directions
+        head->next = head;
+        head->prev = head;
 	} 		
     else 
     {
-        QueueNode *temp = tail;
-        tail->next = new QueueNode(val, nullptr, temp);
-		tail = tail->next;
+        //points to last element of list cuz circular
+        head->prev = new QueueNode(val, head, head->prev);
+        // (head->prev)->prev gets to formet last node
+        // (lastNode->next) points to new last node
+        // essentially updates the link
+        // see doubly-linked-circular pic for diagram
+		head->prev->prev->next = head->prev;
 	}
 }
 
 void Queue::removeFront()
 {
-    if(head->next == nullptr && head->prev == nullptr) //only 1 value
+    //when only 1 value, next & prev points to self
+    if(head->next == head && head->prev == head) 
     {
         delete head;
         head = nullptr;
@@ -63,6 +69,7 @@ void Queue::removeFront()
     {
         QueueNode *temp = nullptr;
         temp = head;
+        // move head to next value in list
         head = head->next;
         delete temp;
     }
