@@ -6,14 +6,18 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "character.hpp"
+#include "queue.hpp"
+#include <string>
+
+using std::string;
 
 class Menu {
 
 private:
     int rounds;
-	Character* p1;
-	Character* p2;
+	Queue* team1;
+	Queue* team2;
+    Queue* losers;
 	
 public:
     Menu();

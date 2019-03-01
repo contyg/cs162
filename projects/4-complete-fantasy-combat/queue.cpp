@@ -1,3 +1,8 @@
+/********************************************************************* 
+** Program name: Fantasy Combat 
+** Description: Definition of Queue Class 
+*********************************************************************/
+
 #include "queue.hpp"
 #include "validate.hpp"
 #include <iostream>
