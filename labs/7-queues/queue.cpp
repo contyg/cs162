@@ -55,7 +55,7 @@ void Queue::addBack(int val)
     {
         //points to last element of list cuz circular
         head->prev = new QueueNode(val, head, head->prev);
-        // (head->prev)->prev gets to formet last node
+        // (head->prev)->prev gets to former last node
         // (lastNode->next) points to new last node
         // essentially updates the link
         // see doubly-linked-circular pic for diagram

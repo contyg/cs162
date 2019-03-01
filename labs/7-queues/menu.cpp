@@ -53,14 +53,14 @@ void menu()
 
         if (!isInteger(testInput))
         {
-            break; // re-trigger menu if input invalid
+            testInput = 0; // re-trigger menu if input invalid
         }
 
         int input = (int)testInput;
 
         if (!isBetween(input, 0, 6))
         {
-            break; // re-trigger menu if input invalid
+            input = 0; // re-trigger menu if input invalid
         }
 
         switch (input)
@@ -101,9 +101,11 @@ void menu()
                     queue.printQueue();
                 }
                 break;
-            default:
+            case 5:
                 keepPlaying = false;
                 cout << "\033[1;36mBYEEE! \033[0m\n";
+                break;
+            default:
                 break;
         }
     } 
