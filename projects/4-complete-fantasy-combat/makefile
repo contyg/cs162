@@ -1,5 +1,5 @@
-default: main.cpp menu.cpp barbarian.cpp vampire.cpp medusa.cpp harryPotter.cpp blueMen.cpp character.cpp validate.cpp
-	g++ -std=c++0x main.cpp menu.cpp barbarian.cpp vampire.cpp medusa.cpp harryPotter.cpp blueMen.cpp character.cpp validate.cpp -o game
+default: main.cpp menu.cpp barbarian.cpp vampire.cpp medusa.cpp harryPotter.cpp blueMen.cpp character.cpp validate.cpp queue.cpp
+	g++ -std=c++0x main.cpp menu.cpp barbarian.cpp vampire.cpp medusa.cpp harryPotter.cpp blueMen.cpp character.cpp validate.cpp queue.cpp -o game
 
 zip:
 	zip -D Project3_Conty_Genevieve.zip *.hpp *.cpp makefile design-reflection.pdf
