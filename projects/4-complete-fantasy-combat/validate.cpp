@@ -14,7 +14,6 @@ using std::endl;
 // returns valid integer between min and max
 int getInteger()
 {
-    cout << "YO get int" << endl;
     double testInput;
     cin >> testInput;
 
@@ -27,9 +26,7 @@ int getInteger()
     }
     else
     {
-        int input = (int)testInput;
-        cout << "get int input: " << input << endl;
-        
+        int input = (int)testInput;        
         return input;
     }
 }
@@ -37,11 +34,8 @@ int getInteger()
 // returns valid integer between min and max
 int getIntegerBetween(int min, int max)
 {
-    cout << "between input YO" << endl;
-
     // get valid integer
     int input = getInteger();
-    cout << "between input: " << input << endl;
     
     // check that integer is between min and max
     if (input > max)

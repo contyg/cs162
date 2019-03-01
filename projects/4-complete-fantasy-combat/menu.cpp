@@ -22,7 +22,6 @@ using std::endl;
 
 Menu::Menu()
 {
-    exitGame = false;
     rounds = 0;
     p1 = nullptr;
     p2 = nullptr;
@@ -35,35 +34,6 @@ Menu::~Menu()
 
     delete p2;
     p2 = nullptr;
-}
-
-void Menu::choosePlayer()
-{
-    int i = 1;
-    while (i < 3)
-    {    
-        cout << "\033[0;36mPlayer "<< 1 <<": Which character do you want to be? \n" 
-        << "    1: Barbarian \n"
-        << "    2: BlueMen \n"
-        << "    3: Harry Potter \n"
-        << "    4: Medusa \n"
-        << "    5: Vampire\033[0m" << endl;
-        
-        int input = getIntegerBetween(1, 5);
-        
-        if(i == 1)
-        {
-            makePlayer(input, 1);
-        }
-        else
-        {
-            makePlayer(input, 2);
-        }
-
-        i++;
-    } 
-    
-    playGame();  
 }
 
 void Menu::makePlayer(int input, int playerNum)
@@ -181,13 +151,49 @@ void Menu::playGame()
         cout << "Looks like a draw friends" << endl;
     }
 
-    playAgain();
+    startMenu();
 }
 
-void Menu::playAgain()
+void Menu::choosePlayers(int teamSize, int team)
+{
+    cout << "\033[1;35m\nChoose your players for TEAM "<< team << "\033[0m" << endl; 
+    int i = 0;
+    while (i < teamSize)
+    {    
+        cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Which character do you want to be? \n" 
+        << "    1: Barbarian \n"
+        << "    2: BlueMen \n"
+        << "    3: Harry Potter \n"
+        << "    4: Medusa \n"
+        << "    5: Vampire\033[0m" << endl;
+        
+        int input = getIntegerBetween(1, 5);
+
+        //makePlayer(); 
+        
+        i++;
+    } 
+}
+
+void Menu::makeTeams()
 {    
-    cout << "\033[0;36mDo you want to play again?\033[0m" 
-    << "\n  1: Yes, 0: No" << endl;
+    cout << "\033[0;36m How many players do you want on TEAM 1?\033[0m" << endl;
+    int teamOne = getInteger();
+
+    cout << "\033[0;36m How many players do you want on TEAM 2?\033[0m" << endl;
+    int teamTwo = getInteger();
+    
+    // put in appropriate linked list
+    choosePlayers(teamOne, 1);
+
+    choosePlayers(teamTwo, 2);
+
+    // play game
+}
+
+void Menu::startMenu()
+{    
+    cout << "\033[0;36m Play: 1 \n Exit: 0\033[0m" << endl;
     
     int input = getIntegerBetween(0, 1);
 
@@ -201,6 +207,6 @@ void Menu::playAgain()
         delete p2;
         p2 = nullptr;
         
-        choosePlayer();
+        makeTeams();
     }
 }

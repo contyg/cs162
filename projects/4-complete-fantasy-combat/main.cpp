@@ -4,6 +4,6 @@
 int main()
 {
     Menu menu;
-    menu.choosePlayer();
+    menu.startMenu();
     return 0;
 }

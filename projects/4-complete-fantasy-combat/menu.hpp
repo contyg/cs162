@@ -11,7 +11,6 @@
 class Menu {
 
 private:
-    bool exitGame;
     int rounds;
 	Character* p1;
 	Character* p2;
@@ -20,10 +19,11 @@ public:
     Menu();
     ~Menu();
 
-    void choosePlayer();
+    void choosePlayers(int teamSize, int team);
     void makePlayer(int input, int playerNum);
 	void playGame();
-	void playAgain();
+	void startMenu();
+    void makeTeams();
 }; 
 
 
