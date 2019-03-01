@@ -7,6 +7,8 @@
 *********************************************************************/
 
 #include <iostream>
+#include <string>
+
 #include "menu.hpp"
 #include "validate.hpp"
 
@@ -16,6 +18,7 @@
 #include "medusa.hpp"
 #include "vampire.hpp"
 
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -36,12 +39,12 @@ Menu::~Menu()
     p2 = nullptr;
 }
 
-void Menu::makePlayer(int input, int playerNum)
+void Menu::makePlayer(int type, int team, string name) 
 {
-    switch(input)
+    switch(type)
     {
         case 1: // barbarian
-            if(playerNum == 1)
+            if(team == 1)
             {
                 p1 = new Barbarian;
                 break;
@@ -51,7 +54,7 @@ void Menu::makePlayer(int input, int playerNum)
             break;
 
         case 2: // blue men
-            if(playerNum == 1)
+            if(team == 1)
             {
                 p1 = new BlueMen;
                 break;
@@ -61,7 +64,7 @@ void Menu::makePlayer(int input, int playerNum)
             break;
 
         case 3: // harry potter
-            if(playerNum == 1)
+            if(team == 1)
             {
                 p1 = new HarryPotter;
                 break;
@@ -70,7 +73,7 @@ void Menu::makePlayer(int input, int playerNum)
             break;
 
         case 4: // medusa
-            if(playerNum == 1)
+            if(team == 1)
             {
                 p1 = new Medusa;
                 break;
@@ -79,7 +82,7 @@ void Menu::makePlayer(int input, int playerNum)
             break;
 
         case 5: // vampire
-            if(playerNum == 1)
+            if(team == 1)
             {
                 p1 = new Vampire;
                 break;
@@ -160,7 +163,7 @@ void Menu::choosePlayers(int teamSize, int team)
     int i = 0;
     while (i < teamSize)
     {    
-        cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Which character do you want to be? \n" 
+        cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Choose character type \n" 
         << "    1: Barbarian \n"
         << "    2: BlueMen \n"
         << "    3: Harry Potter \n"
@@ -169,7 +172,15 @@ void Menu::choosePlayers(int teamSize, int team)
         
         int input = getIntegerBetween(1, 5);
 
-        //makePlayer(); 
+        cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Choose character name \033[0m" << endl;
+
+        string name;
+        cin >> name;
+
+        cout << "NAME:" << name << endl;
+
+        // TODO: set name
+        //TODO: makePlayer(); 
         
         i++;
     } 

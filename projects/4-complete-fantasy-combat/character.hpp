@@ -22,6 +22,7 @@ protected:
     int currentRoll;
     int currentDamage;
     string type;
+    string name;
 
 public: 
     Character(int attackDie, int attackSides, int defenseDie, int defenseSides, int armor, int strength, string type);
@@ -33,10 +34,12 @@ public:
     int getCurrentRoll();
     int getCurrentDamage();
     string getType();
+    string getName();
 
     void setStrength(int strength);
     void setCurrentRoll(int currentRoll);
     void setCurrentDamage(int currentDamage);
+    void setName(string name);
 };
 
 #endif

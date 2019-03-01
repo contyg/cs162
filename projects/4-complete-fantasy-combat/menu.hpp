@@ -20,7 +20,7 @@ public:
     ~Menu();
 
     void choosePlayers(int teamSize, int team);
-    void makePlayer(int input, int playerNum);
+    void makePlayer(int type, int team, string name);
 	void playGame();
 	void startMenu();
     void makeTeams();
