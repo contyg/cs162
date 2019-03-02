@@ -18,13 +18,15 @@ private:
 	Queue* team1;
 	Queue* team2;
     Queue* losers;
+    int t1Score;
+    int t2Score;
 	
 public:
     Menu();
     ~Menu();
 
     void choosePlayers(int teamSize, int team);
-    void makePlayer(int type, int team, string name);
+    void makePlayer(int type, int team);
 	void playGame();
 	void startMenu();
     void makeTeams();

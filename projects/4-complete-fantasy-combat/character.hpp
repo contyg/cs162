@@ -39,7 +39,7 @@ public:
     void setStrength(int strength);
     void setCurrentRoll(int currentRoll);
     void setCurrentDamage(int currentDamage);
-    void setName(string name);
+    void setName();
 };
 
 #endif

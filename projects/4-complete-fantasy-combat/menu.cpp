@@ -27,9 +27,13 @@ using std::endl;
 Menu::Menu()
 {
     rounds = 0;
+    
+    losers = nullptr;
     team1 = nullptr;
     team2 = nullptr;
-    losers = nullptr;
+    
+    t1Score = 0;
+    t2Score = 0;
 }
 
 Menu::~Menu()
@@ -44,10 +48,108 @@ Menu::~Menu()
     losers = nullptr;
 }
 
-void Menu::makePlayer(int type, int team, string name) 
-{
-    // TODO: set name
+void Menu::playGame()
+{   
+    // continue unless either team's list is empty
+    while(!team1->isEmpty() && !team1->isEmpty())
+    {
+        Character* teamOnePlayer = team1->getFront();
+        Character* teamTwoPlayer = team2->getFront();
 
+        // round continues until 1 character dies
+        while(teamOnePlayer->getStrength() > 0 && teamTwoPlayer->getStrength() > 0)
+        {
+            rounds++;
+            cout << "\033[1;35m---------- ROUND: " << rounds << " ----------\033[0m\n" << endl;
+
+            cout << "TEAM 1: " 
+            << "    " << teamOnePlayer->getType()<< ": " << teamOnePlayer->getName() 
+            << "\nvs\n" 
+            << "TEAM 2: " 
+            << "    " << teamTwoPlayer->getType()<< ": " << teamTwoPlayer->getName() << endl;
+
+            int attackRoll;
+
+            //Player 1 attacks
+            teamOnePlayer->attack();
+            attackRoll = teamOnePlayer->getCurrentRoll();
+            teamTwoPlayer->defense(attackRoll);
+
+            //Player 2 attacks
+            teamTwoPlayer->attack();
+            attackRoll = teamTwoPlayer->getCurrentRoll();
+            teamOnePlayer->defense(attackRoll);
+        }
+
+        // see who won and move players accordingly
+        if(teamOnePlayer->getStrength() >  teamTwoPlayer->getStrength())
+        {
+            cout << teamOnePlayer->getName() << " won the battle for Team 1!" << endl;
+            t1Score++;
+
+            // remove losing player from team and put in loser lineup
+            losers->addBack(teamTwoPlayer);
+            team2->removeFront();
+            
+            // put winning player at back of team lineup
+            team1->removeFront();
+            team1->addBack(teamOnePlayer);
+
+        }
+        else if(teamTwoPlayer->getStrength() > teamOnePlayer->getStrength())
+        {
+            cout << teamTwoPlayer->getName() << " won the battle for Team 2!" << endl;
+            t2Score++;
+
+            // remove losing player from team and put in loser lineup
+            losers->addBack(teamOnePlayer);
+            team1->removeFront();
+            
+            // put winning player at back of team lineup
+            team2->removeFront();
+            team2->addBack(teamTwoPlayer);
+        }
+        else
+        {
+            cout << "Looks like a draw of sorts. Both players lost. " << endl;
+
+            // remove players from teams
+            team1->removeFront();
+            team2->removeFront();
+
+            // add players to loser pile
+            losers->addBack(teamOnePlayer);
+            losers->addBack(teamTwoPlayer);
+        }
+    }
+
+    cout << "RESULTS: " 
+    << "\n    Team 1: " << t1Score
+    << "\n    Team 2: " << t2Score << endl;
+
+    if (t1Score > t2Score)
+    {
+        cout << "TEAM 1 WINS" << endl;
+    }
+    else if (t2Score > t1Score)
+    {
+        cout << "TEAM 2 WINS" << endl;
+    }
+    else
+    {
+        cout << "DRAW" << endl;
+    }
+
+    cout << "Would you like to see the loser lineup?"
+    << "\n   1: Yes"
+    << "\n   o: No" << endl;
+    
+
+    startMenu();
+}
+
+void Menu::makePlayer(int type, int team)
+{
     switch(type)
     {
         case 1: // barbarian
@@ -102,68 +204,6 @@ void Menu::makePlayer(int type, int team, string name)
     }
 }
 
-void Menu::playGame()
-{
-    int attackRoll;
-    while(team1->getStrength() > 0 && team2->getStrength() > 0)
-    {
-        rounds++;
-        cout << "\033[1;35m---------- ROUND: " << rounds << " ----------\033[0m\n" << endl;
-
-        // Stats
-        cout << "\033[1;33m----- STATS 1 -----\033[0m" << endl; 
-        cout << "\033[1;32mAttacker:\033[0m Player 1\n"
-        << "    Type: " << team1->getType() << "\n"
-        << "\033[1;32mDefender: \033[0m Player 2\n"
-        << "    Type: " << team2->getType() << "\n"
-        << "    Armor: " << team2->getArmor() << "\n"
-        << "    Strength: " << team2->getStrength() << endl;
-
-        //Attack 1
-        team1->attack();
-        attackRoll = team1->getCurrentRoll();
-        team2->defense(attackRoll);
-        cout << "Attack Roll (Player 1): " << attackRoll << "\n"
-        << "Defense Roll (Player 2): " << team2->getCurrentRoll() << "\n"
-        << "Total Damage: " << team2->getCurrentDamage() << "\n"
-        << "Player 2 Remaining Strength: " << team2->getStrength() << "\n" << endl;
-
-        // Stats
-        cout << "\033[1;33m----- STATS 2 -----\033[0m" << endl; 
-        cout << "\033[1;32mAttacker:\033[0m Player 2\n"
-        << "    Type: " << team2->getType() << "\n"
-        << "\033[1;32mDefender:\033[0m Player 1\n"
-        << "    Type: " << team1->getType() << "\n"
-        << "    Armor: " << team1->getArmor() << "\n"
-        << "    Strength: " << team1->getStrength() << endl;
-
-        //Attack 2
-        team2->attack();
-        attackRoll = team2->getCurrentRoll();
-        team1->defense(attackRoll);
-        cout << "Attack Roll (Player 2): " << attackRoll << "\n"
-        << "Defense Roll (Player 1): " << team1->getCurrentRoll() << "\n"
-        << "Total Damage: " << team1->getCurrentDamage() << "\n"
-        << "Player 1 Remaining Strength: " << team1->getStrength() << "\n" << endl;
-    }
-
-    // see who won
-    if(team1->getStrength() >  team2->getStrength())
-    {
-        cout << "Player 1 won the battle!" << endl;
-    }
-    else if(team2->getStrength() > team1->getStrength())
-    {
-        cout << "Player 2 won the battle!" << endl;
-    }
-    else
-    {
-        cout << "Looks like a draw friends" << endl;
-    }
-
-    startMenu();
-}
-
 void Menu::choosePlayers(int teamSize, int team)
 {
     cout << "\033[1;35m\nChoose your players for TEAM "<< team << "\033[0m" << endl; 
@@ -177,16 +217,11 @@ void Menu::choosePlayers(int teamSize, int team)
         << "    4: Medusa \n"
         << "    5: Vampire\033[0m" << endl;
         
-        int input = getIntegerBetween(1, 5);
+        int type = getIntegerBetween(1, 5);
 
         cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Choose character name \033[0m" << endl;
 
-        string name;
-        cin >> name;
-
-        cout << "NAME:" << name << endl;
-
-        //TODO: makePlayer(); 
+        makePlayer(type, team); 
         
         i++;
     } 
@@ -205,7 +240,7 @@ void Menu::makeTeams()
 
     choosePlayers(teamTwo, 2);
 
-    // play game
+    // TODO: play game
 }
 
 void Menu::startMenu()

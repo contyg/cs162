@@ -47,11 +47,11 @@ bool Queue::isEmpty()
     }
 }
 
-void Queue::addBack(int val)
+void Queue::addBack(Character* type)
 {
     if (isEmpty())
     {
-        head = new QueueNode(val);
+        head = new QueueNode(type);
         //single node points to self in both directions
         head->next = head;
         head->prev = head;
@@ -59,11 +59,7 @@ void Queue::addBack(int val)
     else 
     {
         //points to last element of list cuz circular
-        head->prev = new QueueNode(val, head, head->prev);
-        // (head->prev)->prev gets to former last node
-        // (lastNode->next) points to new last node
-        // essentially updates the link
-        // see doubly-linked-circular pic for diagram
+        head->prev = new QueueNode(type, head, head->prev);
 		head->prev->prev->next = head->prev;
 	}
 }
@@ -94,9 +90,9 @@ void Queue::removeFront()
     }
 }
 
-int Queue::getFront()
+Character* Queue::getFront()
 {
-    return head->val;
+    return head->type;
 }
 
 void Queue::printQueue()
@@ -106,9 +102,9 @@ void Queue::printQueue()
     QueueNode* node = head;
     while (node->next != head) 
     {
-        cout << node->val << " ";
+        cout << node->type << " ";
         node = node->next;
     }
-    cout << node->val << " ";
+    cout << node->type << " ";
     cout << "\n" << endl;
 }

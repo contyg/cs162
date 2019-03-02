@@ -3,10 +3,10 @@
 ** Description: Definition of Character Class 
 *********************************************************************/
 
-
 #include "character.hpp"
 #include <iostream>
 using std::cout;
+using std::cin;
 using std::endl;
 
 // constructor
@@ -22,6 +22,8 @@ Character::Character(int attackDie, int attackSides, int defenseDie, int defense
 	this->type = type;
     this->currentRoll = 0;
     this->currentDamage = 0;
+
+    setName();
 }
 
 // default attack
@@ -100,4 +102,12 @@ void Character::setCurrentRoll(int currentRoll)
 void Character::setCurrentDamage(int currentDamage)
 {
     this->currentDamage = currentDamage;
+}
+
+void Character::setName()
+{
+    string name;
+    cout << "\033[0;36m Choose character name \033[0m" << endl;
+    getline(cin, name);
+    this->name = name;
 }

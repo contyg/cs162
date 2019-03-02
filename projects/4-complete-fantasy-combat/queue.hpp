@@ -32,7 +32,7 @@ public:
 
     bool isEmpty();
     void addBack(Character* type);
-    Character* removeFront();
+    void removeFront();
     Character* getFront();
     void printQueue();
 };
