@@ -18,7 +18,8 @@ Character::Character(int attackDie, int attackSides, int defenseDie, int defense
     this->defenseSides = defenseSides;
 
     this->armor = armor;
-    this->strength = strength;
+    this->startStrength = strength;
+    this->strength = strength; 
 	this->type = type;
     this->currentRoll = 0;
     this->currentDamage = 0;
@@ -60,6 +61,19 @@ void Character::defense(int attackRoll)
     
     // adjust strength
     strength -= currentDamage;
+}
+
+void Character::restoreStrength()
+{
+    // restore 80% of damage
+    int restoreVal = currentDamage * .8;
+    strength += restoreVal;
+
+    // make sure strength doesn't exceed starting strength
+    if (strength > startStrength)
+    {
+        strength = startStrength;
+    }
 }
 
 // getters
@@ -107,7 +121,7 @@ void Character::setCurrentDamage(int currentDamage)
 void Character::setName()
 {
     string name;
-    cout << "\033[0;36m Choose character name \033[0m" << endl;
+    cout << "\033[0;36m Choose character name: \033[0m" << endl;
     getline(cin, name);
     this->name = name;
 }

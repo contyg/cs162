@@ -88,7 +88,8 @@ void Menu::playGame()
             losers->addHead(teamTwoPlayer);
             team2->removeFront();
             
-            // put winning player at back of team lineup
+            // restore strength, put winning player at back of team lineup
+            teamOnePlayer->restoreStrength();
             team1->removeFront();
             team1->addBack(teamOnePlayer);
 
@@ -102,7 +103,9 @@ void Menu::playGame()
             losers->addHead(teamOnePlayer);
             team1->removeFront();
             
-            // put winning player at back of team lineup
+            
+            // restore strength, put winning player at back of team lineup
+            teamTwoPlayer->restoreStrength();
             team2->removeFront();
             team2->addBack(teamTwoPlayer);
         }
@@ -139,10 +142,13 @@ void Menu::playGame()
 
     cout << "Would you like to see the loser lineup?"
     << "\n   1: Yes"
-    << "\n   o: No" << endl;
+    << "\n   0: No" << endl;
     
     int input = getIntegerBetween(0, 1);
-    if (cin >> input)
+    if (input)
+    {
+        losers->printList();
+    }
 
     startMenu();
 }
@@ -236,10 +242,10 @@ void Menu::makeTeams()
     
     // put in appropriate linked list
     choosePlayers(teamOne, 1);
-
     choosePlayers(teamTwo, 2);
 
-    // TODO: play game
+    // initiate the game play
+    playGame();
 }
 
 void Menu::startMenu()
@@ -257,6 +263,9 @@ void Menu::startMenu()
 
         delete team2;
         team2 = nullptr;
+
+        delete losers;
+        losers = nullptr;
         
         makeTeams();
     }
