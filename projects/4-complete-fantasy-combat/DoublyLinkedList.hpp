@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Doubly-linked List Lab  
+** Program name: Fantasy Combat Part 2  
 ** Description: Declaration of linked list functions  
 *********************************************************************/
 

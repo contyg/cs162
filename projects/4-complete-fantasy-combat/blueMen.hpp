@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Fantasy Combat
+** Program name: Fantasy Combat Part 2
 ** Description: Declaration of Blue Men Class   
 *********************************************************************/
 #ifndef BLUE_MEN_H

@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Fantasy Combat
+** Program name: Fantasy Combat Part 2 
 ** Description: Declaration of Menu Class   
 *********************************************************************/
 
@@ -7,6 +7,7 @@
 #define MENU_H
 
 #include "queue.hpp"
+#include "DoublyLinkedList.hpp"
 #include <string>
 
 using std::string;
@@ -17,7 +18,7 @@ private:
     int rounds;
 	Queue* team1;
 	Queue* team2;
-    Queue* losers;
+    DoublyLinkedList* losers;
     int t1Score;
     int t2Score;
 	

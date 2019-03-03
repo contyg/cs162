@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Fantasy Combat 
+** Program name: Fantasy Combat Part 2  
 ** Description: Definition of Vampire Class 
 *********************************************************************/
 

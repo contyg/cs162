@@ -1,9 +1,6 @@
 /********************************************************************* 
-** Program name: Fantasy Combat 
-** Author: Genevieve Conty
-** Date: 02/17/2019
-** Description: Fantasy combat game with multiple characters. Rounds 
-**              consist of an attack and defense from each player. 
+** Program name: Fantasy Combat Part 2 
+** Description: Definition of Menu Class   
 *********************************************************************/
 
 #include <iostream>
@@ -88,7 +85,7 @@ void Menu::playGame()
             t1Score++;
 
             // remove losing player from team and put in loser lineup
-            losers->addBack(teamTwoPlayer);
+            losers->addHead(teamTwoPlayer);
             team2->removeFront();
             
             // put winning player at back of team lineup
@@ -102,7 +99,7 @@ void Menu::playGame()
             t2Score++;
 
             // remove losing player from team and put in loser lineup
-            losers->addBack(teamOnePlayer);
+            losers->addHead(teamOnePlayer);
             team1->removeFront();
             
             // put winning player at back of team lineup
@@ -118,8 +115,8 @@ void Menu::playGame()
             team2->removeFront();
 
             // add players to loser pile
-            losers->addBack(teamOnePlayer);
-            losers->addBack(teamTwoPlayer);
+            losers->addHead(teamOnePlayer);
+            losers->addHead(teamTwoPlayer);
         }
     }
 
@@ -144,6 +141,8 @@ void Menu::playGame()
     << "\n   1: Yes"
     << "\n   o: No" << endl;
     
+    int input = getIntegerBetween(0, 1);
+    if (cin >> input)
 
     startMenu();
 }
