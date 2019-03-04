@@ -30,6 +30,7 @@ public:
     void makePlayer(int type, int team);
 	void playGame();
 	void startMenu();
+    void playAgain();
     void makeTeams();
 }; 
 

@@ -29,7 +29,7 @@ public:
     Character(int attackDie, int attackSides, int defenseDie, int defenseSides, int armor, int strength, string type);
     virtual void attack();
     virtual void defense(int attackRoll);
-    virtual void restoreStrength();
+    void restoreStrength();
 
     int getArmor();
     int getStrength();

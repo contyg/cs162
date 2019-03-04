@@ -8,6 +8,7 @@
 
 #include "menu.hpp"
 #include "queue.hpp"
+#include "DoublyLinkedList.hpp" 
 #include "validate.hpp"
 
 #include "barbarian.hpp"
@@ -25,9 +26,9 @@ Menu::Menu()
 {
     rounds = 0;
     
-    losers = nullptr;
-    team1 = nullptr;
-    team2 = nullptr;
+    losers = new DoublyLinkedList;
+    team1 = new Queue;
+    team2 = new Queue;
     
     t1Score = 0;
     t2Score = 0;
@@ -52,19 +53,19 @@ void Menu::playGame()
     {
         Character* teamOnePlayer = team1->getFront();
         Character* teamTwoPlayer = team2->getFront();
+        
+        rounds++;
+        cout << "\033[1;35m---------- ROUND: " << rounds << " ----------\033[0m\n" << endl;
+        
+        cout << "TEAM 1: " 
+        << "    " << teamOnePlayer->getType()<< ": " << teamOnePlayer->getName() 
+        << "\nvs\n" 
+        << "TEAM 2: " 
+        << "    " << teamTwoPlayer->getType()<< ": " << teamTwoPlayer->getName() << endl;
 
         // round continues until 1 character dies
         while(teamOnePlayer->getStrength() > 0 && teamTwoPlayer->getStrength() > 0)
         {
-            rounds++;
-            cout << "\033[1;35m---------- ROUND: " << rounds << " ----------\033[0m\n" << endl;
-
-            cout << "TEAM 1: " 
-            << "    " << teamOnePlayer->getType()<< ": " << teamOnePlayer->getName() 
-            << "\nvs\n" 
-            << "TEAM 2: " 
-            << "    " << teamTwoPlayer->getType()<< ": " << teamTwoPlayer->getName() << endl;
-
             int attackRoll;
 
             //Player 1 attacks
@@ -81,7 +82,7 @@ void Menu::playGame()
         // see who won and move players accordingly
         if(teamOnePlayer->getStrength() >  teamTwoPlayer->getStrength())
         {
-            cout << teamOnePlayer->getName() << " won the battle for Team 1!" << endl;
+            cout << "\033[1;33m" << teamOnePlayer->getName() << " won the battle for Team 1!\033[0m\n" << endl;
             t1Score++;
 
             // remove losing player from team and put in loser lineup
@@ -96,7 +97,7 @@ void Menu::playGame()
         }
         else if(teamTwoPlayer->getStrength() > teamOnePlayer->getStrength())
         {
-            cout << teamTwoPlayer->getName() << " won the battle for Team 2!" << endl;
+            cout << "\033[1;33m" << teamTwoPlayer->getName() << " won the battle for Team 2!\033[0m\n" << endl;
             t2Score++;
 
             // remove losing player from team and put in loser lineup
@@ -111,7 +112,7 @@ void Menu::playGame()
         }
         else
         {
-            cout << "Looks like a draw of sorts. Both players lost. " << endl;
+            cout << "\033[1;33m" << "Looks like a draw of sorts. Both players lost.\033[0m\n" << endl;
 
             // remove players from teams
             team1->removeFront();
@@ -121,28 +122,31 @@ void Menu::playGame()
             losers->addHead(teamOnePlayer);
             losers->addHead(teamTwoPlayer);
         }
+
+        team1->printQueue();
+        team2->printQueue();
     }
 
-    cout << "RESULTS: " 
+    cout << "\033[1;36mRESULTS: \033[0m\n" 
     << "\n    Team 1: " << t1Score
     << "\n    Team 2: " << t2Score << endl;
 
     if (t1Score > t2Score)
     {
-        cout << "TEAM 1 WINS" << endl;
+        cout << "\033[1;32TEAM 1 WINS\033[0m\n" << endl;
     }
     else if (t2Score > t1Score)
     {
-        cout << "TEAM 2 WINS" << endl;
+        cout << "\033[1;32TEAM 2 WINS\033[0m\n" << endl;
     }
     else
     {
-        cout << "DRAW" << endl;
+        cout << "\033[1;32DRAW\033[0m\n" << endl;
     }
 
-    cout << "Would you like to see the loser lineup?"
+    cout << "\033[0;36mWould you like to see the loser lineup?"
     << "\n   1: Yes"
-    << "\n   0: No" << endl;
+    << "\n   0: No\033[0m\n" << endl;
     
     int input = getIntegerBetween(0, 1);
     if (input)
@@ -150,7 +154,7 @@ void Menu::playGame()
         losers->printList();
     }
 
-    startMenu();
+    playAgain();
 }
 
 void Menu::makePlayer(int type, int team)
@@ -162,9 +166,11 @@ void Menu::makePlayer(int type, int team)
             {
                 team1->addBack(new Barbarian); 
                 break;
+            } 
+            else 
+            {
+                team2->addBack(new Barbarian);
             }
-            
-            team2->addBack(new Barbarian);
             break;
 
         case 2: // blue men
@@ -173,8 +179,10 @@ void Menu::makePlayer(int type, int team)
                 team1->addBack(new BlueMen);
                 break;
             }
-            
-            team2->addBack(new BlueMen);
+            else 
+            {
+                team2->addBack(new BlueMen);
+            }
             break;
 
         case 3: // harry potter
@@ -183,7 +191,10 @@ void Menu::makePlayer(int type, int team)
                 team1->addBack(new HarryPotter);
                 break;
             }
-            team2->addBack(new HarryPotter);
+            else
+            {
+                team2->addBack(new HarryPotter);
+            }
             break;
 
         case 4: // medusa
@@ -192,7 +203,10 @@ void Menu::makePlayer(int type, int team)
                 team1->addBack(new Medusa);
                 break;
             }
-            team2->addBack(new Medusa);
+            else
+            {
+                team2->addBack(new Medusa);
+            }
             break;
 
         case 5: // vampire
@@ -201,7 +215,10 @@ void Menu::makePlayer(int type, int team)
                 team1->addBack(new Vampire);
                 break;
             }
-            team2->addBack(new Vampire);
+            else
+            {
+                team2->addBack(new Vampire);
+            }
             break;
 
         default:
@@ -224,10 +241,7 @@ void Menu::choosePlayers(int teamSize, int team)
         
         int type = getIntegerBetween(1, 5);
 
-        cout << "\033[1;36mPlayer "<< i <<":\033[0m \033[0;36m Choose character name \033[0m" << endl;
-
         makePlayer(type, team); 
-        
         i++;
     } 
 }
@@ -255,6 +269,18 @@ void Menu::startMenu()
     int input = getIntegerBetween(0, 1);
 
     if(input)
+    {        
+        makeTeams();
+    }
+}
+
+void Menu::playAgain()
+{    
+    cout << "\033[0;36m Play: 1 \n Exit: 0\033[0m" << endl;
+    
+    int input = getIntegerBetween(0, 1);
+
+    if(input)
     {
         rounds = 0;
         
@@ -266,6 +292,10 @@ void Menu::startMenu()
 
         delete losers;
         losers = nullptr;
+
+        losers = new DoublyLinkedList;
+        team1 = new Queue;
+        team2 = new Queue;
         
         makeTeams();
     }

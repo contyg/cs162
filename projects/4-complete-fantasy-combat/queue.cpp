@@ -41,10 +41,8 @@ bool Queue::isEmpty()
     {
         return true;
     }
-    else
-    {
-        return false;
-    }
+    
+    return false;
 }
 
 void Queue::addBack(Character* type)

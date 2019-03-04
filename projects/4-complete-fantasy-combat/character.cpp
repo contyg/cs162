@@ -5,9 +5,12 @@
 
 #include "character.hpp"
 #include <iostream>
+#include <string>
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::getline;
 
 // constructor
 Character::Character(int attackDie, int attackSides, int defenseDie, int defenseSides, int armor, int strength, string type) 
@@ -24,6 +27,7 @@ Character::Character(int attackDie, int attackSides, int defenseDie, int defense
     this->currentRoll = 0;
     this->currentDamage = 0;
 
+    this->name = "";
     setName();
 }
 
@@ -102,6 +106,11 @@ string Character::getType()
     return type;
 }
 
+string Character::getName()
+{
+    return name;
+}
+
 // setters
 void Character::setStrength(int strength)
 {
@@ -120,8 +129,10 @@ void Character::setCurrentDamage(int currentDamage)
 
 void Character::setName()
 {
-    string name;
+    string n;
     cout << "\033[0;36m Choose character name: \033[0m" << endl;
-    getline(cin, name);
-    this->name = name;
+    
+    cin.ignore(); // flush new line character
+    getline(cin, n);
+    this->name = n;
 }
