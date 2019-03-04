@@ -41,8 +41,10 @@ bool Queue::isEmpty()
     {
         return true;
     }
-    
-    return false;
+    else
+    {
+       return false;
+    }
 }
 
 void Queue::addBack(Character* type)
@@ -95,14 +97,22 @@ Character* Queue::getFront()
 
 void Queue::printQueue()
 {
-    cout << "\033[1;33mList:\033[0m" << endl;
-    
-    QueueNode* node = head;
-    while (node->next != head) 
+    if(isEmpty())
     {
-        cout << node->type << " ";
-        node = node->next;
+        cout << "\033[1;33mList:\033[0m \nnothing to print" << endl;
+
     }
-    cout << node->type << " ";
-    cout << "\n" << endl;
+    else
+    {
+        cout << "\033[1;33mList:\033[0m" << endl;
+    
+        QueueNode* node = head;
+        while (node->next != head) 
+        {
+            cout << node->type->getName() << " ";
+            node = node->next;
+        }
+        cout << node->type->getName() << " ";
+        cout << "\n" << endl;
+    } 
 }

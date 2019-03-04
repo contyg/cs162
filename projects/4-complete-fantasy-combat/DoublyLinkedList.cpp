@@ -43,7 +43,7 @@ void DoublyLinkedList::addHead(Character* type)
 
 void DoublyLinkedList::printList()
 {
-    cout << "\033[1;33mList:\033[0m" << endl;
+    cout << "\033[1;33mLosers List:\033[0m" << endl;
     if (tail == nullptr) // check if list is empty
     {
 		cout << "There aren't any elements to print. \n" << endl;
@@ -53,7 +53,7 @@ void DoublyLinkedList::printList()
 		DLListNode* node = head;
 		while (node != nullptr) 
         {
-			cout << node->type << " ";
+			cout << node->type->getName() << " ";
 			node = node->next;
 		}
 

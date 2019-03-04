@@ -49,7 +49,7 @@ Menu::~Menu()
 void Menu::playGame()
 {   
     // continue unless either team's list is empty
-    while(!team1->isEmpty() && !team1->isEmpty())
+    while(!team1->isEmpty() && !team2->isEmpty())
     {
         Character* teamOnePlayer = team1->getFront();
         Character* teamTwoPlayer = team2->getFront();
@@ -122,29 +122,26 @@ void Menu::playGame()
             losers->addHead(teamOnePlayer);
             losers->addHead(teamTwoPlayer);
         }
-
-        team1->printQueue();
-        team2->printQueue();
     }
 
-    cout << "\033[1;36mRESULTS: \033[0m\n" 
-    << "\n    Team 1: " << t1Score
-    << "\n    Team 2: " << t2Score << endl;
+    cout << "\033[1;36mRESULTS: \033[0m\n" << endl;
 
     if (t1Score > t2Score)
     {
-        cout << "\033[1;32TEAM 1 WINS\033[0m\n" << endl;
+        cout << "\033[1;32mTEAM 1 WINS\033[0m" << endl;
     }
     else if (t2Score > t1Score)
     {
-        cout << "\033[1;32TEAM 2 WINS\033[0m\n" << endl;
+        cout << "\033[1;32TEAM 2 WINS\033[0m" << endl;
     }
     else
     {
-        cout << "\033[1;32DRAW\033[0m\n" << endl;
+        cout << "\033[1;32DRAW\033[0m" << endl;
     }
 
-    cout << "\033[0;36mWould you like to see the loser lineup?"
+    cout << "\nTeam 1 score: " << t1Score << "\nTeam 2 score: " << t2Score << endl;
+
+    cout << "\033[0;36m\nWould you like to see the loser lineup?"
     << "\n   1: Yes"
     << "\n   0: No\033[0m\n" << endl;
     
@@ -292,6 +289,9 @@ void Menu::playAgain()
 
         delete losers;
         losers = nullptr;
+
+        t1Score = 0;
+        t2Score = 0;
 
         losers = new DoublyLinkedList;
         team1 = new Queue;
