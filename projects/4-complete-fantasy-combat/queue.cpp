@@ -18,20 +18,26 @@ Queue::Queue()
 
 Queue::~Queue()
 {
-    // break circularity for easy deletion
-    head->prev->next = nullptr;
-
-    // set trash variable
-    QueueNode *trash = head;
-
-    // go through each node and delete
-    while (trash != nullptr)
+    // only do if not empty
+    if(!isEmpty())
     {
-        // set head to next element
-        head = head->next;
-        delete trash;
-        //set trash to next head
-        trash = head;
+        // break circularity for easy deletion
+        head->prev->next = nullptr;
+
+        // set trash variable
+        QueueNode *trash = head;
+
+        // go through each node and delete
+        while (trash != nullptr)
+        {
+            delete trash->type;
+            trash->type = nullptr;
+            delete trash;
+            
+            // set head to next element
+            head = head->next;
+            trash = head;
+        }
     }
 }
 

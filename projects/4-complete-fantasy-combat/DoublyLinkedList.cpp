@@ -18,13 +18,22 @@ DoublyLinkedList::DoublyLinkedList()
 
 DoublyLinkedList::~DoublyLinkedList()
 {
+    // DLListNode* node = head;
+    // while(node != nullptr)
+    // {
+    //     DLListNode* trash = node;
+    //     node = node->next;
+    //     delete trash;
+    // }
     DLListNode* node = head;
     while(node != nullptr)
     {
         DLListNode* trash = node;
         node = node->next;
+        delete trash->type;
+        trash->type = nullptr;
         delete trash;
-    }
+    } 
 }
 
 void DoublyLinkedList::addHead(Character* type)

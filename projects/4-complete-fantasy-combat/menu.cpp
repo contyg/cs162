@@ -281,22 +281,20 @@ void Menu::playAgain()
     {
         rounds = 0;
         
+        delete losers;
+        losers = nullptr;
+        losers = new DoublyLinkedList;
+
         delete team1;
         team1 = nullptr;
+        team1 = new Queue;
+        t1Score = 0;
 
         delete team2;
         team2 = nullptr;
-
-        delete losers;
-        losers = nullptr;
-
-        t1Score = 0;
+        team2 = new Queue;
         t2Score = 0;
 
-        losers = new DoublyLinkedList;
-        team1 = new Queue;
-        team2 = new Queue;
-        
         makeTeams();
     }
 }
