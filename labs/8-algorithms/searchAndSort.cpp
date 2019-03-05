@@ -78,31 +78,34 @@ void bubbleSort(int array[], int size)
     cout << "What file do you want to output too?" << endl;
     
     cin >> file;
-    ofstream outputFile(file);
+    ofstream outputFile;
+    outputFile.open(file);
 
     // sort
     int i = 0;
     while (i < size)
     {
-        for(int j = 0; j < size-i; j++)
+        for(int j = 0; j < size-1; j++)
         {
             if (array[j] > array[j+1])
             {
                 // swap
-                int temp = array[i];
-                array[i] = array[i+1];
-                array[i+1] = temp;
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
             }
         }
         i++;
     }
 
     //output sorted values into file
-    int j = 0;
-    while(j < size)
+    int k = 0;
+    while(k < size)
     {
-        outputFile << array[j];
+        outputFile << array[k];
+        k++;
     }
+
     outputFile.close();
     
     //print sorted values on the screen

@@ -27,34 +27,34 @@ int main()
     arrayFromFile("end.txt", endArr, 10);
 
     // simple search
-    cout << "\033[1;35mSIMPLE SEARCH: \033[0m" << endl;
-    cout << "\n\033[0;32mnormal array: \033[0m";
-    simpleSearch(normalArr, 9);
+    // cout << "\033[1;35mSIMPLE SEARCH: \033[0m" << endl;
+    // cout << "\n\033[0;32mnormal array: \033[0m";
+    // simpleSearch(normalArr, 9);
     
-    cout << "\n\033[0;32mearly array: \033[0m";
-    simpleSearch(earlyArr, 10);
+    // cout << "\n\033[0;32mearly array: \033[0m";
+    // simpleSearch(earlyArr, 10);
 
-    cout << "\n\033[0;32mmiddle array: \033[0m";
-    simpleSearch(midArr, 10);
+    // cout << "\n\033[0;32mmiddle array: \033[0m";
+    // simpleSearch(midArr, 10);
 
-    cout << "\n\033[0;32mend array: \033[0m";
-    simpleSearch(endArr, 10);
+    // cout << "\n\033[0;32mend array: \033[0m";
+    // simpleSearch(endArr, 10);
 
     // bubble sort
-    // cout << "\n\033[1;35mBUBBLE SORT: \033[0m" << endl;
-    // cout << "\n\033[0;32mnormal array \033[0m";
-    // bubbleSort(normalArr);
+    cout << "\n\033[1;35mBUBBLE SORT: \033[0m" << endl;
+    cout << "\n\033[0;32mnormal array \033[0m";
+    bubbleSort(normalArr, 9);
     
-    // cout << "\n\033[0;32mearly array \033[0m";
-    // bubbleSort(earlyArr);
+    cout << "\n\033[0;32mearly array \033[0m";
+    bubbleSort(earlyArr, 10);
 
-    // cout << "\n\033[0;32mmiddle array \033[0m";
-    // bubbleSort(midArr);
+    cout << "\n\033[0;32mmiddle array \033[0m";
+    bubbleSort(midArr, 10);
 
-    // cout << "\n\033[0;32mend array \033[0m";
-    // bubbleSort(endArr);
+    cout << "\n\033[0;32mend array \033[0m";
+    bubbleSort(endArr, 10);
 
-    // binary sort
+    //binary sort
     // cout << "\n\033[1;35mBINARY SORT: \033[0m" << endl;
     // cout << "\n\033[0;32mnormal array: \033[0m";
     // binaryMenu(normalArr);
