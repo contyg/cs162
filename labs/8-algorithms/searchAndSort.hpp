@@ -5,10 +5,14 @@
 #ifndef MENU_H
 #define MENU_H
 #include <fstream>
+#include <string>
 
-void arrayFromFile();
-void print();
-void outputArray();
+using std::ifstream;
+using std::ofstream;
+using std::string;
+
+void arrayFromFile(ifstream& file, int array[]);
+void print(int array[]);
 void simpleSearch();
 void sort();
 void binarySearch();

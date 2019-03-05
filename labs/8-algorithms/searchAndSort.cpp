@@ -11,20 +11,25 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void arrayFromFile()
+void arrayFromFile(ifstream& file, int array[])
 {
-    //TODO: read EACH file
-    //TODO: put values into sepearte array
-
+    int i = 0;
+    // while values, populate array
+    while (file >> array[0]) 
+    {
+        i++;
+    }
 }
-void print()
+void print(int array[])
 {
-    // TODO: print array
-}
-
-void outputArray()
-{
-    // TODO: 
+    // determine array size
+    int arraySize = *(&array + 1) - array;
+    int i = 0;
+    while (i < arraySize)
+    {
+        cout << array[i];
+    }
+    cout << endl;
 }
 
 void simpleSearch()
@@ -48,6 +53,5 @@ void binarySearch()
 {
     //TODO: find algorithm and implement
     //TODO: get and search for target
-    //TODO: same output from simple search
-    //
+    // TODO: output whether value is found or not
 }
