@@ -55,18 +55,18 @@ int main()
     bubbleSort(endArr, 10);
 
     //binary sort
-    // cout << "\n\033[1;35mBINARY SORT: \033[0m" << endl;
-    // cout << "\n\033[0;32mnormal array: \033[0m";
-    // binaryMenu(normalArr);
+    cout << "\n\033[1;35mBINARY SORT: \033[0m" << endl;
+    cout << "\n\033[0;32mnormal array: \033[0m";
+    binaryMenu(normalArr, 9);
     
-    // cout << "\n\033[0;32mearly array: \033[0m";
-    // binaryMenu(earlyArr);
+    cout << "\n\033[0;32mearly array: \033[0m";
+    binaryMenu(earlyArr, 10);
 
-    // cout << "\n\033[0;32mmiddle array: \033[0m";
-    // binaryMenu(midArr);
+    cout << "\n\033[0;32mmiddle array: \033[0m";
+    binaryMenu(midArr, 10);
 
-    // cout << "\n\033[0;32mend array: \033[0m";
-    // binaryMenu(endArr);
+    cout << "\n\033[0;32mend array: \033[0m";
+    binaryMenu(endArr, 10);
     
     return 0;
 }

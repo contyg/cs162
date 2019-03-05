@@ -73,7 +73,7 @@ void simpleSearch(int array[], int size)
 // CITATION: https://www.geeksforgeeks.org/bubble-sort/
 void bubbleSort(int array[], int size)
 {
-    //ask for user's output file
+    ask for user's output file
     string file;
     cout << "What file do you want to output too?" << endl;
     
@@ -135,7 +135,7 @@ bool binarySearch(int array[], int left, int right, int target)
 {
     if (right > left)
     {
-        int middle = 1 + (right-1)/2;
+        int middle = (right+left)/2;
         if (array[middle] == target)
         {
             return true;
