@@ -102,20 +102,20 @@ void bubbleSort(int array[])
     {
         outputFile << array[j];
     }
+    outputFile.close();
     
     //print sorted values on the screen
     print(array);
 }
 
-void binarySearch(int array[])
-{
-    //TODO: find algorithm and implement
-    
+void binarySearchMenu(int array[])
+{    
     // ask for target value
     cout << "What value do you want to search for?" << endl;
     int target = getInteger();
-    bool foundIt = false;
-    //TODO: search for target
+
+    int arraySize = *(&array + 1) - array;
+    bool foundIt = binarySearch(array, 0, arraySize, target);
 
     // output whether value is found or not
     if (foundIt)
@@ -126,4 +126,23 @@ void binarySearch(int array[])
     {
         cout << "NOT found" << endl;
     }
+}
+
+bool binarySearch(int array[], int left, int right, int target)
+{
+    if (right > left)
+    {
+        int middle = 1 + (right-1)/2;
+        if (array[middle] == target)
+        {
+            return true;
+        }
+        else if (array[middle] > target)
+        {
+            return binarySearch(array, left, middle-1, target);
+        }
+        return binarySearch(array, left, middle+1, target);
+    }
+
+    return false;
 }

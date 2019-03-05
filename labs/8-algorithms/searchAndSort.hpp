@@ -15,6 +15,7 @@ void arrayFromFile(ifstream& file, int array[]);
 void print(int array[]);
 void simpleSearch(int array[]);
 void bubbleSort(int array[]);
-void binarySearch(int array[]);
+void binaryMenu(int array[]);
+bool binarySearch(int array[], int left, int right, int target);
 
 #endif
