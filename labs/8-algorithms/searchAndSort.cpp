@@ -32,13 +32,38 @@ void print(int array[])
     cout << endl;
 }
 
-void simpleSearch()
+void simpleSearch(int array[])
 {
-    // TODO: ask for target value
-    // TODO: validate target
+    // ask for target value
+    cout << "What value do you want to search for?" << endl;
+    int target = getInteger();
+    bool foundIt = false;
 
-    // TODO: search for target in EACH file (4)
-    // TODO: output whether value is found or not
+    // search for target in array
+    int arraySize = *(&array + 1) - array;
+    int i = 0;
+    
+    while (i < arraySize)
+    {
+        if(array[i] == target)
+        {
+            foundIt = true;
+            i = arraySize;
+        }
+
+        i++;
+    }
+
+    // output whether value is found or not
+    if (foundIt)
+    {
+        cout << "FOUND" << endl;
+    }
+    else
+    {
+        cout << "NOT found" << endl;
+    }
+    
 }
 
 void sort()
@@ -49,9 +74,23 @@ void sort()
     //TODO: print sorted values on the screen
 }
 
-void binarySearch()
+void binarySearch(int array[])
 {
     //TODO: find algorithm and implement
-    //TODO: get and search for target
-    // TODO: output whether value is found or not
+    
+    // ask for target value
+    cout << "What value do you want to search for?" << endl;
+    int target = getInteger();
+    bool foundIt = false;
+    //TODO: search for target
+
+    // output whether value is found or not
+    if (foundIt)
+    {
+        cout << "FOUND" << endl;
+    }
+    else
+    {
+        cout << "NOT found" << endl;
+    }
 }

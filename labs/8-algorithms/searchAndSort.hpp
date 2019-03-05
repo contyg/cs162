@@ -13,8 +13,8 @@ using std::string;
 
 void arrayFromFile(ifstream& file, int array[]);
 void print(int array[]);
-void simpleSearch();
-void sort();
-void binarySearch();
+void simpleSearch(int array[]);
+void sort(int array[]);
+void binarySearch(int array[]);
 
 #endif
