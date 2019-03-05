@@ -19,6 +19,8 @@ void arrayFromFile(ifstream& file, int array[])
     {
         i++;
     }
+
+    file.close();
 }
 void print(int array[])
 {
@@ -66,12 +68,43 @@ void simpleSearch(int array[])
     
 }
 
-void sort()
+// CITATION: https://www.geeksforgeeks.org/bubble-sort/
+void bubbleSort(int array[])
 {
-    //TODO: ask for user's output file
-    //TODO: find and cite a sorting algorithm
-    //TODO: output sorted values into file
-    //TODO: print sorted values on the screen
+    //ask for user's output file
+    string file;
+    cout << "What file do you want to output too?" << endl;
+    
+    cin >> file;
+    ofstream outputFile(file);
+
+    // sort
+    int arraySize = *(&array + 1) - array;
+    int i = 0;
+    while (i < arraySize)
+    {
+        for(int j = 0; j < arraySize-i; j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                // swap
+                int temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+            }
+        }
+        i++;
+    }
+
+    //output sorted values into file
+    int j = 0;
+    while(j < arraySize)
+    {
+        outputFile << array[j];
+    }
+    
+    //print sorted values on the screen
+    print(array);
 }
 
 void binarySearch(int array[])

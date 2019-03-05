@@ -14,7 +14,7 @@ using std::string;
 void arrayFromFile(ifstream& file, int array[]);
 void print(int array[]);
 void simpleSearch(int array[]);
-void sort(int array[]);
+void bubbleSort(int array[]);
 void binarySearch(int array[]);
 
 #endif
