@@ -11,11 +11,11 @@ using std::ifstream;
 using std::ofstream;
 using std::string;
 
-void arrayFromFile(ifstream& file, int array[]);
-void print(int array[]);
-void simpleSearch(int array[]);
-void bubbleSort(int array[]);
-void binaryMenu(int array[]);
+void arrayFromFile(string fileName, int array[], int size);
+void print(int array[], int size);
+void simpleSearch(int array[], int size);
+void bubbleSort(int array[], int size);
+void binaryMenu(int array[], int size);
 bool binarySearch(int array[], int left, int right, int target);
 
 #endif

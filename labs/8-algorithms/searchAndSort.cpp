@@ -11,30 +11,33 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void arrayFromFile(ifstream& file, int array[])
+void arrayFromFile(string fileName, int array[], int size)
 {
+    ifstream inputFile;
+    inputFile.open(fileName);
+
     int i = 0;
     // while values, populate array
-    while (file >> array[0]) 
+    while (inputFile >> array[i]) 
     {
         i++;
     }
 
-    file.close();
+    inputFile.close();
 }
-void print(int array[])
+void print(int array[], int size)
 {
     // determine array size
-    int arraySize = *(&array + 1) - array;
     int i = 0;
-    while (i < arraySize)
+    while (i < size)
     {
         cout << array[i];
+        i++;
     }
     cout << endl;
 }
 
-void simpleSearch(int array[])
+void simpleSearch(int array[], int size)
 {
     // ask for target value
     cout << "What value do you want to search for?" << endl;
@@ -42,15 +45,14 @@ void simpleSearch(int array[])
     bool foundIt = false;
 
     // search for target in array
-    int arraySize = *(&array + 1) - array;
     int i = 0;
     
-    while (i < arraySize)
+    while (i < size)
     {
         if(array[i] == target)
         {
             foundIt = true;
-            i = arraySize;
+            i = size;
         }
 
         i++;
@@ -69,7 +71,7 @@ void simpleSearch(int array[])
 }
 
 // CITATION: https://www.geeksforgeeks.org/bubble-sort/
-void bubbleSort(int array[])
+void bubbleSort(int array[], int size)
 {
     //ask for user's output file
     string file;
@@ -79,11 +81,10 @@ void bubbleSort(int array[])
     ofstream outputFile(file);
 
     // sort
-    int arraySize = *(&array + 1) - array;
     int i = 0;
-    while (i < arraySize)
+    while (i < size)
     {
-        for(int j = 0; j < arraySize-i; j++)
+        for(int j = 0; j < size-i; j++)
         {
             if (array[j] > array[j+1])
             {
@@ -98,24 +99,23 @@ void bubbleSort(int array[])
 
     //output sorted values into file
     int j = 0;
-    while(j < arraySize)
+    while(j < size)
     {
         outputFile << array[j];
     }
     outputFile.close();
     
     //print sorted values on the screen
-    print(array);
+    print(array, size);
 }
 
-void binarySearchMenu(int array[])
+void binaryMenu(int array[], int size)
 {    
     // ask for target value
     cout << "What value do you want to search for?" << endl;
     int target = getInteger();
 
-    int arraySize = *(&array + 1) - array;
-    bool foundIt = binarySearch(array, 0, arraySize, target);
+    bool foundIt = binarySearch(array, 0, size, target);
 
     // output whether value is found or not
     if (foundIt)
