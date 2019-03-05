@@ -73,7 +73,7 @@ void simpleSearch(int array[], int size)
 // CITATION: https://www.geeksforgeeks.org/bubble-sort/
 void bubbleSort(int array[], int size)
 {
-    ask for user's output file
+    //ask for user's output file
     string file;
     cout << "What file do you want to output too?" << endl;
     
