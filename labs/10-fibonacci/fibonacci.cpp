@@ -30,6 +30,15 @@ int iterativeFib(int n)
     int second = 1;
     int counter = 2;
     
+    if(n == 0)
+    {
+        return 0;
+    }    
+    else if (n == 1)
+    {
+        return first+second;
+    } 
+
     while(counter < n)
     {
         int temp = second;
@@ -37,13 +46,5 @@ int iterativeFib(int n)
         first = temp;
         ++counter;
     }
-    
-    if(n == 0)
-    {
-        return 0;
-    }    
-    else
-    {
-        return first+second;
-    } 
+    return second;
 }
