@@ -7,8 +7,10 @@
 #include "validate.hpp"
 #include <iostream>
 #include <string>
+#include <stack>
 
 using std::string;
+using std::stack;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -52,6 +54,8 @@ void buffer()
     cout << "\033[0;36m    In a percentage, what's the chance of adding random number at end?\033[0m" << endl;
     int tailChance = getIntegerBetween(0, 100);
 
+    cout << "rounds: " << rounds << " headChance: " << headChance << " tailChance: " << tailChance << endl;
+
     // loop back to main menu
     mainMenu(); 
 }
@@ -64,6 +68,28 @@ void palindrome()
 
     cin.ignore(); // flush new line character
     getline(cin, input);
+
+    // put input into stack
+    stack<char> word;
+    int i = 0;
+
+    while(i < input.size())
+    {
+        word.push(input[i]);
+        i++;
+    }
+
+    // print first half
+    cout << input;
+
+    // pop and print last half
+    while(!word.empty())
+    {
+        // print char
+        cout << word.top();
+        // remove char
+        word.pop();
+    }
 
     // loop back to main menu
     mainMenu(); 
