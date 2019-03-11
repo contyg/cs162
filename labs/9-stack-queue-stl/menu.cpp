@@ -8,9 +8,11 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <queue>
 
 using std::string;
 using std::stack;
+using std::queue;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -41,20 +43,69 @@ void mainMenu()
     }
 }
 
+void printBuffer(queue<int> buffer)
+{
+    if(!buffer.empty())
+    {
+        while (!buffer.empty())
+        {
+            cout << buffer.front();
+            buffer.pop();
+        }
+        cout << endl;
+        return;
+    }
+    
+    cout << "{empty buffer}" << endl;
+}
+
 void buffer()
 {
     // menu section
     cout << "\n\033[1;36mFor the simulation:\033[0m" << endl;
-    cout << "\n\033[0;36m    How many rounds?\033[0m" << endl;
+    cout << "\n\033[0;36mHow many rounds?\033[0m" << endl;
     int rounds = getInteger();
 
-    cout << "\033[0;36m    In a percentage, what's the chance of adding random number at start?\033[0m" << endl;
-    int headChance = getIntegerBetween(0, 100);
+    cout << "\033[0;36mIn a percentage, what's the chance of removing random number from the front?\033[0m" << endl;
+    int removeChance = getIntegerBetween(0, 100);
 
-    cout << "\033[0;36m    In a percentage, what's the chance of adding random number at end?\033[0m" << endl;
-    int tailChance = getIntegerBetween(0, 100);
+    cout << "\033[0;36mIn a percentage, what's the chance of adding random number the the end?\033[0m" << endl;
+    int addChance = getIntegerBetween(0, 100);
 
-    cout << "roundsp: " << rounds << " headChance: " << headChance << " tailChance: " << tailChance << endl;
+    //REMOVE:
+    cout << "rounds: " << rounds << " removeChance: " << removeChance << " addChance: " << addChance << endl;
+
+    // run simulation 
+    queue<int> buffer;
+    double avgLength = 0;
+    for(int i = 0; i < rounds; i++)
+    {
+        int N = 1 + rand()%1000; 
+        int removeRandom = 1 + rand()%100;
+        int addRandom = 1 + rand()%100;
+
+        // add and remove
+        if (removeRandom <= removeChance)
+        {
+            buffer.push(N);
+        }
+
+        if (addRandom <= addChance)
+        {
+            buffer.pop();
+        }
+
+        // calculate avg length
+        int length = buffer.size();
+        avgLength = (avgLength * (i-1)+length) / i;
+
+        // output
+        cout << "\n\033[1;32m ROUND " << i << "\033[0m" << endl;
+        cout << "   buffer length: " << length
+        << "\n   buffer avg length: " << avgLength
+        << "\n   buffer values: ";
+        printBuffer(buffer);
+    }
 
     // loop back to main menu
     mainMenu(); 
