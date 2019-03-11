@@ -12,11 +12,13 @@ using std::endl;
 // constructor
 Character::Character(int attackDie, int attackSides, int defenseDie, int defenseSides, int armor, int strength, string type) 
 {
+    // set up all the dice
     this->attackDie = attackDie;
     this->attackSides = attackSides;
     this->defenseDie = defenseDie;
     this->defenseSides = defenseSides;
 
+    // set up starting stats
     this->armor = armor;
     this->strength = strength;
 	this->type = type;

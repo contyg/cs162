@@ -37,7 +37,7 @@ Menu::Menu()
 Menu::~Menu()
 {
     delete team1;
-    team1 = nullptr;
+    team1 = nullptr; 
 
     delete team2;
     team2 = nullptr;
@@ -52,7 +52,7 @@ void Menu::playGame()
     while(!team1->isEmpty() && !team2->isEmpty())
     {
         Character* teamOnePlayer = team1->getFront();
-        Character* teamTwoPlayer = team2->getFront();
+        Character* teamTwoPlayer = team2->getFront(); 
         
         rounds++;
         cout << "\033[1;35m---------- ROUND: " << rounds << " ----------\033[0m\n" << endl;
@@ -115,7 +115,7 @@ void Menu::playGame()
             cout << "\033[1;33m" << "Looks like a draw of sorts. Both players lost.\033[0m\n" << endl;
 
             // remove players from teams
-            team1->removeFront();
+            team1->removeFront(); 
             team2->removeFront();
 
             // add players to loser pile
