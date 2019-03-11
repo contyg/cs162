@@ -20,23 +20,21 @@ int main()
     clock_t iTime;
 
     //TODO: do an array with various N's and loop through it;
-    //TODO: neither function returns correct # for 50
+    //TODO: fix clock
 
     cout << "Calculating the \033[1;35miterative\033[0m fibannocci..." << endl;
     iTime = clock();
-    int i = iterativeFib(50);
+    unsigned long long int i = iterativeFib(50);
     iTime = clock() - iTime;
     cout << "Result: " << i << endl;
     cout << "The iterative option took \033[0;35m" << iTime << "\033[0m seconds.\n" << endl;
 
     cout << "Calculating the \033[1;35mrecursive\033[0m fibannocci..." << endl;
     rTime = clock();
-    int r = recursiveFib(50);
+    unsigned long long int r = recursiveFib(50);
     rTime = clock() - rTime;
     cout << "Result: " << r << endl;
     cout << "The recursive option took \033[0;35m" << rTime << "\033[0m seconds.\n" << endl;
-
-    
 
     return 0;
 }

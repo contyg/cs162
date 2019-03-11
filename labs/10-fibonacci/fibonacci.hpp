@@ -6,7 +6,7 @@
 #ifndef FIBONACCI_H
 #define FIBONACCI_H
 
-int recursiveFib(int n);
-int iterativeFib(int n);
+unsigned long long int recursiveFib(int n);
+unsigned long long int iterativeFib(int n);
 
 #endif

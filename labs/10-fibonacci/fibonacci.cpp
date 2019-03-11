@@ -10,7 +10,7 @@ using std::cin;
 using std::endl;
 
 // source: https://www.codeproject.com/tips/109443/fibonacci-recursive-and-non-recursive-c
-int recursiveFib(int n)
+unsigned long long int recursiveFib(int n)
 {
     if(n == 0)
     {
@@ -24,27 +24,26 @@ int recursiveFib(int n)
 }
 
 // source: https://www.codeproject.com/tips/109443/fibonacci-recursive-and-non-recursive-c
-int iterativeFib(int n)
+unsigned long long int iterativeFib(int n)
 {
-    int first = 0;
-    int second = 1;
+    unsigned long long int first = 0;
+    unsigned long long int second = 1;
     int counter = 2;
+
+    while(counter < n)
+    {
+        unsigned long long int temp = second;
+        second = first+second;
+        first = temp;
+        ++counter;
+    }
     
     if(n == 0)
     {
         return 0;
     }    
-    else if (n == 1)
+    else
     {
         return first+second;
     } 
-
-    while(counter < n)
-    {
-        int temp = second;
-        second = first+second;
-        first = temp;
-        ++counter;
-    }
-    return second;
 }
