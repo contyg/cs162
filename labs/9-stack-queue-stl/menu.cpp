@@ -29,7 +29,7 @@ void mainMenu()
 
     int input = getInteger();
 
-    // trigger menu according to user's function choice
+    // trigger action according to user's choice
     switch (input)
     {
         case 1: 
@@ -45,12 +45,16 @@ void mainMenu()
 
 void printBuffer(queue<int> buffer)
 {
-    if(!buffer.empty())
+    // make copy of buffer
+    queue<int> b = buffer;
+
+    // print if not empty
+    if(!b.empty())
     {
-        while (!buffer.empty())
+        while (!b.empty())
         {
-            cout << buffer.front();
-            buffer.pop();
+            cout << b.front();
+            b.pop();
         }
         cout << endl;
         return;
@@ -62,8 +66,8 @@ void printBuffer(queue<int> buffer)
 void buffer()
 {
     // menu section
-    cout << "\n\033[1;36mFor the simulation:\033[0m" << endl;
-    cout << "\n\033[0;36mHow many rounds?\033[0m" << endl;
+    cout << "\n\033[1;36mFor the buffer simulation:\033[0m" << endl;
+    cout << "\033[0;36mHow many rounds?\033[0m" << endl;
     int rounds = getInteger();
 
     cout << "\033[0;36mIn a percentage, what's the chance of removing random number from the front?\033[0m" << endl;
@@ -84,20 +88,25 @@ void buffer()
         int removeRandom = 1 + rand()%100;
         int addRandom = 1 + rand()%100;
 
+        cout << "i: " << i << " N: " << N << " removeRandom: " << removeRandom << " addRandom: " << addRandom << endl;
+        
         // add and remove
         if (removeRandom <= removeChance)
         {
+            cout << "REMOVE" << endl;
             buffer.push(N);
         }
 
-        if (addRandom <= addChance)
+
+        if (addRandom <= addChance && !buffer.empty())
         {
+            cout << "ADD" << endl;
             buffer.pop();
         }
 
         // calculate avg length
         int length = buffer.size();
-        avgLength = (avgLength * (i-1)+length) / i;
+        avgLength = (avgLength * (rounds - 1)+length) / rounds;
 
         // output
         cout << "\n\033[1;32m ROUND " << i << "\033[0m" << endl;
@@ -107,6 +116,7 @@ void buffer()
         printBuffer(buffer);
     }
 
+    cout << "4_YO" << endl;
     // loop back to main menu
     mainMenu(); 
 }
