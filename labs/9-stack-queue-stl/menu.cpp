@@ -20,7 +20,7 @@ void mainMenu()
 {
     double testInput;
     // colorful menu with prompts for function choice
-    cout << "\033[1;35mWhich function would you like to use?\033[0m"
+    cout << "\n\033[1;35mWhich function would you like to use?\033[0m"
     << "\n   \033[0;35m1\033[0m: Test the buffer"
     << "\n   \033[0;35m2\033[0m: Create a palindrome"
     << "\n   0: Exit the program" << endl;
@@ -54,7 +54,7 @@ void buffer()
     cout << "\033[0;36m    In a percentage, what's the chance of adding random number at end?\033[0m" << endl;
     int tailChance = getIntegerBetween(0, 100);
 
-    cout << "rounds: " << rounds << " headChance: " << headChance << " tailChance: " << tailChance << endl;
+    cout << "roundsp: " << rounds << " headChance: " << headChance << " tailChance: " << tailChance << endl;
 
     // loop back to main menu
     mainMenu(); 
