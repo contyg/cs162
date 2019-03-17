@@ -9,6 +9,7 @@
 
 int main()
 {
-    // mainMenu();
+    intro();
+    mainMenu();
     return 0;
 }

@@ -1,3 +1,5 @@
+//TODO: description
+
 #ifndef SPACE_hpp
 #define SPACE_hpp
 
@@ -9,6 +11,8 @@ protected:
     Space* bottom;
     Space* left;
     Space* right;
+    int column;
+    int row;
 
 public:
     Space();
