@@ -8,6 +8,7 @@ Space::Space()
     bottom = nullptr;
     left = nullptr;
     right = nullptr;
+    type = "";
 }
 
 Space* Space::getTop()
@@ -28,6 +29,16 @@ Space* Space::getLeft()
 Space* Space::getRight()
 {
     return right;
+}
+
+string Space::getType()
+{
+    return type;
+}
+
+void Space::setType(string t)
+{
+    type = t;
 }
 
 void Space::setLinkedSpaces(Space* T, Space* B, Space* L, Space* R)
