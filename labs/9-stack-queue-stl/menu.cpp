@@ -45,15 +45,16 @@ void mainMenu()
 
 void printBuffer(queue<int> buffer)
 {
-    // make copy of buffer
-    queue<int> b = buffer;
-
     // print if not empty
-    if(!b.empty())
+    if(!buffer.empty())
     {
+        // make copy of buffer
+        queue<int> b = buffer;
+
+        // print buffer
         while (!b.empty())
         {
-            cout << b.front();
+            cout << b.front() << ", ";
             b.pop();
         }
         cout << endl;
@@ -76,9 +77,6 @@ void buffer()
     cout << "\033[0;36mIn a percentage, what's the chance of adding random number the the end?\033[0m" << endl;
     int addChance = getIntegerBetween(0, 100);
 
-    //REMOVE:
-    cout << "rounds: " << rounds << " removeChance: " << removeChance << " addChance: " << addChance << endl;
-
     // run simulation 
     queue<int> buffer;
     double avgLength = 0;
@@ -87,21 +85,17 @@ void buffer()
         int N = 1 + rand()%1000; 
         int removeRandom = 1 + rand()%100;
         int addRandom = 1 + rand()%100;
-
-        cout << "i: " << i << " N: " << N << " removeRandom: " << removeRandom << " addRandom: " << addRandom << endl;
         
         // add and remove
-        if (removeRandom <= removeChance)
+        if (removeRandom <= removeChance && !buffer.empty())
         {
-            cout << "REMOVE" << endl;
-            buffer.push(N);
+            buffer.pop();
         }
 
 
-        if (addRandom <= addChance && !buffer.empty())
+        if (addRandom <= addChance)
         {
-            cout << "ADD" << endl;
-            buffer.pop();
+            buffer.push(N);
         }
 
         // calculate avg length
@@ -116,7 +110,6 @@ void buffer()
         printBuffer(buffer);
     }
 
-    cout << "4_YO" << endl;
     // loop back to main menu
     mainMenu(); 
 }
