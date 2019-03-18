@@ -9,6 +9,8 @@ class Backpack
 {
 private:
     bool full;
+    int itemCount;
+
     struct Item {
 		string val;
 		Item* prev;
@@ -31,6 +33,7 @@ public:
 
     void addItem(string item);
     void printContents();
+    int getItemCount();
 };
 
 #endif

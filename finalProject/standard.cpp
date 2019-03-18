@@ -8,7 +8,7 @@ Standard::Standard(int r, int c) : Space()
     column = c;
 }
 
-int Standard::healthPenalty()
+int Standard::action()
 {
-    return -1;
+    return -1; 
 }

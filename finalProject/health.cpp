@@ -8,7 +8,7 @@ Health::Health(int r, int c) : Space()
     column = c;
 }
 
-int Health::healthPenalty()
+int Health::action()
 {
     return 2;
 }

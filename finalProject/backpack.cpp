@@ -8,6 +8,7 @@ Backpack::Backpack()
 {
     head = nullptr;
 	tail = nullptr;
+    itemCount = 0;
 }
 
 Backpack::~Backpack()
@@ -27,11 +28,13 @@ void Backpack::addItem(string item)
     {
 		head = new Item(item);
 		tail = head;
+        itemCount++;
 	} 		
     else 
     {
 		head = new Item(item, nullptr, head);
 		head->next->prev = head;
+        itemCount++;
 	}
 }
 
@@ -53,5 +56,10 @@ void Backpack::printContents()
 
 		cout << "\n" << endl;
 	}
+}
+
+int Backpack::getItemCount()
+{
+    return itemCount;
 }
 

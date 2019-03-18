@@ -61,11 +61,6 @@ void Space::setLinkedSpaces(Space* U, Space* D, Space* L, Space* R)
     right = R;
 }
 
-int Space::healthPenalty()
-{
-    return 0;
-};
-
 int action()
 {
     return 0;

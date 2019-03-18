@@ -8,7 +8,7 @@ Boss::Boss(int r, int c) : Space()
     column = c;
 }
 
-int Boss::healthPenalty()
+int Boss::action()
 {
     return -3;
 }

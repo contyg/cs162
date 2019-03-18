@@ -10,7 +10,7 @@ public:
     //constructor
     Health(int r, int c);
 
-    virtual int healthPenalty();
+    virtual int action();
 };
 
 #endif

@@ -86,5 +86,24 @@ int Warrior::defense(int damage)
 int Warrior::move()
 {
     int damageTaken = location->action();
-    updateStrength(damageTaken);
+    if (damageTaken == 0)
+    {
+        int itemCount = backpack->getItemCount();
+        switch (itemCount)
+        {
+            case 1:
+                backpack->addItem("TRI");
+                break;
+            case 2:
+                backpack->addItem("FEC");
+                break;
+            default:
+                backpack->addItem("TA!");
+                break;
+        }
+    }
+    else 
+    {
+        updateStrength(damageTaken);
+    }
 }

@@ -35,9 +35,7 @@ public:
     void setLinkedSpaces(Space* U, Space* D, Space* L, Space* R);
 
     //virtual functions
-    virtual int healthPenalty();
     virtual int action();
-
 };
 
 #endif
