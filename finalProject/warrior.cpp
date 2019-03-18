@@ -10,7 +10,7 @@ using std::endl;
 
 Warrior::Warrior()
 {
-    strength = 10;
+    strength = 15;
     optionCount = 3;
     location = nullptr;
     backpack = new Backpack();
@@ -64,7 +64,7 @@ int Warrior::attack(int choice)
             return 6;
         case 2:
             cout << "Sword attack!" << endl;
-            return 2; 
+            return 3; 
         default:
             cout << "RWAR the fists of furry!" << endl;
             return 1;
@@ -83,27 +83,56 @@ int Warrior::defense(int damage)
     return damage;
 }
 
-int Warrior::move()
+void Warrior::move(char choice)
 {
-    int damageTaken = location->action();
-    if (damageTaken == 0)
+    // move warrior
+    switch(choice)
     {
-        int itemCount = backpack->getItemCount();
-        switch (itemCount)
+        case 'U':
+            setLocation(location->getUp());
+            break;
+        case 'D':
+            setLocation(location->getDown());
+            break;
+        case 'L':
+            setLocation(location->getLeft());
+            break;
+        case 'R':
+            setLocation(location->getRight());
+            break;
+
+    }
+
+    // playout any actions with new location
+    if (location->getType() != "\033[0;32Boss\033[0m")
+    {
+        int damageTaken = location->action();
+        if (damageTaken == 0)
         {
-            case 1:
-                backpack->addItem("TRI");
-                break;
-            case 2:
-                backpack->addItem("FEC");
-                break;
-            default:
-                backpack->addItem("TA!");
-                break;
+            int itemCount = backpack->getItemCount();
+            switch (itemCount)
+            {
+                case 0:
+                    backpack->addItem("TRI");
+                    break;
+                case 1:
+                    backpack->addItem("FEC");
+                    break;
+                default:
+                    backpack->addItem("TA!");
+                    break;
+            }
+        }
+        else 
+        {
+            updateStrength(damageTaken);
         }
     }
-    else 
-    {
-        updateStrength(damageTaken);
-    }
+    // TODO: boss battle
+    // else
+    // {
+        
+    // }
+    
+    
 }

@@ -12,3 +12,10 @@ int Health::action()
 {
     return 2;
 }
+
+int Health::getHealth()
+{
+    return 0;
+}
+
+void Health::setHealth(int damage){}

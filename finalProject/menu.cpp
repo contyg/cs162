@@ -49,7 +49,7 @@ Menu::Menu()
     // fill attack options
     attackOptions[0] = "Choose your attack: ";
     attackOptions[1] = "\n    1: Fight with your fists (1pt)";
-    attackOptions[2] = "\n    2: Fight with your sword (2pt)";
+    attackOptions[2] = "\n    2: Fight with your sword (3pt)";
     attackOptions[3] = "\n    3: Use the Trifecta (6pt)";
 
     // establish warrior
@@ -172,7 +172,7 @@ void Menu::intro()
     cout << "INTRODUCTION AND GOALS AND STUFF" << endl;
 }
 
-void Menu::betweenMovesMenu()
+int Menu::betweenMovesMenu()
 {
     cout << "What would you like to do next?"
     << "\n    1: Print map (Costs 1 strenth point)"
@@ -183,35 +183,10 @@ void Menu::betweenMovesMenu()
     << "\n    0: Exit"<< endl;
     
     int choice = getIntegerBetween(1, 5);
-
-    switch (choice)
-    {
-        case 1: 
-            braveWarrior->updateStrength(-1);
-            printMap();
-            break;
-        case 2:
-            braveWarrior->updateStrength(-1);
-            printMap(braveWarrior->getLocation()->getColumn(), braveWarrior->getLocation()->getRow());
-            break;
-        case 3: 
-            braveWarrior->getBackpack()->printContents();
-        case 4: 
-            moveWarriorMenu();
-            braveWarrior->move();
-            break;
-        case 5:
-            cout << "Your current health is " << braveWarrior->getStrength() << endl;
-            break;
-        default:
-            keepPlaying = false;
-            cout << "MK BYE THEN" << endl;
-            break;
-
-    }
+    return choice;
 }
 
-void Menu::moveWarriorMenu()
+char Menu::moveWarriorMenu()
 {
     Space* location = braveWarrior->getLocation();
     char up = '-';
@@ -246,23 +221,7 @@ void Menu::moveWarriorMenu()
     }
 
     char choice = getCharMatch(up, down, right, left);
-
-    switch(choice)
-    {
-        case 'U':
-            braveWarrior->setLocation(location->getUp());
-            break;
-        case 'D':
-            braveWarrior->setLocation(location->getDown());
-            break;
-        case 'L':
-            braveWarrior->setLocation(location->getLeft());
-            break;
-        case 'R':
-            braveWarrior->setLocation(location->getRight());
-            break;
-
-    }
+    return choice; 
 }
 
 int Menu::attackMenu()
@@ -278,11 +237,83 @@ int Menu::attackMenu()
     return choice;
 }
 
+void Menu::battleMenu()
+{
+    cout << "It is time to engage the boss. Hope you ready bish" << endl;
+    
+    // reset boss health
+    boss->setHealth(15);
+    
+    // attack loops
+    do
+    {
+        // attack boss
+        int attackChoice = attackMenu();
+        int attackDamage = braveWarrior->attack(attackChoice);
+        boss->setHealth(attackDamage);
+
+        // boss attack and warrior defense
+        int bossAttackDamage = boss->action();
+        int damageTaken = braveWarrior->defense(bossAttackDamage);
+        braveWarrior->updateStrength(damageTaken);
+
+        cout << "Warrior Health: " << braveWarrior->getStrength()
+        << "\n    Boss Health: " << boss->getHealth() << endl;
+    } while (braveWarrior->getStrength() > 0 && boss->getHealth() > 0) ;
+    
+    if(braveWarrior->getStrength() > 0 && boss->getHealth() < 0)
+    {
+        cout << "You've WON!" << endl;
+    }
+    else
+    {
+        cout << "Boss killed you" << endl;
+    }
+}
+
 void Menu::playGame()
 {
     do
     {
-        betweenMovesMenu();
+        int choice = betweenMovesMenu();
+
+        // route to appropriate action/menu
+        switch (choice)
+        {
+            case 1: 
+                braveWarrior->updateStrength(-1);
+                printMap();
+                break;
+            case 2:
+                braveWarrior->updateStrength(-2);
+                printMap(braveWarrior->getLocation()->getColumn(), braveWarrior->getLocation()->getRow());
+                break;
+            case 3: 
+                braveWarrior->getBackpack()->printContents();
+            case 4: 
+            {
+                char moveChoice = moveWarriorMenu();
+                braveWarrior->move(moveChoice); 
+                if (braveWarrior->getLocation()->getType() != "\033[0;32Boss\033[0m")
+                {
+                    battleMenu();
+                }
+            }
+                break;
+            case 5:
+                cout << "Your current health is " << braveWarrior->getStrength() << endl;
+                break;
+            default:
+                keepPlaying = false;
+                cout << "MK BYE THEN" << endl;
+                break;
+        }
+
+        // check strength
+        if (braveWarrior->getStrength() < 1)
+        {
+            cout << "U DEAD" << endl;
+            keepPlaying = false;
+        }
     } while (keepPlaying);
-    
 }

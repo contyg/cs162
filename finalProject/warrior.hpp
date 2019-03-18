@@ -29,7 +29,7 @@ public:
     void updateStrength(int factor);
     int attack(int choice);
     int defense(int damage);
-    int move();
+    void move(char choice);
 };
 
 #endif

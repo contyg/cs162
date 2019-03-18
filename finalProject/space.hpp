@@ -20,7 +20,7 @@ protected:
 
 public:
     Space();
-
+    
     //getters
     Space* getUp();
     Space* getDown();
@@ -35,7 +35,10 @@ public:
     void setLinkedSpaces(Space* U, Space* D, Space* L, Space* R);
 
     //virtual functions
+    virtual ~Space();
     virtual int action();
+    virtual int getHealth();
+    virtual void setHealth(int damage);
 };
 
 #endif

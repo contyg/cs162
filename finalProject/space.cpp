@@ -61,7 +61,17 @@ void Space::setLinkedSpaces(Space* U, Space* D, Space* L, Space* R)
     right = R;
 }
 
-int action()
+// virtual functions to be defined in child space classes
+Space::~Space(){};
+
+int Space::action()
 {
     return 0;
 }
+
+int Space::getHealth()
+{
+    return 0;
+}
+
+void Space::setHealth(int damage){}

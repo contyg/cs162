@@ -12,3 +12,10 @@ int Standard::action()
 {
     return -1; 
 }
+
+int Standard::getHealth()
+{
+    return 0;
+}
+
+void Standard::setHealth(int damage){}

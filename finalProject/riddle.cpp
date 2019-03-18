@@ -17,7 +17,7 @@ Riddle::Riddle(int r, int c) : Space()
 int Riddle::action()
 {
     int damage = -2; 
-    if (row == 0 )
+    if (row == 0)
     {
         cout << "RIDDLE 0: words" << endl;
         cout << "RIDDLE 0: 2" << endl;
@@ -55,3 +55,10 @@ int Riddle::action()
 
     return damage;
 }
+
+int Riddle::getHealth()
+{
+    return 0;
+}
+
+void Riddle::setHealth(int damage){}
