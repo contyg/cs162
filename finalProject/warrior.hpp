@@ -17,6 +17,7 @@ public:
     // getters
     int getOptionCount();
     int getStrength();
+    Space* getLocation();
 
     //setters
     void setLocation(Space* space);

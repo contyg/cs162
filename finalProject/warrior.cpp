@@ -25,6 +25,11 @@ int Warrior::getStrength()
     return strength;
 }
 
+Space* Warrior::getLocation()
+{
+    return location;
+}
+
 void Warrior::setLocation(Space* space)
 {
     location = space;

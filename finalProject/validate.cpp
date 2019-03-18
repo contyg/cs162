@@ -53,3 +53,54 @@ int getIntegerBetween(int min, int max)
     return input;
 }
 
+char getCharMatch(char c1, char c2, char c3, char c4)
+{
+    char input;
+
+    cin.get(input);
+
+    if (input == c1 || input == c2 || input == c3 || input == c4)
+    {
+        return input;
+    }
+
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "\033[1;31m ERROR: Please enter a charater equal to "<< c1 << ", " << c2 << ", " << c3 << ", or " << c4 << " \033[0m\n" << endl;
+    return getCharMatch(c1, c2, c3, c4);
+}
+
+char getCharMatch(char c1, char c2, char c3)
+{
+    char input;
+
+    cin.get(input);
+
+    if (input == c1 || input == c2 || input == c3)
+    {
+        return input;
+    }
+
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "\033[1;31m ERROR: Please enter a charater equal to "<< c1 << ", " << c2 << ", " << ", or " << c3 << " \033[0m\n" << endl;
+    return getCharMatch(c1, c2, c3);
+}
+
+char getCharMatch(char c1, char c2)
+{
+    char input;
+
+    cin.get(input);
+
+    if (input == c1 || input == c2)
+    {
+        return input;
+    }
+
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "\033[1;31m ERROR: Please enter a charater equal to "<< c1 << " or " << c2 << " \033[0m\n" << endl;
+    return getCharMatch(c1, c2);
+}
+

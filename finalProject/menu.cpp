@@ -227,10 +227,49 @@ void Menu::betweenMovesMenu()
 
 void Menu::moveWarriorMenu()
 {
-    // TODO: available options?
+    Space* location = braveWarrior->getLocation();
     cout << "Which direction would you like to move?" << endl;
     
-    //TODO: move warrior
+    if (location->getUp() != nullptr)
+    {
+        cout << "   U: Up to a " << location->getUp()->getType() << endl;
+    }
+
+    if (location->getDown() != nullptr)
+    {
+        cout << "   D: Down to a " << location->getDown()->getType() << endl;
+    }
+
+    if (location->getLeft() != nullptr)
+    {
+        cout << "   L: Left to a " << location->getLeft()->getType() << endl;
+    }
+
+    if (location->getRight() != nullptr)
+    {
+        cout << "   R: Right to a " << location->getRight()->getType() << endl;
+    }
+    
+    // TODO: is valid char
+
+    char choice = getCharMatch();
+
+    switch(choice)
+    {
+        case 'U':
+            braveWarrior->setLocation(location->getUp());
+            break;
+        case 'D':
+            braveWarrior->setLocation(location->getDown());
+            break;
+        case 'L':
+            braveWarrior->setLocation(location->getLeft());
+            break;
+        case 'R':
+            braveWarrior->setLocation(location->getRight());
+            break;
+
+    }
 }
 
 int Menu::attackMenu()
