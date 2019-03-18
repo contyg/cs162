@@ -4,21 +4,21 @@
 
 Space::Space()
 {
-    top = nullptr;
-    bottom = nullptr;
+    up = nullptr;
+    down = nullptr;
     left = nullptr;
     right = nullptr;
     type = "";
 }
 
-Space* Space::getTop()
+Space* Space::getUp()
 {
-    return top;
+    return up;
 }
 
-Space* Space::getBottom()
+Space* Space::getDown()
 {
-    return bottom;
+    return down;
 }
 
 Space* Space::getLeft()
@@ -41,10 +41,15 @@ void Space::setType(string t)
     type = t;
 }
 
-void Space::setLinkedSpaces(Space* T, Space* B, Space* L, Space* R)
+void Space::setLinkedSpaces(Space* U, Space* D, Space* L, Space* R)
 {
-    top = T;
-    bottom = B;
+    up = U;
+    down = D;
     left = L;
     right = R;
 }
+
+int Space::healthPenalty()
+{
+    return 0;
+};

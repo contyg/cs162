@@ -9,7 +9,8 @@
 
 int main()
 {
-    intro();
-    mainMenu();
+    Menu game;
+    game.intro();
+    game.mainMenu();
     return 0;
 }

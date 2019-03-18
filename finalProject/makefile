@@ -1,5 +1,5 @@
-default: main.cpp menu.cpp validate.cpp
-	g++ -std=c++0x main.cpp menu.cpp validate.cpp -o game
+default: main.cpp menu.cpp validate.cpp boss.cpp health.cpp riddle.cpp space.cpp standard.cpp
+	g++ -std=c++0x main.cpp menu.cpp validate.cpp boss.cpp health.cpp riddle.cpp space.cpp standard.cpp -o game
 
 zip:
 	zip -D Lab9_Conty_Genevieve.zip *.hpp *.cpp makefile

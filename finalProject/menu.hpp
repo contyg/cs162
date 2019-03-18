@@ -2,6 +2,10 @@
 #define MENU_H
 
 #include "space.hpp"
+#include "warrior.hpp"
+#include <string>
+
+using std::string;
 
 // MAP
 // [ std1 ][ std2 ][ rid1 ]
@@ -14,6 +18,9 @@ private:
     Space *std1, *std2, *std3, *std4;
     Space *rid1, *rid2, *rid3;
     Space *health, *boss;
+    string attackOptions[4];
+    Warrior *braveWarrior;
+    bool keepPlaying;
 
 public:
     Menu();
@@ -26,6 +33,9 @@ public:
     // menus
     void intro();
     void mainMenu();
+    void betweenMovesMenu();
+    void moveWarriorMenu();
+    int attackMenu();
 };
 
 #endif

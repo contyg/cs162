@@ -10,8 +10,8 @@ class Space
 {
 
 protected:
-    Space* top;
-    Space* bottom;
+    Space* up;
+    Space* down;
     Space* left;
     Space* right;
     int column;
@@ -22,15 +22,15 @@ public:
     Space();
 
     //getters
-    Space* getTop();
-    Space* getBottom();
+    Space* getUp();
+    Space* getDown();
     Space* getLeft();
     Space* getRight();
     string getType();
 
     //setters
     void setType(string t);
-    void setLinkedSpaces(Space* T, Space* B, Space* L, Space* R);
+    void setLinkedSpaces(Space* U, Space* D, Space* L, Space* R);
 
     //virtual functions
     virtual int healthPenalty();

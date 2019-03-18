@@ -4,6 +4,7 @@
 #include "health.hpp"
 #include "riddle.hpp"
 #include "standard.hpp"
+#include "warrior.hpp"
 #include "validate.hpp"
 #include <iostream>
 
@@ -41,6 +42,18 @@ Menu::Menu()
 
     health->setLinkedSpaces(std2, rid3, rid2, std3);
     boss->setLinkedSpaces(std3, nullptr, rid3, nullptr);
+
+    // fill attack options
+    attackOptions[0] = "Choose your attack: ";
+    attackOptions[1] = "\n    1: Fight with your fists (1pt)";
+    attackOptions[2] = "\n    2: Fight with your sword (2pt)";
+    attackOptions[3] = "\n    3: Use the Trifecta (6pt)";
+
+    // establish warrior
+    braveWarrior = new Warrior();
+    braveWarrior->setLocation(std1);
+
+    keepPlaying = true;
 }
 
 Menu::~Menu()
@@ -178,4 +191,57 @@ void Menu::mainMenu()
         default:
             cout << "\033[0;33mHave a nice day! :D\033[0m" << endl;
     }
+}
+
+void Menu::betweenMovesMenu()
+{
+    cout << "What would you like to do next?"
+    << "\n    1: Print map (Costs 1 strenth point)"
+    << "\n    2: Print map and show where you are (Costs 2 strenth points)"
+    << "\n    3: Check contents of your backpack"
+    << "\n    4: Check your health"
+    << "\n    5: Move 1 space" << endl;
+    
+    int choice = getIntegerBetween(1, 5);
+
+    switch (choice)
+    {
+        case 2:
+            braveWarrior->updateStrength(-1);
+            //TODO: put use coordinates
+            printMap(2, 3);
+        case 3: 
+            //TODO: print backpack contents
+        case 4: 
+            moveWarriorMenu();
+            betweenMovesMenu();
+        case 5:
+            cout << "Your current health is " << braveWarrior->getStrength() << endl;
+            betweenMovesMenu();
+        default:
+            braveWarrior->updateStrength(-1);
+            printMap();
+
+    }
+}
+
+void Menu::moveWarriorMenu()
+{
+    // TODO: available options?
+    cout << "Which direction would you like to move?" << endl;
+    
+    //TODO: move warrior
+}
+
+int Menu::attackMenu()
+{
+    int optionCount = braveWarrior->getOptionCount();
+    for (int i = 0; i < optionCount; i++)
+    {
+        cout << attackOptions[i] << endl; 
+    }
+
+    int choice = getIntegerBetween(1, optionCount);
+
+    return choice;
 }
