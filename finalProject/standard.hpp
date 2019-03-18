@@ -8,7 +8,7 @@ class Standard : public Space
 {
 public:
     //constructor
-    Standard();
+    Standard(int r, int c);
 
     virtual int healthPenalty();
 };

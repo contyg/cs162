@@ -27,6 +27,8 @@ public:
     Space* getLeft();
     Space* getRight();
     string getType();
+    int getRow();
+    int getColumn();
 
     //setters
     void setType(string t);
@@ -34,6 +36,8 @@ public:
 
     //virtual functions
     virtual int healthPenalty();
+    virtual int action();
+
 };
 
 #endif

@@ -8,7 +8,7 @@ class Boss : public Space
 {
 public:
     //constructor
-    Boss();
+    Boss(int r, int c);
 
     virtual int healthPenalty();
 };

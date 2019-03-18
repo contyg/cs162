@@ -3,6 +3,7 @@
 #define WARRIOR_hpp
 
 #include "space.hpp"
+#include "backpack.hpp"
 
 class Warrior
 {
@@ -10,6 +11,7 @@ private:
     int strength;
     int optionCount;
     Space* location;
+    Backpack* backpack;
 
 public:
     Warrior();
@@ -18,6 +20,7 @@ public:
     int getOptionCount();
     int getStrength();
     Space* getLocation();
+    Backpack* getBackpack();
 
     //setters
     void setLocation(Space* space);
@@ -26,7 +29,7 @@ public:
     void updateStrength(int factor);
     int attack(int choice);
     int defense(int damage);
-    void move(int choice);
+    int move();
 };
 
 #endif

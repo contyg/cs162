@@ -20,27 +20,30 @@ using std::endl;
 Menu::Menu()
 {
     // make various spaces
-    std1 = new Standard(); 
-    std2 = new Standard(); 
-    std3 = new Standard();
-    std4 = new Standard();
-    rid1 = new Riddle(); 
-    rid2 = new Riddle(); 
-    rid3 = new Riddle();
-    health = new Health(); 
-    boss = new Boss();
+    std1 = new Standard(0, 0); 
+    std2 = new Standard(0, 1); 
+    rid1 = new Riddle(0, 2); 
+    
+    rid2 = new Riddle(1, 0); 
+    health = new Health(1, 1);
+    std3 = new Standard(1, 2);
+    
+    std4 = new Standard(2, 0);
+    rid3 = new Riddle(2, 1); 
+    boss = new Boss(2, 2); 
 
     // link the map spaces
     std1->setLinkedSpaces(nullptr, rid2, nullptr, std2);
     std2->setLinkedSpaces(nullptr, health, std1, rid1);
-    std3->setLinkedSpaces(rid1, boss, health, nullptr);
-    std4->setLinkedSpaces(rid2, nullptr, nullptr, rid3);
-
     rid1->setLinkedSpaces(nullptr, std3, std2, nullptr);
-    rid2->setLinkedSpaces(std1, std4, nullptr, health);
-    rid3->setLinkedSpaces(health, nullptr, std4, boss);
 
+
+    rid2->setLinkedSpaces(std1, std4, nullptr, health);
     health->setLinkedSpaces(std2, rid3, rid2, std3);
+    std3->setLinkedSpaces(rid1, boss, health, nullptr);
+
+    std4->setLinkedSpaces(rid2, nullptr, nullptr, rid3);
+    rid3->setLinkedSpaces(health, nullptr, std4, boss);
     boss->setLinkedSpaces(std3, nullptr, rid3, nullptr);
 
     // fill attack options
@@ -169,30 +172,6 @@ void Menu::intro()
     cout << "INTRODUCTION AND GOALS AND STUFF" << endl;
 }
 
-void Menu::mainMenu()
-{
-    // colorful menu with prompts for function choice
-    cout << "\n\033[1;36mWhich function would you like to use?\033[0m"
-    << "\n   \033[0;36m1\033[0m: Print the board"
-    << "\n   \033[0;36m2\033[0m: Print with user at B2"
-    << endl;
-
-    int input = getIntegerBetween(0, 2);
-
-    // trigger action according to user's choice
-    switch (input)
-    {
-        case 1: 
-            printMap();
-            break;
-        case 2:
-            printMap(1, 1);
-            break;
-        default:
-            cout << "\033[0;33mHave a nice day! :D\033[0m" << endl;
-    }
-}
-
 void Menu::betweenMovesMenu()
 {
     cout << "What would you like to do next?"
@@ -200,27 +179,34 @@ void Menu::betweenMovesMenu()
     << "\n    2: Print map and show where you are (Costs 2 strenth points)"
     << "\n    3: Check contents of your backpack"
     << "\n    4: Check your health"
-    << "\n    5: Move 1 space" << endl;
+    << "\n    5: Move 1 space" 
+    << "\n    0: Exit"<< endl;
     
     int choice = getIntegerBetween(1, 5);
 
     switch (choice)
     {
-        case 2:
-            braveWarrior->updateStrength(-1);
-            //TODO: put use coordinates
-            printMap(2, 3);
-        case 3: 
-            //TODO: print backpack contents
-        case 4: 
-            moveWarriorMenu();
-            betweenMovesMenu();
-        case 5:
-            cout << "Your current health is " << braveWarrior->getStrength() << endl;
-            betweenMovesMenu();
-        default:
+        case 1: 
             braveWarrior->updateStrength(-1);
             printMap();
+            break;
+        case 2:
+            braveWarrior->updateStrength(-1);
+            printMap(braveWarrior->getLocation()->getColumn(), braveWarrior->getLocation()->getRow());
+            break;
+        case 3: 
+            braveWarrior->getBackpack()->printContents();
+        case 4: 
+            moveWarriorMenu();
+            braveWarrior->move();
+            break;
+        case 5:
+            cout << "Your current health is " << braveWarrior->getStrength() << endl;
+            break;
+        default:
+            keepPlaying = false;
+            cout << "MK BYE THEN" << endl;
+            break;
 
     }
 }
@@ -290,4 +276,13 @@ int Menu::attackMenu()
     int choice = getIntegerBetween(1, optionCount);
 
     return choice;
+}
+
+void Menu::playGame()
+{
+    do
+    {
+        betweenMovesMenu();
+    } while (keepPlaying);
+    
 }

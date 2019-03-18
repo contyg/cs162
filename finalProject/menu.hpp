@@ -32,10 +32,11 @@ public:
 
     // menus
     void intro();
-    void mainMenu();
     void betweenMovesMenu();
     void moveWarriorMenu();
     int attackMenu();
+
+    void playGame();
 };
 
 #endif

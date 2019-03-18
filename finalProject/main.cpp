@@ -11,6 +11,6 @@ int main()
 {
     Menu game;
     game.intro();
-    game.mainMenu();
+    game.playGame();
     return 0;
 }

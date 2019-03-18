@@ -9,6 +9,8 @@ Space::Space()
     left = nullptr;
     right = nullptr;
     type = "";
+    row = 0;
+    column = 0;
 }
 
 Space* Space::getUp()
@@ -36,6 +38,16 @@ string Space::getType()
     return type;
 }
 
+int Space::getRow()
+{
+    return row;
+}
+
+int Space::getColumn()
+{
+    return column;
+}
+
 void Space::setType(string t)
 {
     type = t;
@@ -53,3 +65,8 @@ int Space::healthPenalty()
 {
     return 0;
 };
+
+int action()
+{
+    return 0;
+}

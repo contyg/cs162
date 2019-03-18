@@ -8,7 +8,7 @@ class Health : public Space
 {
 public:
     //constructor
-    Health();
+    Health(int r, int c);
 
     virtual int healthPenalty();
 };

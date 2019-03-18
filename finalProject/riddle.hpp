@@ -8,7 +8,7 @@ class Riddle : public Space
 {
 public:
     //constructor
-    Riddle();
+    Riddle(int r, int c);
 
     virtual int healthPenalty();
 };

@@ -13,6 +13,7 @@ Warrior::Warrior()
     strength = 10;
     optionCount = 3;
     location = nullptr;
+    backpack = new Backpack();
 }
 
 int Warrior::getOptionCount()
@@ -28,6 +29,11 @@ int Warrior::getStrength()
 Space* Warrior::getLocation()
 {
     return location;
+}
+
+Backpack* Warrior::getBackpack()
+{
+    return backpack;
 }
 
 void Warrior::setLocation(Space* space)
@@ -77,7 +83,8 @@ int Warrior::defense(int damage)
     return damage;
 }
 
-void move(int choice)
+int Warrior::move()
 {
-
+    int damageTaken = location->action();
+    updateStrength(damageTaken);
 }
