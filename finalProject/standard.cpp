@@ -6,6 +6,7 @@ Standard::Standard(int r, int c) : Space()
     type = "Standard";
     row = r;
     column = c;
+    health = 0;
 }
 
 int Standard::action()
@@ -18,4 +19,6 @@ int Standard::getHealth()
     return 0;
 }
 
-void Standard::setHealth(int damage){}
+void Standard::setHealth(int h){}
+
+void Standard::updateHealth(int damage){}

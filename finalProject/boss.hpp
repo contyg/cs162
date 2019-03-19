@@ -6,8 +6,6 @@
 
 class Boss : public Space
 {
-private:
-    int health;
 
 public:
     //constructor
@@ -15,7 +13,8 @@ public:
 
     virtual int action();
     virtual int getHealth();
-    virtual void setHealth(int damage);
+    virtual void setHealth(int h);
+    virtual void updateHealth(int damage);
 };
 
 #endif

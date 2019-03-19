@@ -27,7 +27,12 @@ int Boss::getHealth()
     return health;
 }
 
-void Boss::setHealth(int damage)
+void Boss::setHealth(int h)
+{
+    health = h;
+}
+
+void Boss::updateHealth(int damage)
 {
     health -= damage;
 }

@@ -85,11 +85,11 @@ void Menu::printMap(int userRow, int userColumn)
             {
                 if (i == userColumn && j == userRow)
                 {
-                    cout << "\033[0;34m[\033[0m" << "X" << "\033[0;34m]\033[0m";
+                    cout << "\033[1;34m[\033[0m" << "X" << "\033[1;34m]\033[0m";
                 }
                 else
                 {
-                    cout << "\033[0;34m[ ]\033[0m";
+                    cout << "\033[1;34m[ ]\033[0m";
                 }
             }
             // health, pink
@@ -97,11 +97,11 @@ void Menu::printMap(int userRow, int userColumn)
             {
                 if (i == userColumn && j == userRow)
                 {
-                    cout << "\033[0;35m[\033[0m" << "X" << "\033[0;35m]\033[0m";
+                    cout << "\033[1;35m[\033[0m" << "X" << "\033[1;35m]\033[0m";
                 }
                 else
                 {
-                    cout << "\033[0;35m[ ]\033[0m";
+                    cout << "\033[1;35m[ ]\033[0m";
                 }
             }
             // boss, green
@@ -109,11 +109,11 @@ void Menu::printMap(int userRow, int userColumn)
             {
                 if (i == userColumn && j == userRow)
                 {
-                    cout << "\033[0;32m[\033[0m" << "X" << "\033[0;32m]\033[0m";
+                    cout << "\033[1;32m[\033[0m" << "X" << "\033[1;32m]\033[0m";
                 }
                 else
                 {
-                    cout << "\033[0;32m[ ]\033[0m";
+                    cout << "\033[1;32m[ ]\033[0m";
                 }
             }
             // standard spaces, white
@@ -121,7 +121,7 @@ void Menu::printMap(int userRow, int userColumn)
             {
                 if (i == userColumn && j == userRow)
                 {
-                    cout << "\033[1;37m[\033[0m" << "X" << "\033[0;37m]\033[0m";
+                    cout << "\033[1;37m[\033[0m" << "X" << "\033[1;37m]\033[0m";
                 }
                 else
                 {
@@ -169,18 +169,18 @@ void Menu::printMap()
 
 void Menu::intro()
 {
-    cout << "INTRODUCTION AND GOALS AND STUFF" << endl;
+    cout << "\033[0;36mINTRODUCTION AND GOALS AND STUFF\033[0m" << endl;
 }
 
 int Menu::betweenMovesMenu()
 {
-    cout << "What would you like to do next?"
-    << "\n    1: Print map (Costs 1 strenth point)"
-    << "\n    2: Print map and show where you are (Costs 2 strenth points)"
-    << "\n    3: Check contents of your backpack"
-    << "\n    4: Check your health"
-    << "\n    5: Move 1 space" 
-    << "\n    0: Exit"<< endl;
+    cout << "\033[0;36mWhat would you like to do next?\033[0m"
+    << "\n    \033[0;36m1\033[0m: Print map (Costs 1 strenth point)"
+    << "\n    \033[0;36m2\033[0m: Print map and show where you are (Costs 2 strenth points)"
+    << "\n    \033[0;36m3\033[0m: Check contents of your backpack"
+    << "\n    \033[0;36m4\033[0m: Check your health"
+    << "\n    \033[0;36m5\033[0m: Move 1 space" 
+    << "\n    \033[0;37m0\033[0m: Exit"<< endl;
     
     int choice = getIntegerBetween(0, 5);
     return choice;
@@ -194,29 +194,29 @@ char Menu::moveWarriorMenu()
     char left = '-';
     char right = '-';
 
-    cout << "Which direction would you like to move?" << endl;
+    cout << "\033[0;36mWhich direction would you like to move?\033[0m" << endl;
     
     if (location->getUp() != nullptr)
     {
-        cout << "   U: Up to a " << location->getUp()->getType() << endl;
+        cout << "   \033[0;36mU\033[0m: Up to a " << location->getUp()->getType() << endl;
         up = 'U';
     }
 
     if (location->getDown() != nullptr)
     {
-        cout << "   D: Down to a " << location->getDown()->getType() << endl;
+        cout << "   \033[0;36mD\033[0m: Down to a " << location->getDown()->getType() << endl;
         down = 'D';
     }
 
     if (location->getLeft() != nullptr)
     {
-        cout << "   L: Left to a " << location->getLeft()->getType() << endl;
+        cout << "   \033[0;36mL\033[0m: Left to a " << location->getLeft()->getType() << endl;
         left = 'L';
     }
 
     if (location->getRight() != nullptr)
     {
-        cout << "   R: Right to a " << location->getRight()->getType() << endl;
+        cout << "   \033[0;36mR\033[0m: Right to a " << location->getRight()->getType() << endl;
         right = 'R';
     }
 
@@ -239,10 +239,11 @@ int Menu::attackMenu()
 
 void Menu::battleMenu()
 {
-    cout << "It is time to engage the boss. Hope you ready bish" << endl;
+    cout << "\033[0;36mIt is time to engage the boss. Have your Trifecta ready!\033[0m" << endl;
     
     // reset boss health
     boss->setHealth(15);
+    
     
     // attack loops
     do
@@ -250,7 +251,7 @@ void Menu::battleMenu()
         // attack boss
         int attackChoice = attackMenu();
         int attackDamage = braveWarrior->attack(attackChoice);
-        boss->setHealth(attackDamage);
+        boss->updateHealth(attackDamage);
 
         // boss attack and warrior defense
         int bossAttackDamage = boss->action();
@@ -269,6 +270,7 @@ void Menu::battleMenu()
     {
         cout << "Boss killed you" << endl;
     }
+    keepPlaying = false;
 }
 
 void Menu::playGame()
@@ -292,13 +294,13 @@ void Menu::playGame()
                 braveWarrior->getBackpack()->printContents();
                 break;
             case 4: 
-                cout << "Your current health is " << braveWarrior->getStrength() << endl;
+                cout << "\033[0;35mYour current health is " << braveWarrior->getStrength() << "\033[0m \n" << endl;
                 break;
             case 5:
             {
                 char moveChoice = moveWarriorMenu();
                 braveWarrior->move(moveChoice); 
-                if (braveWarrior->getLocation()->getType() == "\033[0;32Boss\033[0m")
+                if (braveWarrior->getLocation()->getType() == "\033[0;32mBoss\033[0m")
                 {
                     battleMenu();
                 }
@@ -317,4 +319,6 @@ void Menu::playGame()
             keepPlaying = false;
         }
     } while (keepPlaying);
+
+    cout << "U FINISHED BYE" << endl;
 }

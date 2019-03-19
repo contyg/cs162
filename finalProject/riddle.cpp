@@ -12,19 +12,26 @@ Riddle::Riddle(int r, int c) : Space()
     type = "\033[0;34mRiddle\033[0m";
     row = r;
     column = c;
+    health = 0;
 }
 
 int Riddle::action()
 {
     int damage = -2; 
-    if (row == 0)
+    
+    if (health == 1)
+    {
+        cout << "You've solved this riddle already!" << endl;
+    }
+    else if (row == 0)
     {
         cout << "RIDDLE 0: words" << endl;
         cout << "RIDDLE 0: 2" << endl;
         int input = getIntegerBetween(0, 4);
-
+        
         if (input == 2)
         {
+            health = 1;
             damage = 0;
         }
     }
@@ -37,11 +44,13 @@ int Riddle::action()
 
         if (input == 3)
         {
+            health = 1;
             damage = 0;
         }
     }
-    else
+    else if (row == 2)
     {
+        health = 1;
         cout << "RIDDLE 2: words" << endl;
         cout << "RIDDLE 2: 2" << endl;
 
@@ -49,16 +58,19 @@ int Riddle::action()
 
         if (input == 2)
         {
+            health = 1;
             damage = 0;
         }
-    }
+    } 
 
     return damage;
 }
 
 int Riddle::getHealth()
 {
-    return 0;
+    return health;
 }
 
-void Riddle::setHealth(int damage){}
+void Riddle::setHealth(int h){}
+
+void Riddle::updateHealth(int damage){}

@@ -17,6 +17,7 @@ protected:
     int column;
     int row;
     string type;
+    int health;
 
 public:
     Space();
@@ -38,7 +39,8 @@ public:
     virtual ~Space();
     virtual int action();
     virtual int getHealth();
-    virtual void setHealth(int damage);
+    virtual void setHealth(int h);
+    virtual void updateHealth(int damage);
 };
 
 #endif

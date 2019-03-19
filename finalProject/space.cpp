@@ -74,4 +74,6 @@ int Space::getHealth()
     return 0;
 }
 
-void Space::setHealth(int damage){}
+void Space::setHealth(int h){}
+
+void Space::updateHealth(int damage){}

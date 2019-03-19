@@ -22,18 +22,19 @@ Backpack::~Backpack()
     }
 }
 
+// adds to tail
 void Backpack::addItem(string item)
-{
-    if (head == nullptr) // check if list is empty
+{ 
+    if (tail == nullptr) // check if list is empty
     {
-		head = new Item(item);
-		tail = head;
+		tail = new Item(item);
+        head = tail;
         itemCount++;
-	} 		
+	} 
     else 
     {
-		head = new Item(item, nullptr, head);
-		head->next->prev = head;
+		tail = new Item(item, tail, nullptr);
+        tail->prev->next = tail;
         itemCount++;
 	}
 }
@@ -42,11 +43,11 @@ void Backpack::printContents()
 { 
     if (tail == nullptr) // check if list is empty
     {
-		cout << "There's nothing in your backpack yet!\n" << endl;
+		cout << "\033[0;33mThere's nothing in your backpack yet!\033[0m\n" << endl;
 	}
     else 
     {
-        cout << "\033[1;33mYour backpack contains:\033[0m" << endl;
+        cout << "\033[0;33mYour backpack contains:\033[0m" << endl;
 		Item* node = head;
 		while (node != nullptr) 
         {
