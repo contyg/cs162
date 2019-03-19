@@ -182,7 +182,7 @@ int Menu::betweenMovesMenu()
     << "\n    5: Move 1 space" 
     << "\n    0: Exit"<< endl;
     
-    int choice = getIntegerBetween(1, 5);
+    int choice = getIntegerBetween(0, 5);
     return choice;
 }
 
@@ -290,7 +290,11 @@ void Menu::playGame()
                 break;
             case 3: 
                 braveWarrior->getBackpack()->printContents();
+                break;
             case 4: 
+                cout << "Your current health is " << braveWarrior->getStrength() << endl;
+                break;
+            case 5:
             {
                 char moveChoice = moveWarriorMenu();
                 braveWarrior->move(moveChoice); 
@@ -299,10 +303,7 @@ void Menu::playGame()
                     battleMenu();
                 }
             }
-                break;
-            case 5:
-                cout << "Your current health is " << braveWarrior->getStrength() << endl;
-                break;
+                break;  
             default:
                 keepPlaying = false;
                 cout << "MK BYE THEN" << endl;
