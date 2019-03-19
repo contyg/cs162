@@ -285,7 +285,7 @@ void Menu::playGame()
                 printMap();
                 break;
             case 2:
-                braveWarrior->updateStrength(-2);
+                //braveWarrior->updateStrength(-2);
                 printMap(braveWarrior->getLocation()->getColumn(), braveWarrior->getLocation()->getRow());
                 break;
             case 3: 
@@ -298,7 +298,7 @@ void Menu::playGame()
             {
                 char moveChoice = moveWarriorMenu();
                 braveWarrior->move(moveChoice); 
-                if (braveWarrior->getLocation()->getType() != "\033[0;32Boss\033[0m")
+                if (braveWarrior->getLocation()->getType() == "\033[0;32Boss\033[0m")
                 {
                     battleMenu();
                 }
