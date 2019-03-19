@@ -83,7 +83,7 @@ void Menu::printMap(int userRow, int userColumn)
             // riddle, purple
             if ((i == 1 && j == 0) || (i == 2 && j == 1) || (i == 0 && j == 2))
             {
-                if (i == userRow && j == userColumn)
+                if (i == userColumn && j == userRow)
                 {
                     cout << "\033[0;34m[\033[0m" << "X" << "\033[0;34m]\033[0m";
                 }
@@ -95,7 +95,7 @@ void Menu::printMap(int userRow, int userColumn)
             // health, pink
             else if (i == 1 && j == 1)
             {
-                if (i == userRow && j == userColumn)
+                if (i == userColumn && j == userRow)
                 {
                     cout << "\033[0;35m[\033[0m" << "X" << "\033[0;35m]\033[0m";
                 }
@@ -107,7 +107,7 @@ void Menu::printMap(int userRow, int userColumn)
             // boss, green
             else if (i == 2 && j == 2)
             {
-                if (i == userRow && j == userColumn)
+                if (i == userColumn && j == userRow)
                 {
                     cout << "\033[0;32m[\033[0m" << "X" << "\033[0;32m]\033[0m";
                 }
@@ -119,7 +119,7 @@ void Menu::printMap(int userRow, int userColumn)
             // standard spaces, white
             else
             {
-                if (i == userRow && j == userColumn)
+                if (i == userColumn && j == userRow)
                 {
                     cout << "\033[1;37m[\033[0m" << "X" << "\033[0;37m]\033[0m";
                 }
@@ -227,7 +227,7 @@ char Menu::moveWarriorMenu()
 int Menu::attackMenu()
 {
     int optionCount = braveWarrior->getOptionCount();
-    for (int i = 0; i < optionCount; i++)
+    for (int i = 0; i < (optionCount+1); i++)
     {
         cout << attackOptions[i] << endl; 
     }

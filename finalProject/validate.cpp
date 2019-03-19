@@ -26,7 +26,8 @@ int getInteger()
     }
     else
     {
-        int input = (int)testInput;        
+        int input = (int)testInput;   
+        cin.clear();  
         return input;
     }
 }
@@ -49,18 +50,22 @@ int getIntegerBetween(int min, int max)
         cout << "\033[1;31m ERROR: Please enter an integer that is above or equal to "<< min <<" \033[0m\n" << endl;
         return getIntegerBetween(min, max); //loop back to begin input process
     }
-
+    cin.clear();
+    // cin.ignore(10000, '\n');
     return input;
 }
 
 char getCharMatch(char c1, char c2, char c3, char c4)
 {
     char input;
-
+    cin.clear();
+    cin.ignore((unsigned)-1, '\n');
     cin.get(input);
 
     if ((input == c1 || input == c2 || input == c3 || input == c4) && input != '-')
     {
+        cin.clear();
+        // cin.ignore((unsigned)-1, '\n');
         return input;
     }
 
