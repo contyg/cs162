@@ -50,7 +50,7 @@ Menu::Menu()
     attackOptions[0] = "Choose your attack: ";
     attackOptions[1] = "\n    1: Fight with your fists (1pt)";
     attackOptions[2] = "\n    2: Fight with your sword (3pt)";
-    attackOptions[3] = "\n    3: Use the Trifecta (6pt)";
+    attackOptions[3] = "\n    0: Use the Trifecta (6pt)";
 
     // establish warrior
     braveWarrior = new Warrior();
@@ -227,12 +227,22 @@ char Menu::moveWarriorMenu()
 int Menu::attackMenu()
 {
     int optionCount = braveWarrior->getOptionCount();
+    int choice;
     for (int i = 0; i < (optionCount+1); i++)
     {
         cout << attackOptions[i] << endl; 
     }
 
-    int choice = getIntegerBetween(1, optionCount);
+    // print trifecta as choice if available and not used
+    if(braveWarrior->getBackpack()->getFull() && !braveWarrior->getBackpack()->getTrifectaUsed())
+    {
+        cout << attackOptions[3] << endl;
+        choice = getIntegerBetween(0, optionCount);
+    } 
+    else // print other options
+    {
+        choice = getIntegerBetween(1, optionCount);
+    }
 
     return choice;
 }
@@ -243,7 +253,6 @@ void Menu::battleMenu()
     
     // reset boss health
     boss->setHealth(15);
-    
     
     // attack loops
     do
@@ -262,7 +271,7 @@ void Menu::battleMenu()
         << "\n    Boss Health: " << boss->getHealth() << endl;
     } while (braveWarrior->getStrength() > 0 && boss->getHealth() > 0) ;
     
-    if(braveWarrior->getStrength() > 0 && boss->getHealth() < 0)
+    if(braveWarrior->getStrength() > 0 && boss->getHealth() <= 0)
     {
         cout << "You've WON!" << endl;
     }

@@ -11,7 +11,7 @@ using std::endl;
 Warrior::Warrior()
 {
     strength = 15;
-    optionCount = 3;
+    optionCount = 2;
     location = nullptr;
     backpack = new Backpack();
 }
@@ -47,11 +47,11 @@ void Warrior::updateStrength(int factor)
 
     if (strength < 4)
     {
-        optionCount = 1;
+        optionCount = 0;
     }
     else if (strength < 8)
     {
-        optionCount = 2;
+        optionCount = 4;
     }
 }
 
@@ -59,8 +59,9 @@ int Warrior::attack(int choice)
 {
     switch (choice)
     {
-        case 3:
+        case 0:
             cout << "THE TRIFECTA " << endl;
+            backpack->setTrifectaUsed(true);
             return 6;
         case 2:
             cout << "Sword attack!" << endl;
@@ -128,11 +129,4 @@ void Warrior::move(char choice)
             updateStrength(damageTaken);
         }
     }
-    // TODO: boss battle
-    // else
-    // {
-        
-    // }
-    
-    
 }

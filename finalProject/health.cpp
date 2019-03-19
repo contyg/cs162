@@ -22,7 +22,7 @@ int Health::action()
         return 2;
     }
     cout << "\033[0;35mYou've already picked up health points from this square.\033[0m" << endl;
-    return 0;
+    return -1;
 }
 
 int Health::getHealth()

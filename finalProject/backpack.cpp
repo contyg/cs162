@@ -9,6 +9,8 @@ Backpack::Backpack()
     head = nullptr;
 	tail = nullptr;
     itemCount = 0;
+    trifectaUsed = false;
+    full = false;
 }
 
 Backpack::~Backpack()
@@ -25,6 +27,7 @@ Backpack::~Backpack()
 // adds to tail
 void Backpack::addItem(string item)
 { 
+    cout << "You won a new piece of the trifecta: " << item << endl;
     if (tail == nullptr) // check if list is empty
     {
 		tail = new Item(item);
@@ -36,7 +39,12 @@ void Backpack::addItem(string item)
 		tail = new Item(item, tail, nullptr);
         tail->prev->next = tail;
         itemCount++;
-	}
+    }
+    
+    if (itemCount == 3)
+    {
+        full = true;
+    }
 }
 
 void Backpack::printContents()
@@ -62,5 +70,21 @@ void Backpack::printContents()
 int Backpack::getItemCount()
 {
     return itemCount;
+}
+
+bool Backpack::getFull()
+{
+    return full;
+}
+
+bool Backpack::getTrifectaUsed()
+{
+    return trifectaUsed;
+}
+
+
+void Backpack::setTrifectaUsed(bool val)
+{
+    trifectaUsed = val;
 }
 
