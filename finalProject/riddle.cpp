@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The definition of the riddle class. Contains all the
+**              riddles and distributes trifecta pieces. 
+*********************************************************************/
 #include "riddle.hpp"
 #include "validate.hpp"
 #include <iostream>

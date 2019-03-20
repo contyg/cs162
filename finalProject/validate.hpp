@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Algorithms Lab 
+** Program name: The Sphinxes and the Trifecta 
 ** Description: Declaration of Validation functions   
 *********************************************************************/
 

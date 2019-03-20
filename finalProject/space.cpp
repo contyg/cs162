@@ -1,4 +1,9 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The definition of the Space class. Contains the base
+**              for all the space class: health, boss, standard, and
+**              riddle. 
+*********************************************************************/
 #include "space.hpp"
 #include <iostream>
 

@@ -1,4 +1,9 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the Boss class. Represents the gargoyle
+**              which will need to be defeated with the trifecta to win
+**              the game
+*********************************************************************/
 #ifndef BOSS_HPP
 #define BOSS_HPP
 

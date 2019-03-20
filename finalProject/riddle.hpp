@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the riddle class. Contains all the
+**              riddles and distributes trifecta pieces. 
+*********************************************************************/
 #ifndef RIDDLE_HPP
 #define RIDDLE_HPP
 

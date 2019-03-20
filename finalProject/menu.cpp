@@ -1,4 +1,9 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the Menu class. Contains all the
+**              menus for all actions in the game. Contains main game
+**              loop
+*********************************************************************/
 #include "menu.hpp"
 #include "boss.hpp"
 #include "health.hpp"

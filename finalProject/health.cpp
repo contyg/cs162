@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the Health class. Gives the user 
+**              extra health points the first time it is occupied.
+*********************************************************************/
 #include "health.hpp"
 #include <iostream>
 

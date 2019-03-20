@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The definition of the Space class. Contains the
+**              attack, move and defense functions for the warrior
+*********************************************************************/
 #include "warrior.hpp"
 #include "backpack.hpp"
 #include <iostream>

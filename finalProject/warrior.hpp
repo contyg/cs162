@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the Warrior class. Contains the
+**              attack, move and defense functions for the warrior
+*********************************************************************/
 #ifndef WARRIOR_hpp
 #define WARRIOR_hpp
 

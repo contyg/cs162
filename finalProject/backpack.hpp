@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the backpack class. This will hold
+**              the trifecta pieces as collected.
+*********************************************************************/
 #ifndef BACKPACK_hpp
 #define BACKPACK_hpp
 #include <iostream>

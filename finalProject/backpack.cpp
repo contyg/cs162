@@ -1,4 +1,8 @@
-//TODO: description
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The definition of the backpack class. This will hold
+**              the trifecta pieces as collected.
+*********************************************************************/
 #include "backpack.hpp"
 #include <iostream>
 #include <string>

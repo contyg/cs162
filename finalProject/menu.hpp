@@ -1,3 +1,9 @@
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The definition of the Menu class. Contains all the
+**              menus for all actions in the game. Contains main game
+**              loop
+*********************************************************************/
 #ifndef MENU_H
 #define MENU_H
 

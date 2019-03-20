@@ -1,5 +1,5 @@
 /********************************************************************* 
-** Program name: Stack and Queue STL Containers Lab
+** Program name: The Sphinxes and the Trifecta
 ** Description: Definition of Validate functions 
 *********************************************************************/
 

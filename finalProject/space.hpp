@@ -1,5 +1,9 @@
-//TODO: description
-
+/********************************************************************* 
+** Program name: The Sphinxes and the Trifecta  
+** Description: The declaration of the Space class. Contains the base
+**              for all the space class: health, boss, standard, and
+**              riddle. 
+*********************************************************************/
 #ifndef SPACE_hpp
 #define SPACE_hpp
 
