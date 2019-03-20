@@ -171,20 +171,23 @@ void Menu::printMap()
 
 void Menu::intro()
 {
-    cout << "\033[0;36mHELP! Brave Warrior, my people are glad you have found us! An evil Gargoyle has taken the TRIFECTA, the core of our land. \n"
-    << "Without our Trifecta, we cannot survive the night! It is the key to our powers and our life forces. The Gargoyle has broken apart our trifecta \n"
-    << "and hidden it in the temples of our Sphinxes. The Sphinxes are ancient beings who've resented our presence on this land for eons. They will not \n"
-    << "hand over our sacred items unless we solve their cryptic riddles first. Our greatest warriors have tried and failed to recover our Trifecta from them! \n"
-    << "Brave Warrior, will you help us?\n\033[0m"
+    cout << "\033[1;36m"
+    << "HELP!\033[0m \033[0;36mBrave Warrior, my people are glad you have found us! An evil Gargoyle has taken the TRIFECTA, the core\n"
+    << "of our land. Without our Trifecta, we cannot survive the night! It is the key to our powers and our life \n"
+    << "forces. The Gargoyle has broken apart our trifecta and hidden it in the temples of our Sphinxes. The Sphinxes\n"
+    << "are ancient beings who've resented our presence on this land for eons. They will not hand over our items\n"
+    << "unless we solve their cryptic riddles first. Our greatest warriors have tried and failed to recover our \n"
+    << "Trifecta from them!\033[0m \033[1;36mBrave Warrior, will you help us?\n\033[0m"
 
-    <<"\n\n\033[0;37mYes I will help you. What must I do?\n\033[0m"
+    <<"\n\n\033[0;37mYes I will help you. What must I do?\n\033[0m\n\n\033[0;36m"
 
-    <<"\n\n\033[0;36mThank you Brave Warrior! To retrieve our Trifecta, you must solve the riddles of the 3 sphinxes and defeat the Gargoyle. You will not be able \n"
-    <<"to defeat the Gargoyle without it! One of our fallen fighters dropped a health potion along the way. Use it wisely for it will only work once. \n"
-    <<"Once you have the Trifecta, use it on the Gargoyle to critcally wound him. This will make him susceptible to you mortal weapons. \n"
-    <<"Use your map, but be careful! And remember, every step you take will deplete your strength a little more.\n\n"
-    <<"We can give you a sword, a shield, and this map. The Gargoyle has cursed it so that those who look upon it loose strength. Use these artifacts wisely.\n\n"
-    <<"Best of luck Brave Warrior. Go forth! Find your glory and save us all!\n\033[0m\n" << endl;
+    <<"Thank you Brave Warrior! To retrieve our Trifecta, you must solve the riddles of the 3 sphinxes and defeat the \n"
+    <<"Gargoyle. You will not be able to defeat the Gargoyle without it! One of our fallen fighters dropped a health \n"
+    <<"potion along the way. Use it wisely for it will only work once. Once you have the Trifecta, use it on the \n"
+    <<"Gargoyle to critcally wound him. This will make him susceptible to you mortal weapons.\n\n" 
+    << "We can give you\033[0m\033[1;36m a sword, a shield, and a map\033[0m\033[0;36m. The Gargoyle has cursed the map so that those who look upon it\n"
+    << "loose strength. Use these artifacts wisely.\n\n"
+    << "Best of luck Brave Warrior. Go forth! Find your glory and save us all!\n\033[0m\n" << endl;
 }
 
 int Menu::betweenMovesMenu()
