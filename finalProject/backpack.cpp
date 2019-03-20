@@ -1,3 +1,4 @@
+//TODO: description
 #include "backpack.hpp"
 #include <iostream>
 #include <string>
@@ -29,7 +30,7 @@ Backpack::~Backpack()
 // adds to tail
 void Backpack::addItem(string item)
 { 
-    cout << "You won a new piece of the trifecta: " << item << endl;
+    cout << "\033[0;33mYou won a new piece of the trifecta: \033[0m\n\033[1;33m" << item << "\033[0m\n" << endl;
     if (tail == nullptr) // check if list is empty
     {
 		tail = new Item(item);

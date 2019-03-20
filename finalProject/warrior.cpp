@@ -61,14 +61,14 @@ int Warrior::attack(int choice)
     switch (choice)
     {
         case 0:
-            cout << "THE TRIFECTA " << endl;
+            cout << "\nENGAGE THE TRIFECTA " << endl;
             backpack->setTrifectaUsed(false);
             return 6;
         case 2:
             cout << "Sword attack!" << endl;
             return 3; 
         default:
-            cout << "RWAR the fists of furry!" << endl;
+            cout << "Fists of Furry!" << endl;
             return 1;
     }
 }

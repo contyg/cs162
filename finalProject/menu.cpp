@@ -74,6 +74,7 @@ Menu::~Menu()
     delete boss;
 }
 
+// print map with user position 
 void Menu::printMap(int userRow, int userColumn)
 {
     for (int i = 0; i < 3; i++)
@@ -135,6 +136,7 @@ void Menu::printMap(int userRow, int userColumn)
     cout << "\n" << endl;
 }
 
+// print map w/o user
 void Menu::printMap()
 {
     for (int i = 0; i < 3; i++)
