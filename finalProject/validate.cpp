@@ -50,8 +50,7 @@ int getIntegerBetween(int min, int max)
         cout << "\033[1;31m ERROR: Please enter an integer that is above or equal to "<< min <<" \033[0m\n" << endl;
         return getIntegerBetween(min, max); //loop back to begin input process
     }
-    // cin.clear();
-    // cin.ignore(10000, '\n');
+
     return input;
 }
 

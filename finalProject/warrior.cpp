@@ -60,32 +60,37 @@ void Warrior::updateStrength(int factor)
 // execute attack actions w/ various damage
 int Warrior::attack(int choice)
 {
+    int damage = 0;
     switch (choice)
     {
         case 0:
-            cout << "\nENGAGE THE TRIFECTA " << endl;
+            cout << "ATTACK: ENGAGE THE TRIFECTA " << endl;
             backpack->setTrifectaUsed(false); // don't allow trifecta used more than once;
-            return 6;
+            damage = -6;
+            break;
         case 2:
-            cout << "Sword attack!" << endl;
-            return 3; 
+            cout << "ATTACK: Swift Sword of Swiftness!" << endl;
+            damage = -3; 
+            break;
         default:
-            cout << "Fists of Furry!" << endl;
-            return 1;
+            cout << "ATTACK: Fists of Furry!" << endl;
+            damage = -1;
+            break;
     }
+    return damage;
 }
 
 // apply shield 50% of the time
 int Warrior::defense(int damage)
 {
     int shieldUp = rand()%2;
-    if (shieldUp)
+    if (!shieldUp)
     {
-        cout << "Shield up!" << endl;
-        return 0;
+        return damage;
     }
 
-    return damage;
+    cout << "Shield up!" << endl;
+    return 0;
 }
 
 // change warrior position
@@ -110,7 +115,7 @@ void Warrior::move(char choice)
     }
 
     // playout any actions with new location
-    if (location->getType() != "\033[0;32Boss\033[0m")
+    if (location->getType() != "\033[1;32mBoss\033[0m")
     {
         int damageTaken = location->action();
         if (damageTaken == 0)

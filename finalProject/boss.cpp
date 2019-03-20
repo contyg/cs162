@@ -1,5 +1,9 @@
 //TODO: description
 #include "boss.hpp"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 Boss::Boss(int r, int c) : Space()
 {
@@ -11,11 +15,11 @@ Boss::Boss(int r, int c) : Space()
 
 int Boss::action()
 {
-    if (health > 9)
+    if (health >= 10)
     {
-        return -6;
+        return -8;
     }
-    else if (health > 4)
+    else if (health >= 5)
     {
         return -3;
     }

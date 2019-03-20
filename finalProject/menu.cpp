@@ -273,7 +273,7 @@ int Menu::attackMenu()
 // battle menu and output for boss fight
 void Menu::battleMenu()
 {
-    cout << "\033[0;36mIt is time to engage the boss. Have your Trifecta ready!\033[0m" << endl;
+    cout << "\n\033[0;36mIt is time to engage the boss. Have your TRIFECTA ready!\033[0m\n" << endl;
     
     // reset boss health
     boss->setHealth(15);
@@ -288,20 +288,29 @@ void Menu::battleMenu()
 
         // boss attack and warrior defense
         int bossAttackDamage = boss->action();
+        cout << "bossAttackDamage: " << bossAttackDamage << endl;
+
         int damageTaken = braveWarrior->defense(bossAttackDamage);
         braveWarrior->updateStrength(damageTaken);
 
-        cout << "Warrior Health: " << braveWarrior->getStrength()
-        << "\n    Boss Health: " << boss->getHealth() << endl;
+        cout << "\n\033[0;33mWarrior Health: " << braveWarrior->getStrength()
+        << "\nBoss Health: " << boss->getHealth() << "\033[0m" << endl;
     } while (braveWarrior->getStrength() > 0 && boss->getHealth() > 0) ;
     
     if(braveWarrior->getStrength() > 0 && boss->getHealth() <= 0)
     {
-        cout << "You've WON!" << endl;
+        cout << "\n\033[0;36mYou’ve conquered the Gargoyle and saved our world, Brave Warrior! Keep the map, sword and shield as a thank"
+        << "you for your brave expedition.\n\n" 
+        << "I hope to see you again friend. You will always have a home on our plant. Farewell!\033[0m "
+        << endl;
+    }
+    else if (braveWarrior->getStrength() <= 0 && boss->getHealth() <= 0)
+    {
+        cout << "\n\033[0;36mYou have defeated the Gargoyle brave one, but you don't have the energy to deliver the trifecta. All...is lost...\033[0m " << endl;
     }
     else
     {
-        cout << "Boss killed you" << endl;
+        cout << "\n\033[0;36mThe Gargoyle has triumped. Thank you for trying brave one. May the universal powers be forgiving...\033[0m" << endl;
     }
     keepPlaying = false;
 }
