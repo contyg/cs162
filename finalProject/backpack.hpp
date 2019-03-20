@@ -10,7 +10,7 @@ class Backpack
 private:
     bool full;
     int itemCount;
-    bool trifectaUsed;
+    bool trifectaNotUsed;
 
     struct Item {
 		string val;
@@ -36,9 +36,8 @@ public:
     void printContents();
     int getItemCount();
     bool getFull();
-    bool getTrifectaUsed();
+    bool getTrifectaNotUsed();
     void setTrifectaUsed(bool val);
-
 };
 
 #endif

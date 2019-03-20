@@ -1,6 +1,8 @@
 #include "backpack.hpp"
 #include <iostream>
+#include <string>
 
+using std::string;
 using std::cout;
 using std::endl;
 
@@ -9,7 +11,7 @@ Backpack::Backpack()
     head = nullptr;
 	tail = nullptr;
     itemCount = 0;
-    trifectaUsed = false;
+    trifectaNotUsed = true;
     full = false;
 }
 
@@ -77,14 +79,14 @@ bool Backpack::getFull()
     return full;
 }
 
-bool Backpack::getTrifectaUsed()
+bool Backpack::getTrifectaNotUsed()
 {
-    return trifectaUsed;
+    return trifectaNotUsed;
 }
 
 
 void Backpack::setTrifectaUsed(bool val)
 {
-    trifectaUsed = val;
+    trifectaNotUsed = val;
 }
 
