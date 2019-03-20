@@ -30,7 +30,7 @@ Backpack::~Backpack()
 // adds to tail
 void Backpack::addItem(string item)
 { 
-    cout << "\033[0;33mYou won a new piece of the trifecta: \033[0m\n\033[1;33m" << item << "\033[0m\n" << endl;
+    cout << "\033[0;33mYou've added a new piece of the trifecta to you backpack: \033[0m\n\033[1;33m" << item << "\033[0m\n" << endl;
     if (tail == nullptr) // check if list is empty
     {
 		tail = new Item(item);
@@ -54,19 +54,19 @@ void Backpack::printContents()
 { 
     if (tail == nullptr) // check if list is empty
     {
-		cout << "\033[0;33mThere's nothing in your backpack yet!\033[0m\n" << endl;
+		cout << "\n\033[0;33mThere's nothing in your backpack yet!\033[0m\n" << endl;
 	}
     else 
     {
-        cout << "\033[0;33mYour backpack contains:\033[0m" << endl;
+        cout << "\n\033[0;33mYour backpack contains:\033[0m\033[1;33m" << endl;
 		Item* node = head;
 		while (node != nullptr) 
         {
-			cout << node->val << ", ";
+			cout << node->val;
 			node = node->next;
 		}
 
-		cout << "\n" << endl;
+		cout << "\033[0m\n" << endl;
 	}
 }
 

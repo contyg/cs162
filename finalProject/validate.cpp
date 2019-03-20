@@ -65,12 +65,9 @@ char getCharMatch(char c1, char c2, char c3, char c4)
     if ((input == c1 || input == c2 || input == c3 || input == c4) && input != '-')
     {
         cin.clear();
-        // cin.ignore((unsigned)-1, '\n');
         return input;
     }
 
-    cin.clear();
-    cin.ignore(10000, '\n');
     cout << "\033[1;31m ERROR: Please enter a charater equal to your options \033[0m\n" << endl;
     return getCharMatch(c1, c2, c3, c4);
 }

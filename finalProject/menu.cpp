@@ -169,6 +169,7 @@ void Menu::printMap()
     cout << "\n" << endl;
 }
 
+// prints story and goals
 void Menu::intro()
 {
     cout << "\033[1;36m"
@@ -190,11 +191,12 @@ void Menu::intro()
     << "Best of luck Brave Warrior. Go forth! Find your glory and save us all!\n\033[0m\n" << endl;
 }
 
+// use for between actions/moves
 int Menu::betweenMovesMenu()
 {
     cout << "\033[0;36mWhat would you like to do next?\033[0m"
-    << "\n    \033[0;36m1\033[0m: Print map (Costs 1 strenth point)"
-    << "\n    \033[0;36m2\033[0m: Print map and show where you are (Costs 2 strenth points)"
+    << "\n    \033[0;36m1\033[0m: Print map (-1 strenth point)"
+    << "\n    \033[0;36m2\033[0m: Print map with Warrior location (-2 strenth points)"
     << "\n    \033[0;36m3\033[0m: Check contents of your backpack"
     << "\n    \033[0;36m4\033[0m: Check your health"
     << "\n    \033[0;36m5\033[0m: Move 1 space" 
@@ -204,6 +206,7 @@ int Menu::betweenMovesMenu()
     return choice;
 }
 
+// responsive menu for moving warrior
 char Menu::moveWarriorMenu()
 {
     Space* location = braveWarrior->getLocation();
@@ -212,29 +215,29 @@ char Menu::moveWarriorMenu()
     char left = '-';
     char right = '-';
 
-    cout << "\033[0;36mWhich direction would you like to move?\033[0m" << endl;
+    cout << "\033[0;36m\nWhich direction would you like to move?\033[0m" << endl;
     
     if (location->getUp() != nullptr)
     {
-        cout << "   \033[0;36mU\033[0m: Up to a " << location->getUp()->getType() << endl;
+        cout << "   \033[0;36mU\033[0m: Up to a " << location->getUp()->getType() << " space" << endl;
         up = 'U';
     }
 
     if (location->getDown() != nullptr)
     {
-        cout << "   \033[0;36mD\033[0m: Down to a " << location->getDown()->getType() << endl;
+        cout << "   \033[0;36mD\033[0m: Down to a " << location->getDown()->getType() << " space" << endl;
         down = 'D';
     }
 
     if (location->getLeft() != nullptr)
     {
-        cout << "   \033[0;36mL\033[0m: Left to a " << location->getLeft()->getType() << endl;
+        cout << "   \033[0;36mL\033[0m: Left to a " << location->getLeft()->getType() << " space" << endl;
         left = 'L';
     }
 
     if (location->getRight() != nullptr)
     {
-        cout << "   \033[0;36mR\033[0m: Right to a " << location->getRight()->getType() << endl;
+        cout << "   \033[0;36mR\033[0m: Right to a " << location->getRight()->getType() << " space" << endl;
         right = 'R';
     }
 
@@ -242,6 +245,7 @@ char Menu::moveWarriorMenu()
     return choice; 
 }
 
+// warrior's attack menu
 int Menu::attackMenu()
 {
     int optionCount = braveWarrior->getOptionCount();
@@ -266,6 +270,7 @@ int Menu::attackMenu()
     return choice;
 }
 
+// battle menu and output for boss fight
 void Menu::battleMenu()
 {
     cout << "\033[0;36mIt is time to engage the boss. Have your Trifecta ready!\033[0m" << endl;
@@ -301,6 +306,7 @@ void Menu::battleMenu()
     keepPlaying = false;
 }
 
+// main game loop
 void Menu::playGame()
 {
     do
@@ -315,20 +321,20 @@ void Menu::playGame()
                 printMap();
                 break;
             case 2:
-                //braveWarrior->updateStrength(-2);
+                braveWarrior->updateStrength(-2);
                 printMap(braveWarrior->getLocation()->getColumn(), braveWarrior->getLocation()->getRow());
                 break;
             case 3: 
                 braveWarrior->getBackpack()->printContents();
                 break;
             case 4: 
-                cout << "\033[0;35mYour current health is " << braveWarrior->getStrength() << "\033[0m \n" << endl;
+                cout << "\n\033[0;35mYour current health is " << braveWarrior->getStrength() << "\033[0m \n" << endl;
                 break;
             case 5:
             {
                 char moveChoice = moveWarriorMenu();
                 braveWarrior->move(moveChoice); 
-                if (braveWarrior->getLocation()->getType() == "\033[0;32mBoss\033[0m")
+                if (braveWarrior->getLocation()->getType() == "\033[1;32mBoss\033[0m")
                 {
                     battleMenu();
                 }

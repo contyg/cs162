@@ -3,7 +3,7 @@
 
 Boss::Boss(int r, int c) : Space()
 {
-    type = "\033[0;32mBoss\033[0m";
+    type = "\033[1;32mBoss\033[0m";
     row = r;
     column = c;
     health = 15;
@@ -11,15 +11,15 @@ Boss::Boss(int r, int c) : Space()
 
 int Boss::action()
 {
-    if (health < 10)
+    if (health > 9)
+    {
+        return -6;
+    }
+    else if (health > 4)
     {
         return -3;
     }
-    else if (health < 5)
-    {
-        return -1;
-    }
-    return -6;
+    return -1;
 }
 
 int Boss::getHealth()
@@ -34,5 +34,5 @@ void Boss::setHealth(int h)
 
 void Boss::updateHealth(int damage)
 {
-    health -= damage;
+    health += damage;
 }

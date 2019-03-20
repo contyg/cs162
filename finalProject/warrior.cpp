@@ -41,6 +41,7 @@ void Warrior::setLocation(Space* space)
     location = space;
 }
 
+// update strength and weapon options based on strength
 void Warrior::updateStrength(int factor)
 {
     strength += factor;
@@ -56,13 +57,14 @@ void Warrior::updateStrength(int factor)
     
 }
 
+// execute attack actions w/ various damage
 int Warrior::attack(int choice)
 {
     switch (choice)
     {
         case 0:
             cout << "\nENGAGE THE TRIFECTA " << endl;
-            backpack->setTrifectaUsed(false);
+            backpack->setTrifectaUsed(false); // don't allow trifecta used more than once;
             return 6;
         case 2:
             cout << "Sword attack!" << endl;
@@ -73,6 +75,7 @@ int Warrior::attack(int choice)
     }
 }
 
+// apply shield 50% of the time
 int Warrior::defense(int damage)
 {
     int shieldUp = rand()%2;
@@ -85,6 +88,7 @@ int Warrior::defense(int damage)
     return damage;
 }
 
+// change warrior position
 void Warrior::move(char choice)
 {
     // move warrior
@@ -111,6 +115,7 @@ void Warrior::move(char choice)
         int damageTaken = location->action();
         if (damageTaken == 0)
         {
+            // add item to backpack when riddle solved
             int itemCount = backpack->getItemCount();
             switch (itemCount)
             {
@@ -127,6 +132,7 @@ void Warrior::move(char choice)
         }
         else 
         {
+            // apply battle damage
             updateStrength(damageTaken);
         }
     }

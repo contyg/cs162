@@ -7,7 +7,7 @@ using std::endl;
 
 Health::Health(int r, int c) : Space()
 {
-    type = "\033[0;35mHealth\033[0m";
+    type = "\033[1;35mHealth\033[0m";
     row = r;
     column = c;
     health = 0;
@@ -17,11 +17,11 @@ int Health::action()
 {
     if (health == 0)
     {
-        cout << "\033[0;35mYou get 2 strength points!\033[0m" << endl;
+        cout << "\n\033[0;35mYou get 2 strength points!\033[0m\n" << endl;
         health = 1;
         return 2;
     }
-    cout << "\033[0;35mYou've already picked up health points from this square.\033[0m" << endl;
+    cout << "\n\033[0;35mYou've already picked up health points from this square.\033[0m\n" << endl;
     return -1;
 }
 

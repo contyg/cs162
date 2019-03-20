@@ -9,7 +9,7 @@ using std::endl;
 
 Riddle::Riddle(int r, int c) : Space()
 {
-    type = "\033[0;34mRiddle\033[0m";
+    type = "\033[1;34mRiddle\033[0m";
     row = r;
     column = c;
     health = 0;

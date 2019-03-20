@@ -3,7 +3,7 @@
 
 Standard::Standard(int r, int c) : Space()
 {
-    type = "Standard";
+    type = "\033[1;37mStandard\033[0m";
     row = r;
     column = c;
     health = 0;
