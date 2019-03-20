@@ -228,13 +228,14 @@ int Menu::attackMenu()
 {
     int optionCount = braveWarrior->getOptionCount();
     int choice;
+
     for (int i = 0; i < (optionCount+1); i++)
     {
         cout << attackOptions[i] << endl; 
     }
-
-    // print trifecta as choice if available and not used
-    if(braveWarrior->getBackpack()->getFull() && !braveWarrior->getBackpack()->getTrifectaUsed())
+    
+    //print trifecta as choice if available and not used
+    if(braveWarrior->getBackpack()->getFull() && braveWarrior->getBackpack()->getTrifectaNotUsed())
     {
         cout << attackOptions[3] << endl;
         choice = getIntegerBetween(0, optionCount);

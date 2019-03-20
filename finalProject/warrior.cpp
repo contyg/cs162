@@ -45,14 +45,15 @@ void Warrior::updateStrength(int factor)
 {
     strength += factor;
 
-    if (strength < 4)
+    if (strength < 8)
     {
-        optionCount = 0;
+        optionCount = 1;
     }
-    else if (strength < 8)
+    else
     {
-        optionCount = 4;
+        optionCount = 2;
     }
+    
 }
 
 int Warrior::attack(int choice)
@@ -61,7 +62,7 @@ int Warrior::attack(int choice)
     {
         case 0:
             cout << "THE TRIFECTA " << endl;
-            backpack->setTrifectaUsed(true);
+            backpack->setTrifectaUsed(false);
             return 6;
         case 2:
             cout << "Sword attack!" << endl;
