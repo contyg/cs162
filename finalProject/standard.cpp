@@ -15,7 +15,7 @@ Standard::Standard(int r, int c) : Space()
 
 int Standard::action()
 {
-    cout << "\n\033[0;37mKeep track of your feet, your strength depletes with each step\033[0m" << endl;
+    cout << "\n\033[0;37mKeep track of your feet, your strength depletes with each step\033[0m\n" << endl;
 
     return -1; 
 }
