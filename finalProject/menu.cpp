@@ -47,10 +47,10 @@ Menu::Menu()
     boss->setLinkedSpaces(std3, nullptr, rid3, nullptr);
 
     // fill attack options
-    attackOptions[0] = "Choose your attack: ";
-    attackOptions[1] = "\n    1: Fight with your fists (1pt)";
-    attackOptions[2] = "\n    2: Fight with your sword (3pt)";
-    attackOptions[3] = "\n    0: Use the Trifecta (6pt)";
+    attackOptions[0] = "\n\033[0;33mChoose your attack: \033[0m";
+    attackOptions[1] = "\n    \033[1;33m1\033[0m: Fight with your fists (1pt)";
+    attackOptions[2] = "\n    \033[1;33m2\033[0m: Fight with your sword (3pt)";
+    attackOptions[3] = "\n    \033[1;33m0\033[0m: Use the Trifecta (6pt)";
 
     // establish warrior
     braveWarrior = new Warrior();
@@ -158,7 +158,7 @@ void Menu::printMap()
             {
                 cout << "\033[1;32m[ ]\033[0m";
             }
-            // standard spaces, cyan
+            // standard spaces, white
             else
             {
                 cout << "\033[1;37m[ ]\033[0m";
@@ -288,13 +288,11 @@ void Menu::battleMenu()
 
         // boss attack and warrior defense
         int bossAttackDamage = boss->action();
-        cout << "bossAttackDamage: " << bossAttackDamage << endl;
-
         int damageTaken = braveWarrior->defense(bossAttackDamage);
         braveWarrior->updateStrength(damageTaken);
 
         cout << "\n\033[0;33mWarrior Health: " << braveWarrior->getStrength()
-        << "\nBoss Health: " << boss->getHealth() << "\033[0m" << endl;
+        << "\nBoss Health: " << boss->getHealth() << "\033[0m\n" << endl;
     } while (braveWarrior->getStrength() > 0 && boss->getHealth() > 0) ;
     
     if(braveWarrior->getStrength() > 0 && boss->getHealth() <= 0)
@@ -351,17 +349,15 @@ void Menu::playGame()
                 break;  
             default:
                 keepPlaying = false;
-                cout << "MK BYE THEN" << endl;
+                cout << "\033[0;36mFarewell, brave one\033[0m" << endl;
                 break;
         }
 
         // check strength
         if (braveWarrior->getStrength() < 1)
         {
-            cout << "U DEAD" << endl;
+            cout << "\033[0;36mYou've perished on your journey.\033[0m" << endl;
             keepPlaying = false;
         }
     } while (keepPlaying);
-
-    cout << "U FINISHED BYE" << endl;
 }

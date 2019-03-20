@@ -64,16 +64,16 @@ int Warrior::attack(int choice)
     switch (choice)
     {
         case 0:
-            cout << "ATTACK: ENGAGE THE TRIFECTA " << endl;
+            cout << "\033[1;31mATTACK: \033[0m\033[0;31mENGAGE THE TRIFECTA \033[0m" << endl;
             backpack->setTrifectaUsed(false); // don't allow trifecta used more than once;
             damage = -6;
             break;
         case 2:
-            cout << "ATTACK: Swift Sword of Swiftness!" << endl;
+            cout << "\033[1;31mATTACK: \033[0m\033[0;31mSwift Sword of Swiftness!\033[0m" << endl;
             damage = -3; 
             break;
         default:
-            cout << "ATTACK: Fists of Furry!" << endl;
+            cout << "\033[1;31mATTACK:\033[0m \033[0;31mFists of Furry!\033[0m" << endl;
             damage = -1;
             break;
     }
@@ -89,7 +89,7 @@ int Warrior::defense(int damage)
         return damage;
     }
 
-    cout << "Shield up!" << endl;
+    cout << "\033[0;31mSHIELD UP!\033[0m" << endl;
     return 0;
 }
 
